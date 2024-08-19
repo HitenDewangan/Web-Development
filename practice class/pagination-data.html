@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Pagination</title>
+
+    <style>
+        /* body{
+            display: flex;
+            justify-content: center;
+            align-items: end;
+            height: 500px;
+        } */
+
+        ul{
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            align-items: end;    /*if I comment this line, then see the magic */
+            height: 200vh;
+        }
+
+        li{
+            margin-right: 10px;
+            border: 1px solid rgb(0, 0, 0);
+            width: 20px;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            padding: 5px;
+            border-radius: 15px;
+            background-color: rgb(253, 0, 106);
+        }
+
+        li:hover{
+            background-color: rgb(0, 0, 0);
+            color: rgb(255, 0, 157);
+            cursor: pointer;
+        }
+
+        .disabled:hover{
+            background-color: rgb(224, 184, 184);
+            color: aliceblue;
+            cursor: not-allowed;
+            border: none;
+        }
+
+    </style>
+
+</head>
+<body>
+    <ul>
+        <li><span>&laquo;</span></li>
+        <li><span>1</span></li>
+        <li><span>2</span></li>
+        <li class="disabled"><span>3</span></li>
+        <li><span>4</span></li>
+        <li><span>5</span></li>
+        <li><span>...</span></li>
+        <li><span>&raquo;</span></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style type="text/css">
+        header{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            font-size: 20px;
+            font-style: Arial;
+            padding: 10px;
+        }
+
+        .bi-cart{
+            position: relative;
+        }
+
+        .cart-name{
+            position: absolute; /* Make the count element positionable */
+            top: -0.7em;
+            right: -0.5em;
+            font-size: 0.7em;
+            color: white; 
+            background-color: red;
+            border-radius : 50% ;
+            padding: 5px ;
+            height: 35%;
+            width: 35%;
+
+            display: flex;
+            align-items: center;
+            text-align: center;
+
+        }
+
+        nav span {
+            margin: 0 10px;
+        }
+
+        .brand-name{
+            font-weight: bold;
+        }
+
+        article{
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 20px  20px 20px 20px;
+            font-size: medium;
+        }
+
+        .bi-lightning-charge-fill{
+            color: yellow;
+        }
+
+        footer span{
+            /* set position at bottom */
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: black;
+            color: white;
+            padding: 10px 0 10px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+    <header>
+        <div class="brand-name">Shopper .</div>    <!--brand name-->
+
+        <div>
+            <span>
+                <nav>
+                    <span>Home</span>
+                    <span>Catalog</span>
+                    <span>Shop</span>
+                    <span>Pages</span>
+                    <span>Blog</span>
+                    <span>Docs</span>
+                </nav>
+            </span>
+        </div>
+
+        <div>
+            <nav>
+                <span class="bi bi-search"></span>
+                <span class="bi bi-person"></span>
+                <span class="bi bi-heart"></span>
+                <span class="bi bi-cart"><sup class="cart-name">2</sup></span>
+            </nav>
+        </div>
+    </header>
+
+    <article>
+        <span class ="bi bi-lightning-charge-fill"></span>
+        <span>Big Summer Sale Ends Soon ! Don't Miss Out</span>
+        <span class ="bi bi-lightning-charge-fill"></span>
+    </article>
+
+    <footer>
+        <span>Copyright © 2022 Shopper. All Rights Reserved</span>
+    </footer>
+    
+
+</body>
+</html>

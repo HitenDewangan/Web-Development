@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigate to Card</title>
+    <style>
+        main{
+            display: flex;
+            justify-content: center;
+        }
+        .card{
+            border: 1px solid black;
+            padding: 20px;
+            margin: 20px;
+            width: 300px; 
+            text-align: center;
+            background-color: rgb(231, 231, 231);
+        }
+        nav{
+            margin-top: 30px;
+            margin-bottom: 30px;
+            text-align: center;
+            
+
+        }
+        nav a{
+            margin-right: 30px;
+            color: rgb(9, 209, 182);
+            background-color: #000000;
+            padding: 5px;
+            
+        }
+
+        .card:target{
+            font-size: 30px;
+            background-color: rgb(77, 9, 116);
+            color: rgb(236, 5, 132);
+        }
+    </style>
+    
+</head>
+<body>
+    <nav>
+        <a href="#mcu">MCU</a>
+        <a href="#dc">DC</a>
+        <a href="#anime">Anime</a>
+    </nav>
+
+    <main>
+        <div class="card" id="mcu">
+            <h3>MCU</h3>
+            <p>Marvel Cinematic Universe</p>
+        </div>
+        <div class="card" id="dc">
+            <h3>DCCU</h3>
+            <p>DC Cinematic Universe</p>
+        </div>
+        <div class="card" id="anime">
+            <h3>Anime</h3>
+            <p>A style of Japanese animation</p>
+        </div>
+    </main>
+</body>
+</html>

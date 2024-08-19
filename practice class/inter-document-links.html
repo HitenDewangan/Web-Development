@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inter Document Links</title>
+    <style>
+        ul{
+            list-style: none; 
+            width: 250px;
+            overflow: auto;
+
+            background-color: rgb(245, 198, 198);
+            padding: 20px;
+        }
+
+        section{
+            display: grid;
+            grid-template-columns: 3fr 9fr;
+            grid-gap: 20px
+        }
+        main{
+            display: flex;
+            width: 70%;
+            height: auto;
+        }
+        li{
+            margin-bottom: 10px;
+        }
+        iframe{
+            margin-left: 100px;
+            margin-top: 10px;
+            width: 100%;
+            height: 500px;
+            border: none;
+            object-fit: contain;
+            zoom:normal;
+        }
+        
+    </style>
+</head>
+<body>
+    <section>
+        <!-- ========== nav section ========== -->
+        <nav>
+            <ul>
+                <!-- links for same tab, new tab and new window -->
+                <li><a href="Stock images/womens-fashion.jpg">Katherine Langford - same tab</a></li>
+                <li><a href="Stock images/kids-fashion.jpg" target="_blank">kids - new tab</a></li>
+                <li><a href="javascript:window.print()">Print - new window</a" ></li>
+                <li>
+                    <a href="javascript:window.open('Stock images/kids-fashion.jpg', 'title', 'width=300,height=300')">Kids-image</a>
+                </li>
+                <!-- docs, pdf, xlsx -->
+                <li>
+                    <a href="Arsenal/Report LinkedList vs DynamicArray.docx">Docs - auto download</a>
+                </li>
+                <li>
+                    <a href="Arsenal/having_clause_questions.pdf">PDF</a>
+                </li>
+                <li>
+                    <a href="Arsenal/LeetCode_SQL_50_Questions.xlsx">xlsx"></a>
+                </li>
+                <!-- images -->
+                <li>
+                    <a href="Stock images/womens-fashion.jpg" target="main-frame-women">Women Fashion - iframe</a>
+                </li>
+                <li>
+                    <a href="Stock images/kids-fashion.jpg" target="main-frame-kids">Kids fashion - iframe</a>
+                </li>
+                <li>
+                    <a href="Stock images/mens-fashion.jpg" target="main-frame-men">mens fashion - iframe</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ========== main section ========== -->
+        <main>
+            <iframe name="main-frame-women"></iframe>
+            <iframe name="main-frame-kids"></iframe>
+            <iframe name="main-frame-men"></iframe>
+        </main>
+    </section>
+    
+</body>
+</html>
