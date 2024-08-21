@@ -89,13 +89,14 @@
             flex-direction: column;
             justify-content: space-evenly;
             align-items: center;
-            opacity: 0.7;
+            opacity: 0.8;
             background-color: rgba(0, 0, 0, 0.5);
         }
         .mensfashion:hover, .womensfashion:hover, .kidsfashion:hover{
             opacity: 1;
             /* set transition time */
             transition: 0.5s;
+            cursor: pointer;
         }
         .card-header{
             font-size: 60px;
@@ -110,7 +111,88 @@
             margin-top: 100px;
         }
 
-        /* ============================== footer ============================== */
+        /* =============================== CARD SECTION ================================= */
+        /* ================================== Card Section Heading================================= */
+        .card-section{
+            margin-top: 5vw;
+            font-family: century Gothic;
+            text-align: center;
+        }
+
+        .CS1{
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: grey;
+            margin-bottom: 15px;
+        }
+        .CS2{
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        /* =============================== Cards ================================ */
+        .cards{
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            padding: 50px;
+        }
+
+        .card-1, .card-2, .card-3{
+            border: 2px solid rgba(56, 56, 56, 0.247);
+            width: 300px;
+            height: 370px;
+            float: left;
+            padding: 40px;
+            margin: 20px;
+
+            color: gray;
+        }
+        .rec-card-header{
+            margin-bottom: 40px;
+        }
+        .cardpic{
+            float: left;
+            margin-right: 30px;
+        }
+        .card-details{
+            font-family: century Gothic;
+        }
+        .card-title{
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        .card-subtitle{
+            color: black;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .card-rating{
+            color: rgb(255, 153, 0);
+        }
+        .bi-star{
+            color: grey;
+        }
+
+        /* =============================== Card Body ================================ */
+        .card-body{
+            clear: left;
+            color: gray;
+            font-size: 18px;
+            line-height: 30px;
+            margin-bottom: 40px;
+
+        }
+
+        /* =============================== Card Footer ================================ */
+        .card-footer{
+            font-family: century Gothic;
+            font-size: 15px;
+            
+        }
+
+        /* ============================== FOOTER ============================== */
         footer{
             display: grid;
             grid-template-columns: 2.4fr 2.4fr 2.4fr 2.4fr 2.4fr;
@@ -118,7 +200,7 @@
             color:white;
             padding: 20px;
             font-family: Arial;
-            position: fixed;
+            position: relative;
             inset: 700px 0 0 0; /* top right bottom left */;
             
         }
@@ -211,6 +293,107 @@
             </div>
         </div>
     </main>
+
+    <!-- ============================= cards ============================== -->
+    <div class="card-section">
+        <div class="CS1">WHAT BUYERS SAY</div>
+        <div class="CS2">Latest buyers Reviews</div>
+    </div>
+
+    <div class="cards">
+        <div class="card-1">
+            <!-- Card Header -->
+            <div class="rec-card-header">
+                <img src="../../FASHIONSTORE/public/images/card-1.jpg" alt="" width="80" height="" class="cardpic">
+    
+                <div class="card-details">
+                    <div class="card-title">Dresses</div>
+                    <div class="card-subtitle">Cotton print Dress</div>
+                    <div class="card-rating">
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Body -->
+            <div class="card-body">
+                God every fill great replenish
+                darkness unto. Very open. Likeness
+                their that light. Given under image
+                to. Subdue of shall cattle day fish
+                form saw spirit and given stars, us
+                you whales may, land, saw fill unto.
+            </div>
+    
+            <!-- Card Footer -->
+            <div class="card-footer">
+                Jane Jefferson, 29 May 2019
+            </div>
+        </div>
+
+        <div class="card-2">
+            <!-- Card Header -->
+            <div class="rec-card-header">
+                <img src="../../FASHIONSTORE/public/images/card-2.jpg" alt="" width="80" height="" class="cardpic">
+    
+                <div class="card-details">
+                    <div class="card-title">T-shirts</div>
+                    <div class="card-subtitle">Oversized print T-shirt</div>
+                    <div class="card-rating">
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Body -->
+            <div class="card-body">
+                Fill his waters wherein signs likeness waters. Second light gathered appear sixth fourth, seasons behold creeping female.
+            </div>
+    
+            <!-- Card Footer -->
+            <div class="card-footer">
+                Darrell Baker, 18 May 2019
+            </div>
+        </div>
+
+        <div class="card-3">
+            <!-- Card Header -->
+            <div class="rec-card-header">
+                <img src="../../FASHIONSTORE/public/images/card-3.jpg" alt="" width="80" height="" class="cardpic">
+    
+                <div class="card-details">
+                    <div class="card-title">Bags & Accessories</div>
+                    <div class="card-subtitle">Suede cross body Bag</div>
+                    <div class="card-rating">
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star-fill"></span>
+                        <span class="bi bi-star"></span>
+                        <span class="bi bi-star"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card Body -->
+            <div class="card-body">
+                God every fill great replenish darkness unto. Very open. Likeness their that light. Given under image to. Subdue of shall cattle day fish form saw spirit and given stars.
+            </div>
+    
+            <!-- Card Footer -->
+            <div class="card-footer">
+                Pavel Doe, 29 May 2019
+            </div>
+        </div>
+    </div> 
+    
 
     <!-- ============================= footer ============================== -->
     <footer>
