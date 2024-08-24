@@ -4,37 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amazon cards using Table</title>
+    <style>
+        body{
+            background-color: rgb(238, 234, 234);
+            font-family: Arial;
+        }
+        /* table{
+            font-family: Arial;
+            padding: 13px;
+            border: 5px solid rgb(22, 22, 22);
+        } */
+        .cards-table{
+            background-color: rgb(50, 171, 175);
+            border: 5px solid rgb(157, 255, 0);
+            /* margin-left: 2.5vw; */
+        }
+        .card{
+            background-color: white;
+            border: 2px solid rgb(255, 0, 0);
+            height: 47vh;
+            width: 50px;
+            padding: 10px;
+        }
+        .card tr{
+            /* height: 110px; */
+        }
+        .card td{
+            padding: 8px;
+        }
+        .card img{
+            height: 100px;
+        
+        }
+        .card-foot{
+            color: darkcyan;
+        }
+        a{
+            text-decoration: none;
+            color: black;
+            /* font-weight: bold; */
+            font-size: 13px;
+        }
+        th{
+            font-size: 21px;
+            text-align: left;
+        }
+        p{
+            margin-top: -3px;
+        }
+        .tr-card{
+            height: 400px;
+        }
+        .td-card{
+            width: 350px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>
-                <img src="Amazon images/a1.jpg" alt="">
-                <p>
-                    <a href="javascript:void()">Cushion covers, bedsheets & more</a>
-                </p>
+    <table  width="100%" frame="void" cellspacing="50" class="cards-table">
+        <tr class="tr-card" height="400">
+            <!-- card 1 -->
+            <td class="td-card" width="350">
+                <table align="center" class="card">
+                    <tr class="card-heading">
+                        <th colspan="2">Revamp your home in style</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/a1.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Cushion covers, bedsheets & more</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/a2.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Figurines, vases & more</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/a3.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Home storage</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/a4.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Lighting solutions</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void()" class="card-foot">Explore all</a>
+                        </td>
+                    </tr>
+                </table>
             </td>
-            <td>
-                <img src="Amazon images/a2.jpg" alt="">
-                <p>
-                    <a href="javascript:void()">Figurines, vases & more</a>
-                </p>
+
+            <!-- card 2 -->
+            <td class="td-card">
+                <table align="center"  class="card">
+                    <tr>
+                        <th colspan="2">Appliances for your home | Upto 55% off</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/b1.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Air conditioners</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/b2.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Refrigerators</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/b3.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Microwaves</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/b4.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Washing machines</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void()"class="card-foot" >See more</a>
+                        </td>
+                    </tr>
+                </table>
             </td>
-        </tr>
-        <tr>
-            <td>
-                <img src="Amazon images/a3.jpg" alt="">
-                <p>
-                    <a href="javascript:void()">Home storage</a>
-                </p>
+
+            <!-- card 3 -->
+            <td class="td-card">
+                <table align="center"  class="card">
+                    <tr>
+                        <th colspan="2">Starting ₹149 | Headphones</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/c1.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Starting ₹249 | boAt</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/c2.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Starting ₹349 | boult</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/c3.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Starting ₹649 | Noise</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/c4.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Starting ₹149 | Zebronics</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void()" class="card-foot">See all offers</a>
+                        </td>
+                    </tr>
+                </table>
             </td>
-            <td>
-                <img src="Amazon images/a4.jpg" alt="">
-                <p>
-                    <a href="javascript:void()">Lighting solutions</a>
-                </p>
+
+            <!-- card 4 -->
+            <td class="td-card">
+                <table align="center"  class="card">
+                    <tr>
+                        <th colspan="2">Up to 60% off | Top picks</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/d1.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Sports shoes</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/d2.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Jewellery & accessories</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img src="Amazon images/d3.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Watches & smartwatches</a>
+                            </p>
+                        </td>
+                        <td>
+                            <img src="Amazon images/d4.jpg" alt="">
+                            <p>
+                                <a href="javascript:void()">Bags, wallets & luggage</a>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="javascript:void()" class="card-foot">See all offers</a>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>
+    
 </body>
 </html>
