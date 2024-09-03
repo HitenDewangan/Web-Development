@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio and checkbox</title>
+    <style>
+        form{
+            border: 1px solid black;
+            padding: 20px;
+            /* height: 50px; */
+            width: 500px;
+            font-size: 30px;
+        }
+        input{
+            height: 30px;
+            width: 300px;
+        }
+        /* button{
+            margin-bottom: 20px;
+            height: 30px;
+        } */
+        /* li{
+            margin-bottom: 10px;
+            font-size: 17px;
+        } */
+        .forms{
+            display: grid;
+            grid-template-columns: 4fr 4fr 4fr;
+        }
+        .time-form input{
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <p>Which avenger do you like?</p>
+        <input type="radio" name="avenger" value="ironman"><label>ironman</label>
+        <input type="radio" name="avenger" value="hulk"><label>hulk</label>
+        <input type="radio" name="avenger" value="thor"><label>thor</label>
+
+        <br><br>
+
+        <p>I am from</p>
+        <input type="radio" name="country" value="India"><label>India</label>
+        <input type="radio" name="country" value="USA"><label>USA</label>
+        <input type="radio" name="country" value="UK"><label>UK</label>
+
+        <br><br>
+
+        <p>your power ?</p>
+        <input type="checkbox" name="power" value="fly"><label>fly</label>
+        <input type="checkbox" name="power" value="superman"><label>superman</label>
+        <input type="checkbox" name="power" value="spiderman"><label>spiderman</label>
+
+        <br><br>
+        <button>Submit</button>
+    </form>
+</body>
+</html>

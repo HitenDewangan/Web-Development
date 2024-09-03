@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>Movies</legend>
+            <span>Which movie do you like?</span>
+            <select name="movie" >  <!--multiple size="15"--> 
+                <option value="">Sci-Fi Action Movies</option>
+                <optgroup label="hollywood">
+                    <option>Pirates of the Caribbean</option>
+                    <option>Harry Potter</option>
+                    <option>Avengers</option>
+                    <option>Rampage</option>
+                </optgroup>
+                <optgroup label="bollywood">
+                    <option>Drishyam</option>
+                    <option>RRR</option>
+                    <option>Pushpa</option>
+                    <option>DDLJ</option>
+                </optgroup>
+                <optgroup label="Russian">
+                    <option selected>Shawshank Redemption</option> <!--selected auto select this option at start-->
+                    <option>Forrest Gump</option>
+                    <option>The Godfather</option>
+                    <option>Interstellar</option>
+                </optgroup>
+            </select>
+        </fieldset>
+        <br>
+        <button>Submit</button>
+    </form>
+
+    <br><br><br>
+
+    <form action="">
+        <fieldset>
+            <legend>My Profile</legend>
+            <select name="Flipkart" size="5">
+                <optgroup>
+                    <option><span class="bi bi-person"></span>My Profile</option>
+                    <option><span class="bi bi-power"></span>Flipkart Plus Zone</option>
+                    <option><span class="bi bi-gear"></span>Orders</option>
+                    <option><span class="bi bi-question-circle"></span>Wishlist</option>
+                    <option><span class="bi bi-question-circle"></span>Rewards</option>
+                    <option><span class="bi bi-question-circle"></span>Gift Cards</option>
+                </optgroup>
+            </select>
+    </fieldset>
+    </form>
+</body>
+</html>
