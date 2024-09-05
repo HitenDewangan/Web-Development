@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Label in forms</title>
+    <style>
+        form{
+            border: 1px solid black;
+            padding: 20px;
+            width: 300px;
+            font-family: Arial;
+            
+        }
+        .form-grp{
+            margin-bottom: 20px;
+        }
+        .error-field{
+            /* display: none; */
+            color: red;
+            font-size: small;
+        }
+
+    </style>
+</head>
+<body>
+    <form class="form-container">
+        <h3><span class="bi bi-person"></span>Login</h3>
+        <div class="form-grp">
+            <label for="">Username</label>
+            <div>
+                <input type="text" name="txtUsername">
+                <div class="error-field">
+                    <span>Username is required</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-grp">
+            <label for="">Password</label>
+            <div>
+                <input type="password" name="txtPassword">
+                <div class="error-field">
+                    <span>Password is required</span>
+                </div>
+            </div>
+        </div>
+            
+        <button>Submit</button>
+
+    </form>
+</body>
+</html>
