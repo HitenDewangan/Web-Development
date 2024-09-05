@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons in form HTML</title>
+</head>
+<body>
+    <form>
+        <dl>
+            <dt>Username</dt>
+            <dd><input type="text" name="txtUsername"></dd>
+
+            <dt>Password</dt>
+            <dd><input type="password" name="txtPassword"></dd>
+        </dl>
+
+        <!-- generic button  HTML-5-->
+        <button><span class="bi bi-check">Register</span></button>
+
+        <!-- generic button HTML-4-->
+        <input type="reset"><span class="bi bi-trash">Clear</span>
+
+        <!-- non- generic button HTML-5-->
+        <button><span class="bi bi-recycle">Cancel</span></button>
+        <button type="button" onclick="window.location.href='https://www.google.com'"><span class="bi bi-send">submit</span></button>
+        <button type="button" onclick="window.print()"><span class="bi bi-printer">Print</span"></button>
+    </form>
+</body>
+</html>
