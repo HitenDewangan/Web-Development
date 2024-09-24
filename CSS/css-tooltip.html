@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Document</title>
+    <style type="text/css">
+        input + div{
+            display: none;
+        }
+        input:focus + div{
+            display: block;
+            color: goldenrod;
+        }
+
+        input::placeholder{
+            color: rgb(83, 196, 196);
+            /* font-weight: bold; */
+        }
+    </style>
+</head>
+<body>
+    <form class="container-fluid">
+        <dl class="mt-3 p-3">
+            <dt>Username</dt>
+            <dd>
+                <input type="text" name="txtUsername" placeholder="Enter username">
+                <div>
+                    <span class="bi bi-info-circle"> Username in uppercase</span>
+                </div>
+            </dd>
+        </dl>
+    </form>
+</body>
+</html>

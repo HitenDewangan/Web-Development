@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Form Validation</title>
+    <style type="text/css">
+        input:required + span{
+            display: inline;
+            color: red;
+        }
+        input:required{
+            border: 2px solid red;
+        }
+        input:optional+span{
+            display: none;
+        }
+        input:valid + span{
+            display: none;
+        }
+        input:valid{
+            border: 1px solid black;
+        }
+
+        input:valid ~ div{
+            display: none;
+        }
+        input:invalid ~ div{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <dl>
+            <dt>Username</dt>
+            <dd>
+                <input type="text" name="txtUsername" required><span>*</span>
+                <div>Username is required</div>
+            </dd>
+
+
+            <dt>Password</dt>
+            <dd>
+                <input type="password" name="txtPassword" required><span>*</span>
+                <div>Password is required</div>
+            </dd>
+
+            <dt>Age</dt>
+            <dd>
+                <input type="number" name="txtAge" optional><span>*</span>
+                <div>Age is required</div>
+            </dd>
+
+            <button>Submit</button>
+        </dl>
+    </form>
+</body>
+</html>

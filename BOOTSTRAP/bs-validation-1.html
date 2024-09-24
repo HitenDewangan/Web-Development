@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Validation</title>
+</head>
+<body class="container-fluid">
+    <div class="m-3">
+        <div class="h5"m>Password</div>
+        <div class="input-group">
+            <span class="bi bi-key-fill btn btn-light"></span>
+            <input type="password" name="txtPassword" placeholder="Enter password" class="input-group-text w-50">
+            <button class="bi bi-check-square btn btn-success"></button>
+        </div>
+        <div class="h5">Price</div>
+        <div class="input-group">
+            <span class="bg-dark text-white p-2">&#8377;</span>
+            <input type="number" name="txtPrice" placeholder="Enter price" class="input-group-text w-50">
+            <button class="btn btn-dark">.00</button>
+        </div>
+    </div>
+
+    <form class="border border-primary border-3 p-3 w-75">
+        <div class="h3">Register User</div>
+        <dl class="row">
+            <dt class="col-2">Username</dt>
+            <dd class="col-10">
+                <input type="text" name="txtUsername" class="form-control">
+            </dd>
+
+            <dt class="col-2">Password</dt>
+            <dd class="col-10">
+                <input type="password" name="txtPassword" class="form-control">
+            </dd>
+
+            <dt class="col-2">Age</dt>
+            <dd class="col-10">
+                <input type="number" name="txtAge" class="form-control">
+            </dd>
+
+            <dt class="col-2">City</dt>
+            <dd class="col-10">
+                <select name="txtCity"class="form-select">
+                    <option value="NY">New York</option>
+                    <option value="MI">Miami</option>
+                    <option value="DC">Washington</option>
+                </select>
+            </dd>
+        </dl>
+    </form>
+</body>
+</html>

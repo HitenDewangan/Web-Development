@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Registration Form</title>
+    <style>
+        body{
+            height: 100vh;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center">
+    <form action="" method="post" class="w-50 m-3 p-3 border border-3 border-primary">
+        <div>Register User</div>
+        <dl>
+            <dt>Username</dt>
+            <dd>
+                <input type="text" name="txtUsername" class="form-control">
+            </dd>
+
+            <dt>Password</dt>
+            <dd>
+                <input type="password" name="txtPassword" class="form-control">
+            </dd>
+
+            <dt>Select City</dt>
+            <dd>
+                <select name="txtCity" class="form-select">
+                    <option value="NY">New York</option>
+                    <option value="MI">Miami</option>
+                    <option value="DC">Washington</option>
+                </select>
+            </dd>
+
+            <dt>Price Range</dt>
+            <dd>
+                <input type="range" name="txtPrice" class="form-range">
+            </dd>
+
+            <dt>Subscribed</dt>
+            <dd class="form-switch">
+                <input type="checkbox" name="txtSubscribed" class="form-check-input">
+                <label for="">Yes</label>
+            </dd>
+
+        </dl>
+    </form>
+
+</body>
+</html>

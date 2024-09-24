@@ -1,2 +1,6 @@
 # Ignore .history files
 *.history
+node_modules/
+*.json
+
+node_modules/.package-lock.json
