@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behavior and Ocurrence Class</title>
+    <style type="text/css">
+        /* paragraph */
+
+        p::first-line{
+            color: rgb(0, 204, 255);
+        }
+
+        p::first-letter{
+            font-size: 50px;
+            color: rgb(0, 0, 255);
+        }
+
+
+        /* ============== list with before and after ==================== */
+
+        ol{
+            display: flex;
+            list-style: none;
+            font-weight: bold;
+
+            border: 1px solid yellow;
+            background-color: greenyellow;
+
+            padding: 10px;
+            width: 50vw;
+            border-radius: 50px;
+            
+        }
+
+        li:after{
+            content: ">>>>";
+        }
+
+        li:last-child::after{
+            content: "👍";
+        }
+        li:last-child{
+            color: rgb(134, 96, 0);
+        }
+
+        li::before{
+            content: "👍";
+        }
+
+        /* color random list elements */
+
+        li:nth-child(2n){
+            color: red;
+        }
+
+        li:nth-child(3){
+            color: blue;
+        }
+
+        p::selection{
+            background-color: yellow;
+        }
+
+    </style>
+</head>
+<body>
+    <p id="p1">
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Saepe quo odio consectetur deleniti? Velit tenetur reprehenderit temporibus doloremque tempore sed laborum quas a nostrum provident quisquam, minima obcaecati maiores ipsa!
+        Voluptatum, at! Iure harum quo vitae enim maiores ullam, reprehenderit soluta deserunt ipsa ipsam expedita dolorum esse cumque? Accusantium, recusandae! Corrupti cumque modi maiores sequi odit fugit accusamus unde deleniti?
+        Beatae incidunt minus provident debitis! Expedita recusandae minima doloribus consequatur quae eius, optio nemo aspernatur cum harum nostrum temporibus cumque, laboriosam, iusto officia. Nihil similique, in perferendis ratione iusto quas?
+        Rem, sunt ut. Beatae mollitia sit repudiandae quos excepturi eius perferendis culpa iure dicta esse non adipisci doloremque quasi quisquam omnis temporibus neque nam quam ad, consequatur, nihil enim vero.
+        Ab vero, cum adipisci magni cumque quibusdam omnis, sapiente hic alias dignissimos doloremque ut nostrum quo rerum dolorem optio illum soluta voluptas, nisi mollitia consequatur ipsam officiis perferendis? Recusandae, nobis.
+        Necessitatibus delectus est animi incidunt laboriosam ad fuga nam, eos consequatur rem ratione assumenda ipsum, sint at iure quo labore accusamus voluptatibus! Amet repellendus accusantium officia et quibusdam, totam ex.
+        Veritatis voluptatem error facilis nostrum! Qui error provident hic, veritatis perspiciatis aperiam saepe quos rerum in blanditiis enim temporibus fugiat animi velit beatae cupiditate soluta ad magni iusto mollitia perferendis.
+        Modi nobis accusantium ipsa, veniam accusamus omnis, delectus porro exercitationem officia necessitatibus, maiores quos officiis recusandae asperiores atque? Voluptatem adipisci vero nesciunt voluptates laboriosam quod ducimus itaque similique sed assumenda!
+        Neque, aspernatur temporibus adipisci pariatur, nam asperiores cumque eveniet necessitatibus reprehenderit rerum molestias repudiandae cupiditate eum at excepturi! Porro nobis ipsam natus nemo illo voluptatum amet atque a architecto illum.
+        Voluptatibus explicabo quo, libero obcaecati dicta aspernatur rem qui autem debitis fugit, dolorum quos, veritatis sunt pariatur perferendis vero sed modi sequi? Quibusdam sint expedita exercitationem inventore fugit deleniti iusto.
+    </p>
+
+    <ol id="ol1">
+        <li>Adi</li>
+        <li>Hided</li>
+        <li>Ankur</li>
+        <li>Abhishek</li>
+        <li>Nitin</li>
+        <li>Pranav</li>
+        <li>Pratik</li>
+    </ol>
+
+    <ol>
+        <li>Iron</li>
+        <li>Copper</li>
+        <li>Gold</li>
+        <li>Silver</li>
+        <li>Platinum</li>
+    </ol>
+</body>
+</html>

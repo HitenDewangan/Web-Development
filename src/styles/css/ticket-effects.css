@@ -1,0 +1,13 @@
+.container{
+    background-color: rgb(106, 216, 174);
+    border: 1px solid rgb(11, 56, 41);
+    padding: 5px;
+    margin: 5px;
+}
+dl{
+    display: grid;
+    grid-template-columns: 2fr 8fr;
+}
+dt{
+    font-weight: bold;
+}
