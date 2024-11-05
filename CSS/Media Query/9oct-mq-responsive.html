@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>media query</title>
+    <style type="text/css">
+
+        header,nav,main,aside,footer{
+            border: 1px solid black;
+            margin: 5px;
+            padding: 5px;
+            text-align: center;
+        }
+
+        body{
+            display: grid;
+            grid-template-columns: 2fr 8fr 2fr;
+        }
+
+        @media screen and (orientation: landscape){
+
+            header{
+                grid-row: 1;
+                grid-column: 1/4;
+            }
+            nav{
+                grid-row: 2;
+                grid-column: 1;
+                background-color: rgb(116, 209, 209);
+            }
+            main{
+                grid-row: 2;
+                grid-column: 2;
+            }
+            aside{
+                grid-row: 2;
+                grid-column: 3;
+                background-color: rgba(203, 235, 145, 0.911);
+            }
+
+            footer{
+                grid-row: 3;
+                grid-column: 1/4;
+            }
+
+        }
+        @media screen and (orientation: portrait){
+            header{
+                grid-row: 1;
+                grid-column: 1/4;
+            }
+            nav{
+                grid-row: 2;
+                grid-column: 1;
+                background-color: rgb(116, 209, 209);
+            }
+            main{
+                grid-row: 2;
+                grid-column: 2;
+            }
+            aside{
+                grid-row: 2;
+                grid-column: 3;
+                background-color: rgba(203, 235, 145, 0.911);
+            }
+
+            footer{
+                grid-row: 3;
+                grid-column: 1/4;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <nav>Nav</nav>
+    <main>Main</main>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+</body>
+</html>

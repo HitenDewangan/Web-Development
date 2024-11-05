@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Responsive Shopper Template</title>
+    <style type="text/css">
+        header{
+            font-size: 25px;
+            font-family: Arial;
+            background-color: black;
+            color: white;
+            padding: 10px;
+        }
+            /* orientation */
+
+        @media screen and (orientation: landscape){
+            header{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+            }
+            div{
+                font-weight: bold;
+                /* font-size: 25px; */
+            }
+            nav span{
+                margin-left: 15px;
+                font-size: 17px;
+            }
+            aside span{
+                margin-left: 15px;
+                font-size: 17px;
+            }
+
+            .bi-justify{
+                display: none;
+            }
+
+        }
+
+        @media screen and (orientation: portrait){
+            nav, aside{
+                display: none;
+            }
+            header{
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .bi-justify{
+                display: block;
+            }
+            
+        }
+
+        @media  screen and (max-width: 600px){
+            aside{
+                background-color: red;
+            }
+            
+        }
+
+        @media screen and (min-width: 700px){
+            header{
+                background-color: maroon;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>Shopper.</div>
+        <nav>
+            <span>Home</span>
+            <span>Catalog</span>
+            <span>Shop</span>
+            <span>Pages</span>
+            <span>Blog</span>
+            <span>Docs</span>
+        </nav>
+        <aside>
+            <span class="bi bi-search"></span>
+            <span class="bi bi-heart"></span>
+            <span class="bi bi-person"></span>
+            <span class="bi bi-cart"></span>
+        </aside>
+        <span class="bi bi-justify"></span>
+    </header>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input:valid+span{
+            display: block;
+            color: green;
+        }
+        input:invalid+span{
+            display: inline;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt>Username</dt>
+        <dd>
+            <input type="text" name="txtUsername" required>
+            <span>Username is required</span>
+        </dd>
+    </dl>
+</body>
+</html>

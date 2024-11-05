@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>SSURFERS</title>
+    <style type="text/css">
+        body{
+            font-family: Arial;
+        }
+        /* ========== external nav links =========== */
+        .ex-nav-links{
+            background-color: black;
+            color: white;
+            padding: 10px;
+        }
+        .ex-nav-links nav{
+            display: flex;
+            justify-content: space-around;
+        }
+        .ex-nav-links nav div span{
+            margin-right: 15px;
+        }
+
+
+        /* =============== header ===================*/
+        header{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 25px;
+            border: 1px solid black;
+        }
+        .brand-name{
+            font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            font-size: 35px;
+            font-weight: bold;
+        }
+        header nav{
+            font-size: 17px;
+        }
+        header nav span{
+            margin-right: 20px;
+        }
+        /* =============== main ======================*/
+        /* main{
+            background-image: url(../public/images/netflix-background.jpg);
+            background-size:cover;
+            background-position:center;
+            background-attachment: fixed; 
+            height: 70vh; 
+
+            color: rgb(253, 253, 253);
+
+
+            display: flex;
+            justify-content: center;
+        } */
+        .img-content{
+            background-image: url(../public/images/netflix-background.jpg);
+            background-size:cover;
+            background-position:center;
+            background-attachment: fixed; 
+            width: 100vw;
+            height: 70vh; 
+
+            color: rgb(253, 253, 253);
+
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            /* margin-top: 100px; */
+
+            /* width: 60em; */
+            /* height: 30em; */
+            text-align: center;
+        }
+        .main-img-title{
+            margin-top: px;
+            margin-bottom: 10px;
+            font-size: 30px;
+        }
+        .main-img-desc{
+            margin-bottom: 20px;
+            width: 900px;
+        }
+        .img-content button{
+            background-color: orangered;
+            color: white;
+            border: none;
+            padding: 7px;
+            margin-top: 10px;
+            width: 200px;
+        }
+
+        /* ====================== cards section ===================== */
+        .card-section{
+            margin-top: 30px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .cards{
+            display: grid;
+            grid-template-columns: 3fr 3fr 3fr 3fr;
+
+            justify-content:space-around;
+            align-items: center;
+
+            margin: 20px;
+        }
+        .card-body{
+            margin-top: 10px;
+            margin-left: 150px;
+            margin-bottom: 10px;
+            text-align: left;
+            width: 100px;
+        }
+        .board-price{
+            margin-top: 10px;
+            font-weight: bold;
+        }
+        .card-footer{
+            color: orangered;
+            text-align: left;
+            margin-left: 150px;
+
+        }
+
+        /* =========== about section =========== */
+        .about-section{
+            display: grid;
+            grid-template-columns: 6fr 6fr;
+
+            justify-content: center;
+            align-items: center;
+
+            margin-left: 100px;
+            margin-right: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ex-nav-links">
+        <nav>
+            <div>
+                <span>+48 789 456 123</span>
+                <span>contact@ssurfers.com</span>
+            </div>
+            <div>
+                <span class="bi bi-facebook"></span>
+                <span class="bi bi-youtube"></span>
+                <span class="bi bi-instagram"></span>
+                <span class="bi bi-pinterest"></span>
+                <span class="bi bi-twitter"></span>
+                <span class="bi bi-linkedin"></span>
+            </div>
+        </nav>
+    </div>
+    <header>
+        <div class="brand-name">SSURFERS</div>
+        <nav>
+            <span>Home</span>
+            <span>Products</span>
+            <span>Blog</span>
+            <span>About us</span>
+            <span>Contact</span>
+            <span class="bi bi-cart-fill"></span>
+        </nav>
+    </header>
+    <main>
+        <div class="img-content">
+            <div class="main-img-title">Choose a board for yourself</div>
+
+            <div class="main-img-desc">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aliquid hic eaque sunt officia vero molestiae esse, natus pariatur, cupiditate assumenda possimus illum quia
+            </div>
+
+            <button>Check our boards</button>
+        </div>
+
+        <!-- Cards -->
+        <div class="card-section">
+            <h3>Surfboards</h3>
+
+            <div class="cards">    
+                <div class="c1">
+                    <div class="card-header">
+                        <img src="../public/images/board-1.png" alt="">
+                    </div>
+                    <div class="card-body">
+                        <div class="board-id">Product B</div>
+                        <div class="board-price">450,00 USD</div>
+                    </div>
+                    <div class="card-footer">
+                        zobacz wiecej
+                        <span class="bi bi-chevron-right"></span>
+                    </div>
+                </div>
+                <div class="c2">
+                    <div class="card-header">
+                        <img src="../public/images/board-2.png" alt="">
+                    </div>
+                    <div class="card-body">
+                        <div class="board-id">Product B</div>
+                        <div class="board-price">450,00 USD</div>
+                    </div>
+                    <div class="card-footer">
+                        zobacz wiecej
+                        <span class="bi bi-chevron-right"></span>
+                    </div>
+                </div>
+                <div class="c3">
+                    <div class="card-header">
+                        <img src="../public/images/board-3.png" alt="">
+                    </div>
+                    <div class="card-body">
+                        <div class="board-id">Product B</div>
+                        <div class="board-price">450,00 USD</div>
+                    </div>
+                    <div class="card-footer">
+                        zobacz wiecej
+                        <span class="bi bi-chevron-right"></span>
+                    </div>
+                </div>
+                <div class="c4">
+                    <div class="card-header">
+                        <img src="../public/images/board-4.png" alt="">
+                    </div>
+                    <div class="card-body">
+                        <div class="board-id">Product B</div>
+                        <div class="board-price">450,00 USD</div>
+                    </div>
+                    <div class="card-footer">
+                        zobacz wiecej
+                        <span class="bi bi-chevron-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- about secton -->
+        <div class="about-section">
+            <div class="about-img">
+                <img src="../public/images/big-board.png" width="600">
+            </div>
+            <div class="about-desc">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias unde, error possimus odio tenetur magni quasi voluptas! Non, laborum error. Magni odio minus assumenda aut eveniet perferendis nesciunt! Necessitatibus, odit.
+                    Iure similique ut saepe molestiae velit eligendi magni quasi ratione commodi minima numquam cum alias consectetur, nam nihil tempora aliquam perferendis dolorem rem. Inventore, odit mollitia error aliquam excepturi aspernatur?
+                    Unde, totam! Consequatur vero temporibus in a happy.
+                </p>
+            </div>
+        </div>
+
+        <div></div>
+
+
+    </main>
+</body>
+</html>
