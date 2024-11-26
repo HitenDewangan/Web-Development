@@ -7,8 +7,8 @@ This repository is a collection of my web development learning journey. It inclu
 #### How to Use
 
 Clone the repository:
-git clone https://github.com/HitenDewangan/Nithin-Sir-Web-Dev
-.git
+git clone [https://github.com/HitenDewangan/Nithin-Sir-Web-Dev
+.git](https://github.com/HitenDewangan/Nithin-Sir-Web-Dev.git)
 
 - Explore the projects: Browse through the different folders and files.
 - Learn and experiment: Study the code, try to modify it, and build your own projects.
