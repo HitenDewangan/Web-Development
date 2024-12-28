@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Modals</title>
+
+</head>
+<body>
+
+    <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#login">Login</button>
+
+
+    <div class="modal" id="login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header bg-info text-white">
+                    <h2><span class="bi bi-person-fill"></span> User Login</h2>
+                    <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Modal Body -->
+                     <dl>
+                        <dt>Username</dt>
+                        <dd>
+                            <input type="text" name="txtUsername" class="form-control">
+                        </dd>
+                        <dt>Password</dt>
+                        <dd>
+                            <input type="password" name="txtPassword" class="form-control">
+                        </dd>
+                     </dl>
+                </div>
+                <div class="modal-footer">
+                    <!-- Modal Footer -->
+                    <button class="btn btn-primary">Login</button>
+                    <button class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    
+</body>
+</html>

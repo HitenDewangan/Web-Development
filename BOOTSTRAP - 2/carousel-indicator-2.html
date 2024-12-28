@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>carousel Indicators</title>
+
+    <style type="text/css">
+        img{
+            width: 100vw;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel slide" data-bs-ride="carousel" data-bs-theme="dark" id="top-banner">
+        <!-- Carousel Indicators -->
+        <div class="carousel-indicators">
+            <button data-bs-target="#top-banner" data-bs-slide-to="0" class="active"></button>
+            <button data-bs-target="#top-banner" data-bs-slide-to="1"></button>
+            <button data-bs-target="#top-banner" data-bs-slide-to="2"></button>
+            <button data-bs-target="#top-banner" data-bs-slide-to="3"></button>
+        </div>
+        
+        
+        <div class="carousel-inner">
+            <!-- Active Item -->
+            <div class="carousel-item active" data-bs-interval="5000">
+                <img src="/practice class/Stock images/sadie-sink-1.jpeg">
+            </div>
+            <!-- Other Items -->
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="/practice class/Stock images/womens-fashion.jpg">
+            </div>
+            <div class="carousel-item" data-bs-interval="8000">
+                <img src="/practice class/Stock images/avengers-1.jpg">
+            </div>
+
+            <!-- Fourth Item : Register -->
+            <div class="carousel-item" data-bs-interval="3000">
+                <div class="d-flex justify-content-center align-items-center" style="height: 300px;">
+                    <div class="w-50">
+                        <p>Register for more...</p>
+                        <form class="input-group">
+                            <input type="email" class="form-control" placeholder="Enter your email">
+                            <button class="btn btn-warning">
+                                Get Started <span class="bi bi-chevron-right"></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- Carousel controls -->
+        <button class="carousel-control-prev" data-bs-target="#top-banner" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+    
+        <button class="carousel-control-next" data-bs-target="#top-banner" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+        
+        
+
+
+    </div>
+
+
+    
+    <script src="../node_modules/jquery/dist/jquery.js"> </script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    
+</body>
+</html>
