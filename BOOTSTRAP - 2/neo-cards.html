@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neo Cards</title>
+
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <style type="text/css">
+        .neo-cards {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 50px;
+        }
+
+        .nc-1, .nc-2, .nc-3, .nc-4, .nc-5 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .nc-1 img, .nc-2 img, .nc-3 img, .nc-4 img, .nc-5 img {
+            width: 100%;
+            border-radius: 30%;
+        }
+
+        .nc-description {
+            font-family: calibri;
+            font-size: 30px;
+
+        }
+
+        .btn {
+            width: 150px;
+            padding: 15px 30px;
+            border-radius: 30px;
+            color: #615f5f;
+            border: 2px solid #c4c0c0;
+            font-weight: 600;
+        }
+        .btn:hover {
+            border: 2px solid #615f5f;
+
+        }
+    </style>
+
+</head>
+<body>
+    <div class="neo-cards">
+        <div class="nc-1">
+            <img src="/BOOTSTRAP - 2/img/key-light-neo.avif" alt="">
+            <div class="nc-description">Key Light Neo</div>
+            <button class="btn btn-outline-light">Learn more</button>
+        </div>
+        <div class="nc-2">
+            <img src="/BOOTSTRAP - 2/img/stream-deck-neo.avif" alt="">
+            <div class="nc-description">Stream Deck Neo</div>
+            <button class="btn btn-outline-light">Learn more</button>
+        </div>
+        <div class="nc-3">
+            <img src="/BOOTSTRAP - 2/img/facecam-neo.avif" alt="">
+            <div class="nc-description">Facecam Neo</div>
+            <button class="btn btn-outline-light">Learn more</button>
+        </div>
+        <div class="nc-4">
+            <img src="/BOOTSTRAP - 2/img/game-capture-neo.avif" alt="">
+            <div class="nc-description">Game Capture Neo</div>
+            <button class="btn btn-outline-light">Learn more</button>
+        </div>
+        <div class="nc-5">
+            <img src="/BOOTSTRAP - 2/img/wave-neo.avif" alt="">
+            <div class="nc-description">Wave Neo</div>
+            <button class="btn btn-outline-light">Learn more</button>
+        </div>
+    </div>
+</body>
+</html>
