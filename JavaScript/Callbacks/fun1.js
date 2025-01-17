@@ -52,3 +52,64 @@ const obj4 = {
 }
 
 obj4.greet("Alan");
+
+console.log("====================================");
+
+// store functions in an array
+const funArr =[
+    function() {console.log("First")
+        return "First was returned"
+    },
+    function() {console.log("Second")
+        return "Second was returned"
+    },
+    function() {console.log("Third")
+        return "Third was returned"
+    },
+    function() {console.log("Fourth")},
+    function() {console.log("Fifth")}
+]
+
+funArr.forEach(fun => fun());
+console.log("\n"+ funArr[2]());
+
+console.log("====================================");
+
+// write a function to return another function
+function createGreeter(name){
+    return () => console.log("Hello " + name);
+}
+
+const greet1 = createGreeter("John");
+greet1();
+
+// pass function as an argument
+function greet2(functionName){
+    functionName();
+}
+
+function sayHello(){
+    console.log("Hello there");
+}
+
+greet2(sayHello);
+
+// return a function from a function
+function sport(time){
+    if(time === "morning"){
+        return swim;
+    } else{
+        return football;
+    }
+}
+
+function swim(){
+    console.log("Swimming");
+}
+function football(){    
+    console.log("Football");
+}
+
+const sport1 = sport("morning");
+sport1();
+((sport("evening")))();
