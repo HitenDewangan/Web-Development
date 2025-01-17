@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <Style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .grandparent {
+            width: 600px;
+            height: 600px;
+            background-color: rgb(38, 145, 216);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto; 
+        }
+        .parent {
+            width: 400px;
+            height: 400px;
+            background-color: rgb(154, 156, 142);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .child {
+            width: 200px;
+            height: 200px;
+            background-color: rgb(180, 22, 75);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+    </Style>
+</head>
+<body>
+    <div class="grandparent">
+        Grandparent
+        <div class="parent">
+            Parent
+            <div class="child">
+                Child
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const grandparent = document.querySelector('.grandparent');
+        const parent = document.querySelector('.parent');
+        const child = document.querySelector('.child');
+        const body = document.querySelector('body');
+        child.addEventListener(
+            'click', () => alert('Child clicked')
+        );
+        parent.addEventListener(
+            'click', () => alert('Parent clicked')
+        );
+        grandparent.addEventListener(
+            'click', () => alert('Grandparent clicked')
+        );
+        body.addEventListener(
+            'click', () => alert("Body clicked")
+        );
+    </script>
+</body>
+</html>

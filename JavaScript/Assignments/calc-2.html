@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+
+    <style>
+        textarea {
+            width: 100px;
+            height: 100px;
+        }
+        button {
+            width: 50px;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="result"></textarea>
+    <!-- Numbers -->
+    <button id="zero" onclick="appendToTextArea('0')">0</button>
+    <button id="one" onclick="appendToTextArea('1')">1</button>
+    <button id="two" onclick="appendToTextArea('2')">2</button>
+    <button id="three" onclick="appendToTextArea('3')">3</button>
+    <button id="four" onclick="appendToTextArea('4')">4</button>
+    <button id="five" onclick="appendToTextArea('5')">5</button>
+    <button id="six" onclick="appendToTextArea('6')">6</button>
+    <button id="seven" onclick="appendToTextArea('7')">7</button>
+    <button id="eight" onclick="appendToTextArea('8')">8</button>
+    <button id="nine" onclick="appendToTextArea('9')">9</button>
+
+    <!-- Operators -->
+    <button id="plus" onclick="appendToTextArea('+')">+</button>
+    <button id="minus" onclick="appendToTextArea('-')">-</button>
+    <button id="multiply" onclick="appendToTextArea('*')">*</button>
+    <button id="divide" onclick="appendToTextArea('/')">/</button>
+    <button id="equal" onclick="calculate()">=</button>
+
+    <!-- Clear All -->
+    <button id="clear" onclick="writeToTextArea('')">Clear All</button>
+
+    <!-- <button id="change text" onclick="writeToTextArea('hello world')"> Change text</button> -->
+
+
+    <script>
+
+        function appendToTextArea(text) {
+            document.getElementById("result").innerHTML += text;
+        }
+
+        function writeToTextArea(text) {
+            document.getElementById("result").innerHTML = text;
+        }
+
+        // calculator
+        function calculate() {
+            let expression = document.getElementById("result").innerHTML;
+            let result = eval(expression);
+            writeToTextArea(result);
+        }
+
+
+
+        // ============================ examples ============================
+        // function writeToTextArea(text) {
+        //     document.getElementById("result").innerHTML += text;
+        // }
+
+        // writeToTextArea("hello world");
+    </script>
+</body>
+</html>

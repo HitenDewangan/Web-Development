@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #grandparent {
+          width: 500px;
+          height: 500px;
+          background-color: red;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin: auto;
+        }
+        #parent {
+          width: 300px;
+          height: 300px;
+          background-color: gray;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        }
+        #child {
+          width: 100px;
+          height: 100px;
+          background-color: green;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+        }
+      </style>
+</head>
+<body>
+    <h1 style="color: green">Event Capturing Example</h1>
+    <h3>Click the Child to see the event capturing flow</h3>
+    <div id="grandparent">
+      Grandparent
+      <div id="parent">
+        Parent
+        <div id="child">Child</div>
+      </div>
+    </div>
+
+    <!-- js -->
+    <script>
+        let body = document.querySelector("body");
+        let grandparent = document.querySelector("#grandparent");
+        let parent = document.querySelector("#parent");
+        let child = document.querySelector("#child");
+        body.addEventListener(
+            "click", () => {alert("Body Clicked");}, true
+        );
+        grandparent.addEventListener(
+            "click", function () { alert("Grandparent event clicked"); }, true
+        );
+        parent.addEventListener(
+            "click", function () { alert("Parent event clicked"); }, true
+        );
+        child.addEventListener(
+            "click", function () { alert("Child event clicked"); }, true
+        );
+    </script>
+</body>
+</html>

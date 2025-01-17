@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        .parent {
+            background-color: lightgreen;
+            padding: 20px;
+            margin: 10px;
+        }
+        .child {
+            background-color: lightcoral;
+            padding: 20px;
+            margin: 10px;
+        }
+        .grandparent {
+            background-color: lightblue;
+            padding: 20px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grandparent" id="grandparent">
+        Grandparent
+        <div class="parent" id="parent">
+            Parent
+            <div class="child" id="child">
+                Child
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Event listener on the child element
+        document.querySelector("#child").addEventListener("click", function(event) {
+            alert("Child clicked. \n Target: " + event.target.id+ "\n This:  "+ this.id); // Accessing target element
+        });
+
+        document.querySelector("#parent").addEventListener("click", function(event) {
+            alert("Parent clicked. \n Target: " + event.target.id+ "\n This: "+ this.id); // Accessing target element
+            event.stopPropagation(); // Stop the event from bubbling up
+        });
+
+        document.querySelector("#grandparent").addEventListener("click", function(event) {
+            alert("Grandparent clicked. \n Target: " + event.target.id+ "\n This: "+ this.id); // Accessing target element
+        });
+    </script>
+</body>
+</html>
