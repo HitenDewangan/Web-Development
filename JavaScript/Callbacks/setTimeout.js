@@ -12,7 +12,11 @@ function doCalc(a, b, callback){
         callback(a, b);
     }, 5000);
 
-    console.log("in between callback");
+    console.log("in between callback ...");
+
+    setTimeout(() => {
+        console.log("This message will be printed after 1 second of callback"); 
+      }, 6000); 
 }
 
 doCalc(3, 4, add);
