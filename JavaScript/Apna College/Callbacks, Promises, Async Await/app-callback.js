@@ -7,3 +7,7 @@ function calculator(a, b, sumCallback) {
 }
 
 calculator(1, 7, sum);
+
+calculator(2, 3, () => {
+    console.log("Hello");
+});
