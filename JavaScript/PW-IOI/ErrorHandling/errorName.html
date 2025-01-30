@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="err">
+        <p id="err-msg"></p>
+    </p>
+
+    <script>
+        let num = 1;
+        try {
+            num.toUpperCase();
+        } catch (error) {
+            document.querySelector("#err").innerHTML = error.name;
+            document.querySelector("#err-msg").innerHTML = error.message;
+        }
+    </script>
+</body>
+</html>
