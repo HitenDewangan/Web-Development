@@ -30,12 +30,35 @@ function asyncFun2() {
 // });
 
 // ======== promise chaining -> one promise will run after another
-console.log("fetching data 1 ...");
-let p3 = asyncFun1();
-p3.then((res) => {
-    console.log(res);
-    console.log("fetching data 2 ...");
-    return asyncFun2();
-}).then((res) => {
-    console.log(res);
-});
+// console.log("fetching data 1 ...");
+// let p3 = asyncFun1();
+// p3.then((res) => {
+//     console.log(res);
+//     console.log("fetching data 2 ...");
+//     return asyncFun2();
+// }).then((res) => {
+//     console.log(res);
+// });
+
+// better way to write promise chaining
+
+function asyncFun3(dataID) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("data", dataID);
+            resolve("success");
+        }, 2000);
+    });
+}
+
+asyncFun3(1)
+    .then((res) => {
+        return asyncFun3(2);
+    }).then((res) => {
+        return asyncFun3(3);
+    }).then((res) => {
+        console.log(res);
+    });
+
+// easier to understand as compared to callback hell
+
