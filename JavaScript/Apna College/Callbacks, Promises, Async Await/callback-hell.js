@@ -5,9 +5,15 @@ function getData(dataID, getNextData) {
         if(getNextData) {
             getNextData();
         }
+        else{
+            console.log("No more data to fetch");
+            
+        }
     }, 2000);
 }
 
+
+// ===== callback hell -> not a good way to programming as other developers may find it difficult to understand
 const data = {}
 getData(1, () => {
     console.log("getting data 2");
