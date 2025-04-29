@@ -6,12 +6,16 @@
     <title>InnerText vs textContent</title>
     <script type="text/javascript">
         function showText() {
-            
+            element = document.getElementById("container");
+            console.log(element.textContent); // Output: This is a Hidden word Another word.
         }
+    </script>
 </head>
+
 <body id="container">
-    <button onclick="showText()"></button>
-    <p>This is a <span>Hidden</span> word</p>
+    <p>This is a <span style="display: none;">Hidden</span> word</p>
     <p>Another word.</p>
+
+    <button onclick="showText()">Show text</button>
 </body>
 </html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>textContent vs innerText</title>
+    <script type="text/javascript">
+        function showText() {
+            // console.log(document.getElementById("myElement").textContent); 
+            // output : 
+            // Paragraph 1
+            // Paragraph 2
+            // console.log('This is a script');
+            console.log(document.getElementById("myElement").innerText); 
+        }
+    </script>
+</head>
+<body>
+    <div id="myElement" style="display: none;">
+        <p>Paragraph 1</p>
+        <p style="text-transform: uppercase;">Paragraph 2</p>
+        <script>console.log('This is a script');</script>
+    </div>
+      
+    <div id="anotherElement">
+        Line 1<br>Line 2
+    </div>
+
+      <button onclick="showText()">Show Text</button>
+</body>
+</html>

@@ -8,8 +8,16 @@
     <script type="text/javascript">
         
         function addContent() {
-            // document.write("<h1>New Heading</h1>");
+            // document.write("<h3>New Heading</h3>\n");
             // document.writeln("<p>This is a new paragraph added to the document.</p>");
+
+            // document.write("New Heading<br>");
+            // document.writeln("This is a new paragraph added to the document.<br>");
+            // document.writeln("Another line of text.");
+
+
+
+            // ========================= N O T E ==================================
             // The above lines will overwrite the entire document content
             // and add the new content at the end.
             // To avoid overwriting, we can use DOM manipulation instead.
@@ -21,12 +29,13 @@
             // ------ Using DOM Manipulation ------
             // Instead of using document.write, we can use DOM manipulation to add content
 
-            // Create a new paragraph element
-            var newParagraph = document.createElement("p");
-            // Set the text content of the new paragraph
-            newParagraph.textContent = "This is a new paragraph added to the document.";
-            // Append the new paragraph to the body of the document
-            document.body.appendChild(newParagraph);
+            // ======================================================================
+
+
+            p = document.createElement("p");
+            p.textContent = "Buenos dias! Mucho gusto!";
+            p.style.color = "blue";
+            document.body.appendChild(p);
         }
     
     </script>
@@ -42,3 +51,5 @@
 
 </body>
 </html>
+
+

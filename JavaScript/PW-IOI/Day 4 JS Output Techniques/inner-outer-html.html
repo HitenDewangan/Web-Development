@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>innerhtml-outerhtml</title>
 
     <script type="text/javascript">
         function deleteRecord(){
@@ -11,14 +11,18 @@
             if (flag) {
                 document.querySelector("h2").outerHTML = '<h3 style="color:green;">Record deleted successfully </h3>';
             } else {
-                document.querySelector("p").outerHTML = '<h2 style="color:red;"> You have pressed Cancel button </h2>';
+                document.querySelector("p").innerHTML = '<h2 style="color:red;"> You have pressed Cancel button </h2>';
             }
         }
     </script>
 </head>
 <body>
     <button onclick="deleteRecord()">Delete Record</button>
-    <h2></h2>
-    <p></p>
+    <h2>
+        <span>Record 1</span>
+    </h2> <!-- This acts like a placeholder-->
+    <p>
+        <span>Pieueue 1</span>
+    </p>
 </body>
 </html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Quick Booking Modal</title>
+
+    <!-- Styling -->
+     <style type="text/css">
+    
+     </style>
+
+</head>
+
+<body>
+    <!-- triggering button -->
+    <button type="button" class="btn btn-danger m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Quick Booking</button>
+
+    <!-- Book ticket NAV bar -->
+     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Quick Booking</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <nav class="container mt-5 p-3 bg-black d-flex justify-content-between border border-2 rounded-3">
+                        <div id="lst-movie">
+                            <select class="form-select">
+                                <option selected>Select Movie</option>
+                                <option value="Reacher">Reacher</option>
+                                <option value="Captain Marvel">Captain Marvel</option>
+                                <option value="Cobra Kai">Cobra Kai</option>
+                            </select>
+                        </div>
+                        <div id="lst-cinema">
+                            <select name="" id="" class="form-select">
+                                <option selected>Select Cinema</option>
+                                <option value="Inox Whitefield">Inox Whitefield</option>
+                                <option value="Max Koramangala">MAx Koramangala</option>
+                                <option value="Starbucks Bannerghatta">Starbucks Bannerghatta</option>
+                            </select>
+                        </div>
+                        <div id="lst-date">
+                            <select class="form-select ">
+                                <option selected>Select Date</option>
+                                <option value="4 May 2025">4 May 2025</option>
+                                <option value="5 May 2025">5 May 2025</option>
+                                <option value="6 May 2025">6 May 2025</option>
+                            </select>
+                        </div>
+                        <div id="lst-time">
+                            <select name="" id="" class="form-select">
+                                <option selected>Select Time</option>
+                                <option value="10.30 AM">10.30 AM</option>
+                                <option value="1.30 PM">1.30 PM</option>
+                                <option value="4.30 PM">4.30 PM</option>
+                                <option value="7.30 PM">7.30 PM</option>
+                            </select>
+                        </div>
+                        <div id="lst-seats">
+                            <select name="" id="" class="form-select">
+                                <option selected>Select Seats</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </select>
+                        </div>
+            
+                        <div>
+                            <button type="button" class="btn btn-danger" onclick="updateBookingSummary()">Book Now</button>
+                        </div>
+            
+                    </nav>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Summary -->
+     <div class="booking-summary d-none" id="booking-summary">
+        <h2 class="text-center">Booking Summary</h2>
+        <div class="container mt-5 p-3 bg bg-black text-white border border-2 rounded-3">
+            <div class="summary-details">
+
+                <img src="" alt="">
+
+                <p><strong>Movie:</strong> <span id="lbl-movie"></span></p>
+                <p><strong>Cinema:</strong> <span id="lbl-cinema"></span></p>
+                <p><strong>Date:</strong> <span id="lbl-date"></span></p>
+                <p><strong>Time:</strong> <span id="lbl-time"></span></p>
+                <p><strong>Screen:</strong> <span id="lbl-screen"></span></p>
+                <p><strong>Seats:</strong> <span id="lbl-seats"></span></p>
+            </div>
+            <div class="total-price">
+                <h4>Total Price: $<span id="total-price"></span></h4>
+            </div>
+        </div>
+        
+     </div>
+
+
+    <!-- Dynamic DOM -->
+    <script type="text/javascript">
+        // Function to update booking summary
+        function updateBookingSummary() {
+            const movieName = document.querySelector("#lst-movie select").value;
+            const cinemaName = document.querySelector('#lst-cinema select').value;
+            const date = document.querySelector('#lst-date select').value;
+            const time = document.querySelector('#lst-time select').value;
+            const seats = document.querySelector('#lst-seats select').value;
+            
+            // Update the booking summary
+            document.getElementById('lbl-movie').textContent = movieName;
+            document.getElementById('lbl-cinema').textContent = cinemaName;
+            document.getElementById('lbl-date').textContent = date;
+            document.getElementById('lbl-time').textContent = time;
+            document.getElementById('lbl-seats').textContent = seats;
+            
+            // set the image and screen according to the movie selected
+            const screen = document.getElementById('lbl-screen');
+            const movieImage = document.querySelector('.summary-details img');
+            if(movieName == "Reacher") {
+                movieImage.src = "../../images/reacher.jpg";
+                screen.textContent = "Screen 1";
+                movieImage.height = "400";
+                movieImage.width = "250";
+            } else if(movieName == "Captain Marvel") {
+                movieImage.src = "../../images/captainmarvel.jpg";
+                screen.textContent = "Screen 2";
+                movieImage.width = "250";
+                movieImage.height = "300";
+            } else if(movieName == "Cobra Kai") {
+                movieImage.src = "../../images/cobra-kai.jpg";
+                screen.textContent = "Screen 3";
+                movieImage.width = "400";
+                movieImage.height = "300";
+            }
+    
+            // Calculate total price (assuming $10 per seat)
+            const totalPrice = seats * 10; // Assuming $10 per seat
+            document.getElementById('total-price').textContent = totalPrice;
+    
+            // Show the booking summary
+            document.getElementById('booking-summary').classList.remove('d-none');
+
+            // Hide the modal
+            const modal = document.querySelector('#exampleModal');
+            const modalInstance = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
+            modalInstance.hide();
+        }
+    </script>
+
+</body>
+</html>
