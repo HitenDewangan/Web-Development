@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Input methods</title>
+  <script type="text/javascript">
+    queryString = location.search;
+    userName = queryString.slice(queryString.indexOf('=') + 1,queryString.indexOf('&'));
+    console.log(userName);
+
+    pwd = queryString.slice(queryString.indexOf('&')+1,);
+    password = pwd.slice(pwd.indexOf('=')+1,)
+    console.log(password);
+  </script>
+</head>
+<body>
+  <form action="">
+    <dl>
+      <dt>UserName</dt>
+      <dd>
+        <input type="text" name="UserName">
+      </dd>
+      <dt>Password</dt>
+      <dd>
+        <input type="text" name="pwd">
+      </dd>
+    </dl>
+    <button type="submit">Submit</button>
+  </form>
+</body>
+</html>
