@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Modal - Add Product</title>
+
+    <style type="text/css">
+
+     </style>
+
+</head>
+
+<body>
+    <button type="button" class="add-product-btn btn btn-primary m-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product</button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog"> <!-- remove class modal-fullscreen to remove fullscreen -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add Product</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body bg-dark-subtle text-black">
+                    <nav class="container mt-5 p-3 justify-content-between border-2 rounded-3">
+                        <form onSubmit="addProduct(event)">
+                            <div class="form-group mb-3">
+                                <label for="productName"><strong>Name</strong></label>
+                                 <input type="text" class="form-control" id="productName" placeholder="Name">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="productPrice"><strong>Price</strong></label>
+                                 <input type="text" class="form-control" id="productPrice" placeholder="Price">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="shippedTo"><strong>Shipped To</strong></label>
+                                    <select class="form-select" id="shippedTo" aria-label="Default select example">
+                                        <option selected>Select</option>
+                                        <option value="1">India</option>
+                                        <option value="2">USA</option>
+                                        <option value="3">UK</option>
+                                    </select>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <label class="form-label" for="stockStatus"><strong>Stock</strong></label>
+                                 <input type="checkbox" class="form-check-input" id="stockStatus" name="stockStatus" value="In Stock">
+                                 <label class="form-check-label" for="stockStatus">Available</label>
+                            </div>
+
+
+                            <div class="form-group modal-footer">
+                                <button class="btn btn-primary" >Register</button>
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </nav>
+                </div>
+                <!-- <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Summary -->
+    <div class="product-details container mt-5 p-3 border border-2 rounded-3 ">
+        <h1 class="bg-black text-white p-3 border rounded-3">Product Details</h1>
+        <div id="productSummary" class="bg-dark-subtle p-3 border rounded-3">
+            <dl>
+                <dt><strong>Name : </strong></dt>
+                <dd id="lblName"></dd>
+                <dt><strong>Price : </strong></dt>
+                <dd id="lblPrice"></dd>
+                <dt><strong>Shipped To : </strong></dt>
+                <dd id="lblShippedTo"></dd>
+                <dt><strong>Stock Status : </strong></dt>
+                <dd id="lblStockStatus"></dd>
+            </dl>
+            <button class="btn btn-warning" onclick="editProduct()">Edit</button>
+            <button class="btn btn-danger" onclick="deleteProduct()">Delete</button>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        function addProduct(e){
+            e.preventDefault(); // Prevent the form from submitting
+            var stockStatus = document.getElementById("stockStatus").checked;
+        
+            document.getElementById("lblName").textContent = document.getElementById("productName").value;
+            document.getElementById("lblPrice").textContent = document.getElementById("productPrice").value;
+            document.getElementById("lblShippedTo").textContent = document.getElementById("shippedTo").value;
+            document.getElementById("lblStockStatus").textContent = stockStatus ? "In Stock" : "Out of Stock";
+
+            // just change the below lines and rectify the code
+            // hide the modal
+            const modal = document.querySelector('#exampleModal');
+            const modalInstance = bootstrap.Modal.getInstance(document.getElementById('exampleModal'));
+            modalInstance.hide();
+
+            // Show the product summary
+            document.querySelector(".product-details").classList.remove("d-none");
+
+            // // hide the add product button
+            // document.querySelector(".add-product-btn").classList.add("d-none");
+        }
+
+        function editProduct(){
+            // edit the modal header
+            document.querySelector(".modal-title").innerHTML = "<h1>Edit Product</h1>";
+
+            // change the textcontent of register button to update
+            document.querySelector(".modal-footer button").textContent = "Update";
+            
+        }
+
+
+    </script>
+
+</body>
+</html>
