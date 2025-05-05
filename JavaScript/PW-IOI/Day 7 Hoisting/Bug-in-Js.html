@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bug in Js</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        // Bug in JS
+        var a = 1; // Global scope
+        function outer() {
+            var a = 2; // Outer function scope
+            function inner() {
+                var a = 3; // Inner function scope
+                console.log(a); // 3
+            }
+            inner();
+            console.log(a); // 2
+        }
+        outer();
+
+        console.log(a); // 1
+        // The output will be 3, 2, 1 in that order.
+        // The inner function has its own scope, so it can access its own variable 'a'.
+        // The outer function can access its own variable 'a', and the global scope can access its own variable 'a'.
+    </script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hoisting</title>
+</head>
+<body>
+    <script type="text/javascript">
+        // Hoisting example
+        console.log(myVar); // undefined
+        var myVar = 5;
+        console.log(myVar); // 5
+
+        // Function hoisting
+        myFunction(); // "Hello, World!"
+
+        function myFunction() {
+            console.log("Hello, World!");
+        }
+
+        // Function expression (not hoisted)
+        try {
+            myFuncExpr(); // Error: myFuncExpr is not a function
+        } catch (e) {
+            console.error(e.message);
+        }
+
+        var myFuncExpr = function() {
+            console.log("This won't work!");
+        };
+
+    </script>
+</body>
+</html>
