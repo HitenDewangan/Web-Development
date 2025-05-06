@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Object vs JSON</title>
+</head>
+<body>
+
+    <script type="text/javascript">
+        // JavaScript Object
+        let person = {
+            name: "John",
+            age: 30,
+            city: "New York"
+        };
+        console.log(person); // { name: 'John', age: 30, city: 'New York' }
+
+        // JSON (JavaScript Object Notation)
+        let jsonPerson = JSON.stringify(person);
+        console.log(jsonPerson); // {"name":"John","age":30,"city":"New York"}
+
+        // Parsing JSON back to JavaScript Object
+        let parsedPerson = JSON.parse(jsonPerson);
+        console.log(parsedPerson); // { name: 'John', age: 30, city: 'New York' }
+        console.log(parsedPerson.name); // John
+    </script>
+</body>
+</html>
