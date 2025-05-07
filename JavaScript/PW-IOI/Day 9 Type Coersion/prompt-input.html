@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Take input</title>
+</head>
+<body>
     <script type="text/javascript">
         let age = prompt("Enter the age");
 
@@ -13,9 +16,15 @@
         } else {
             console.log("Age is :", age);
         }
+
+        let ageInput = Number(age);
+
+        if(Number.isNaN(ageInput)) {
+            console.log("Plz enter the correct age");
+        } else {
+            console.log("Age is :", ageInput);
+        }
     </script>
-</head>
-<body>
 
 </body>
 </html>

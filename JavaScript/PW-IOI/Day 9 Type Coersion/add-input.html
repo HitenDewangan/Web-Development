@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add user input</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        let a = Number(prompt("Enter the first number"));
+        let b = Number(prompt("Enter the second number"));
+
+        // but if we just clicl OK button without entering any value 
+        // then it will be converted to 0
+        // so the sum will be 0 + 0 = 0
+        // but if we click cancel button then it will be converted to NaN
+
+        let sum = a + b; 
+
+        if(isNaN(sum)) {
+            console.log("Plz enter the correct number");
+        } else {
+            console.log("Sum is :", sum);
+        }
+
+    </script>
+</body>
+</html>
