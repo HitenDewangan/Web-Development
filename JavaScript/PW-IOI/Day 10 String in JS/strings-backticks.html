@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAckticks</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        // strings in JS : '', "", ``
+
+        function doTask(){
+            let userName = prompt("Enter your name: ");
+            let userAge = prompt("Enter your age: ");
+
+            document.write('Hello ' + userName + ', you are ' + userAge + ' years old.' + "<br>"); // string concatenation
+            document.write("Hello " + userName + ", you are " + userAge + " years old." + "<br>"); 
+            document.write(`Hello ${userName}, you are ${userAge} years old.` + "<br>"); // template literal
+
+            document.write(`Hello ${userName}, you are ${userAge} years old, status : ${userAge > 18 ? "Adult" : "Minor"}` );
+        }
+
+        doTask(); // call the function to execute it
+        
+
+        function doOneMoreTask(user){
+            return `I am ${user}`;
+        }
+
+        document.write(`<br>Welcome to the world, ${doOneMoreTask("HIDED")} `); // Output: Welcome to the world, I am ${user}
+
+        function printByHighlighting(strings, value){
+            console.log("call is made...");
+            return `${strings[0]} <b> ${value} </b> ${strings[1]}`; // string interpolation
+        }
+
+        let name = "K-391";
+        document.write(`<br>` + printByHighlighting`Hello ${name}, welcome to the world!`);
+    </script>
+</body>
+</html>

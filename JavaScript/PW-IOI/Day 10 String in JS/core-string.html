@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core string</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        let str1 = "Hello World!";   // used by developers for string literals
+        let str2 = 'LEt go!';        // used internally by JS engine
+        let str3 = `Goodbye World!`; // used by developers for template binding
+
+        console.log(str1, str2, str3); // Output: Hello World! LEt's go! Goodbye World!
+        // space as the delimiter is used to split the string into an array of words
+
+        console.log(typeof str1, typeof str2, typeof str3);
+
+        let str4 = new String("Hello World!"); // creates a string object
+
+
+        console.log("Primitive String: ", str1); // Output: Primitive String:  Hello World!
+        console.log("String Object: ", str4); // Output: String Object:  [String: 'Hello World!']
+
+        console.log(str3.toUpperCase()); // helping developers to use methods on that object
+        console.log(str3); // Output: Goodbye World!
+
+        str2.country = "USA"; // support not available because str2 : primitive string
+        console.log(str2);
+
+        str4.country = "USA"; // adds a property to the string object
+        console.log(str4);
+
+        console.log(str1 == str4); // checks value only, Output: true, because str1 and str4 have the same value
+        console.log(str1 === str4); // Output: false, because str1 is a primitive string and str4 is a string object
+
+        console.log(str1.length); // Output: 12, because str1 is a primitive string
+        console.log(str4.length); // Output: 12, because str4 is a string object
+
+        // _________________________________________________________________________________________
+        // strings in JS : '', "", ``
+
+        function doTask(){
+            let userName = prompt("Enter your name: ");
+            let userAge = prompt("Enter your age: ");
+
+            document.write('Hello ' + userName + ', you are ' + userAge + ' years old.' + "<br>"); // string concatenation
+            document.write("Hello " + userName + ", you are " + userAge + " years old." + "<br>"); 
+            document.write(`Hello ${userName}, you are ${userAge} years old.` + "<br>"); // template literal
+        }
+
+    </script>
+</body>
+</html>

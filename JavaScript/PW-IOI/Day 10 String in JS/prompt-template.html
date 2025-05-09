@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt template</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+
+        let userType = prompt("Enter the user type", 'admin | user | guest');
+        let labelName = prompt("Enter the label name: EMAIL | Password | Date");
+        let type = prompt("Enter the type: email | password | date");
+        let btnText = prompt("Enter the button text: Submit | Cancel | Reset");
+        let btnType = prompt("Enter the button type: submit | reset | button");
+        let template = `
+            <div>
+                <h2> ${userType} </h2>
+                <label>
+                    ${labelName}:
+                </label>
+                <input type="${type}">
+                <button> ${btnText} </button>
+            </div>
+        `;
+
+        document.write(template); 
+
+        let template2 = `
+            <div>
+                <label>
+                    ${labelName}:
+                </label>
+                    <input type="${type}" id="${labelName}" name="${labelName}">
+            </div>
+        `;
+
+        
+        let template3 = `
+            <h2> ${userType} </h2>
+            <div>
+                <dl>
+                    <dt>${labelName}</dt>
+                    <dd><input type="${type}"></dd>
+                </dl>
+            </div>
+
+            button: <button type="${btnType}"> ${btnText} </button>
+        `;
+
+        document.write(template3);
+
+    </script>
+
+
+</body>
+</html>

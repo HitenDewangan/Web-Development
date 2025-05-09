@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAckticks</title>
+</head>
+<body>
+    <script type="text/javascript">
+
+        function printByHighlighting(values, strings){
+            console.log("call is made...");
+            return `${values[0]} <b> ${strings} </b> ${values[1]} ${strings[1]}`; // string interpolation
+        }
+
+        let name = "K-391";
+        let place = "world";
+        document.write(`<br>` + printByHighlighting`Hello ${name}, welcome to the ${place}!`);
+
+        // Notes:
+        // always second one will hold the value and first one will hold the string
+        // it cant hold more than one value
+    </script>
+</body>
+</html>
