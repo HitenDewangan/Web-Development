@@ -10,7 +10,7 @@
 
         function printByHighlighting(values, strings){
             console.log("call is made...");
-            return `${values[0]} <b> ${strings} </b> ${values[1]} ${strings[1]}`; // string interpolation
+            return `${values[0]} <b> ${strings} </b> ${values[1]} ${strings}`; // string interpolation
         }
 
         let name = "K-391";
@@ -19,7 +19,9 @@
 
         // Notes:
         // always second one will hold the value and first one will hold the string
-        // it cant hold more than one value
+        // second parameter cant hold more than one value
+        // first parameter can hold more than one value and it will be an array of strings
+        // first parameter is the string and second parameter is the value
     </script>
 </body>
 </html>
