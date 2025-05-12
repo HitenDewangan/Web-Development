@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name length</title>
+</head>
+<body>
+
+    <dl>
+        <dt>Enter userName :</dt>
+        <dd><input type="text" id="userName" name="userName" onkeyup="validateUsername()"></dd>
+        <dd id="msg"></dd>
+    </dl>
+    
+
+
+    <script type="text/javascript">
+        function validateUsername(){
+            let userName = document.getElementById('userName').value;
+            let msg = document.getElementById('msg');
+            
+            if(userName.length == 0){
+                msg.textContent = "Please enter the user name";
+                msg.style.cssText = "color: red; font-size: 15px; font-family: Brush Script MT;";
+            }
+            else if(userName.length < 5){
+                msg.textContent = "User name should be at least 5 characters";
+                msg.style.cssText = "color: red; font-size: 15px; font-family: Brush Script MT;";
+            }
+            else{
+                msg.textContent = "User name is valid!";
+                msg.style.cssText = "color: green; font-size: 15px; font-family: Brush Script MT;";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Long Character validation</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Length Validation</legend>
+        <br>
+        <div>Maximum Length : <span id="max">20</span></div>
+        <textarea autofocus name="" id="" cols="30" rows="10" id="" placeholder="Enter the text" onkeyup="validateLength()"></textarea>
+        <div class="msg"></div>
+    </fieldset>
+
+
+    <script type="text/javascript">
+        function validateLength(){
+            let maxLength = document.getElementById('max').textContent;
+            let textArea = document.querySelector('textarea');
+            let msg = document.querySelector('.msg');
+            
+            let length = textArea.value.length;
+            let remaining = maxLength - length;
+            // msg.innerHTML = remaining.bold().fontcolor("green").fontsize(5); // method chaining
+
+            if(remaining < 0){
+                msg.textContent = "You have exceeded the maximum length!";
+                msg.style.cssText = "color: red; font-size: 15px; font-family: Brush Script MT;";
+            }
+            else if(remaining == 0){
+                msg.textContent = "You have reached the maximum length!";
+                msg.style.cssText = "color: orange; font-size: 15px; font-family: Brush Script MT;";
+            }
+            else{
+                msg.textContent = "You have " + remaining + " characters remaining.";
+                msg.style.cssText = "color: green; font-size: 15px; font-family: Brush Script MT;";
+            }
+        }
+
+    </script>
+</body>
+</html>

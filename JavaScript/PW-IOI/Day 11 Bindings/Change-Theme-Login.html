@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Login Form</title>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+    <form class="w-25 border border-3 border-dark rounded p-3 m-3 bg-light text-dark" id="frmLogin">
+        <div class="form-check form-switch">
+            <input type="checkbox" id="chkTheme" class="form-check-input" onclick="changeTheme()">
+            <label for="chkTheme" class="form-check-label">Dark Mode</label>
+        </div>
+
+        <h3>User Login</h3>
+    
+        <div class="mb-3">
+            <label for="email" class="form-label">Username</label>
+            <input type="text" class="form-control" id="txtUsername" placeholder="Enter your username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="txtPassword" placeholder="Enter your password">
+        </div>
+
+        <button type="submit" class="btn btn-dark w-100" id="btnLogin">Login</button>
+
+        </div>
+    </form>
+
+
+
+
+
+    <!-- =================  JAvascript ==================== -->
+
+    <script type="text/javascript">
+        const chkTheme = document.getElementById("chkTheme");
+        const loginbtn = document.getElementById("btnLogin");
+        const loginForm = document.getElementById("frmLogin");
+
+        function changeTheme() {
+            if (chkTheme.checked) {
+                loginForm.className = "w-25 border border-3 border-dark-subtle rounded p-3 m-3 bg-dark text-light";
+                loginbtn.className = "btn btn-light w-100";
+            } else {
+                loginForm.className = "w-25 border border-3 border-dark rounded p-3 m-3 bg-light text-dark";
+                loginbtn.className = "btn btn-dark w-100";
+            }
+        }
+    </script>
+</body>
+</html>

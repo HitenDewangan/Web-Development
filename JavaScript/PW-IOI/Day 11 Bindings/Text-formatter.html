@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Text Formatter</title>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class=" w-100 border border-3 border-dark rounded p-3 m-3 bg-light text-dark">
+        <h3 class="m-3">Text Formatter</h3>
+        <div class="d-flex justify-content-around">
+           <div class="mb-3">
+                <!-- Font Size -->
+                <label for="fSize">Font Size</label>
+                <input type="range" id="fSize" name="fSize" min="1" max="100" onchange="changeSize()">
+           </div>
+           <div class="mb-3">
+                <!-- color -->
+                <label for="fColor">Font Color</label>
+                <input type="color" id="fColor" name="fColor" onchange="changeColor()">
+           </div>
+           <div class="mb-3">
+                <!-- Style -->
+                <label for="fStyle">Font Style</label>
+                <select id="fStyle" name="fStyle">
+                    <option value="normal">Normal</option>
+                    <option value="italic">Italic</option>
+                    <option value="oblique">Oblique</option>
+                    <option value="bold">Bold</option>
+                </select>
+           </div>
+           <div class="mb-3">
+                <!-- Align - L, C, R -->
+                <label for="fAlign">Font Align</label>
+                <button type="button" id="btnL" class="btn btn-primary" onclick="changeAlign()">Left</button>
+                <button type="button" id="btnC" class="btn btn-success" onclick="changeAlign()">Center</button>
+                <button type="button" id="btnR" class="btn btn-danger" onclick="changeAlign()">Right</button>
+           </div> 
+        </div>
+        <h2 class="mt-5">Hello World</h2>
+    </div>
+
+
+    
+
+
+
+
+    <script type="text/javascript">
+        const h2 = document.querySelector("h2");
+        const fSize = document.getElementById("fSize");
+        const fColor = document.getElementById("fColor");
+        const fStyle = document.getElementById("fStyle");
+        const btnL = document.getElementById("btnL");
+        const btnC = document.getElementById("btnC");
+        const btnR = document.getElementById("btnR");
+
+        function changeSize() {
+            let size = fSize.value;
+            h2.style.fontSize = size + "px";
+        }
+        function changeColor() {
+            let color = fColor.value;
+            h2.style.color = color;
+        }
+        function changeStyle() {
+            let style = fStyle.value;
+            h2.style.fontStyle = style;
+        }
+        function changeAlign() {
+            let align = fAlign.value;
+            h2.style.textAlign = align;
+        }
+    </script>
+</body>
+</html>

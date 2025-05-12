@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP validation</title>
+
+    <style type="text/css">
+        .error-style {
+            color: rgb(209, 8, 166);
+            font-size: 20px;
+            font-weight: bold;
+            font-family: Brush Script MT;
+        }
+    </style>
+</head>
+<body>
+
+    <dl>
+        <dt>
+            Enter userName :
+        </dt>
+        <dd>
+            <input type="text" id="txtName" onblur="changeUpperCase()">
+        </dd>
+    </dl>
+
+    <dl>
+        <dt>
+            Enter OTP :
+        </dt>
+        <dd>
+            <input type="text" id="txtOtp" onblur="validateOTP()">
+        </dd>
+        <dd id="msg"></dd>
+    </dl>
+    <dd id="msg"></dd>
+
+
+
+
+    <script type="text/javascript">
+        
+        function validateOTP() {
+            const data = document.getElementById("txtOtp"); // addreass of the input field won't change
+            let otp = data.value;
+
+            let msg = document.getElementById("msg"); 
+            if (otp == 1179) {
+                msg.innerHTML = "OTP is valid!";
+                msg.className = "error-style"
+            } else {
+                msg.textContent = "OTP is invalid!";
+                msg.style.cssText = "color: red; font-size: 20px; font-weight: bold; font-family: Brush Script MT;";
+            }
+        }
+
+        function changeUpperCase(str) {
+            // convert into uppercase by collecting the data
+            const userName = document.getElementById("txtName"); // addreass of the input field won't change
+            console.log(userName.value.toUpperCase());
+
+            userName.value = userName.value.toUpperCase();
+
+        }
+
+    </script>
+
+</body>
+</html>
