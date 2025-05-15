@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Email Validation</title>
+    
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+    <form action="" class="w-50 border border-3 border-dark rounded p-3 m-3 bg-light text-dark">
+        <h3 class="m-3 text-center">Email Validation</h3>
+        
+        <div class="mt-3">
+            <label for="name">Your Gmail:</label>
+            <div>
+                <input type="email" name="name" id="txtEmail" placeholder="abc@gmail.com" required onblur="validateEmail()">
+            </div>
+            <div id="error-msg"></div>
+        </div>
+    </form>
+
+
+    <script type="text/javascript">
+
+        function validateEmail(){
+            const email = document.getElementById("txtEmail");
+            const msg = document.getElementById("error-msg");
+
+            let flag = email.value.indexOf("@");
+
+            if(flag == -1){
+                msg.innerHTML = "Invalid Email, '@' is missing".fontcolor("red");
+            }
+            else{
+                flag = email.value.indexOf("gmail.com");
+                if(flag == -1){
+                    msg.innerHTML = "Invalid Email, 'gmail.com' is missing".fontcolor("red");
+                }
+                else{
+                    msg.innerHTML = "Valid Email".fontcolor("green");
+                }
+            }
+        }
+
+
+    </script>
+</body>
+</html>

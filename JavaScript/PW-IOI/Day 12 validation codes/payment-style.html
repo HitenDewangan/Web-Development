@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Payment Validation</title>
+
+    <style type="text/css">
+        body {
+            background: linear-gradient(to right, #87d2e6, #1b7ef8);
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        input:focus {
+            box-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
+            border-color: #2196f3;
+        }
+
+        #msg {
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        #imgCard {
+            display: none;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100">
+
+    <form action="#" class="form-container w-50 w-md-50">
+
+        <h3 class="text-center mb-4">💳 Payment Validation</h3>
+
+        <div class="mb-4">
+            <label for="card" class="form-label fw-bold">Card Number</label>
+            <div class="input-group">
+                <input type="text" name="card" id="txtCard" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx"
+                    required onblur="validateCard()" />
+                <img src="" alt="Card Type" id="imgCard" width="40" height="40" />
+            </div>
+        </div>
+
+        <div class="mb-3">
+            <label for="name" class="form-label fw-bold">Your Gmail</label>
+            <div class="input-group">
+                <input type="email" name="name" id="txtEmail" class="form-control" placeholder="abc@gmail.com"
+                    required onblur="validateEmail()" />
+                <span class="input-group-text"><i class="bi bi-envelope-at"></i></span>
+            </div>
+            <div id="msg" class="mt-2"></div>
+        </div>
+
+    </form>
+
+    <script type="text/javascript">
+        function validateCard() {
+            const cardNumber = document.getElementById("txtCard");
+            const img = document.getElementById("imgCard");
+
+            let flag = cardNumber.value.startsWith("3344");
+            let cardNumLength = cardNumber.value.length;
+
+            if (cardNumLength >= 4) {
+                img.style.display = "inline";
+
+                // ✅ Adjust this path based on where your images folder actually is
+                if (flag) {
+                    img.src = "./../../images/mastercard.jpg";
+                } else {
+                    img.src = "../../../images/visa.jpg";
+                }
+            } else {
+                img.style.display = "none";
+            }
+        }
+
+        function validateEmail() {
+            const email = document.getElementById("txtEmail");
+            const msg = document.getElementById("msg");
+
+            let flag = email.value.endsWith("@gmail.com");
+
+            if (flag) {
+                msg.innerHTML = '<span class="text-success">✅ Valid Gmail address</span>';
+            } else {
+                msg.innerHTML = '<span class="text-danger">❌ Invalid Email, only Gmail is allowed</span>';
+            }
+        }
+    </script>
+
+</body>
+
+</html>

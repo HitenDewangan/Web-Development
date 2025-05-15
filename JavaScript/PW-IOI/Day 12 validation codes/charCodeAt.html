@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Payment Validation</title>
+    
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+
+        <div class="mt-3">
+            <dt>Username</dt>
+            <dd>
+                <input type="text" name="username" id="txtUser" placeholder="Enter your username" required onkeyup="verifyCase()">
+            </dd>
+            <dd id="usernameMsg"></dd>
+        </div>
+    </form>
+
+
+    <script type="text/javascript">
+        function verifyCase() {
+            const username = document.getElementById("txtUser");
+            const msg = document.getElementById("usernameMsg");
+
+            let flag = username.value.charCodeAt(0) >= 65 && username.value.charCodeAt(0) <= 90;
+            
+            if(flag){
+                msg.textContent = "Valid Username";
+                msg.style.cssText = "color: green; font-size: 15px; font-family: Brush Script MT;";
+            }
+            else{
+                msg.textContent = "Invalid Username, must start with uppercase";
+                msg.style.cssText = "color: red; font-size: 15px; font-family: Brush Script MT;";
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="msg"></p>
+
+
+    <script>
+        let str = prompt("Enter the Email", 'alanwalker@gmail.com | tomholland@gmail.com')
+        let userName = str.substring(0, str.indexOf('@'))
+        let domain = str.substring(str.indexOf('@') + 1, str.length)
+
+        const msg = document.getElementById('msg')
+        msg.innerHTML = `<b> User name is ${userName} </b> <br> <b> and domain is ${domain} </b>`
+        msg.style.fontFamily = 'Algerian'
+        msg.style.color = 'blue'
+    </script>
+</body>
+</html>
