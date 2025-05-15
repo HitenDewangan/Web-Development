@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appending list childs</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let details = 'apple|banana|orange|grape|kiwi|mango|peach|pear|pineapple|plum'
+
+        let items = details.split('|');
+
+        let ul = document.createElement('ul');
+
+        let output = item=>{
+            // logic of working with item
+
+            let li = document.createElement('li');
+            li.textContent = item.toUpperCase();
+            li.style.color = 'blue';
+            li.style.fontSize = '20px';
+
+            ul.appendChild(li);
+        }
+
+        items.forEach(output); // call the output function for each item
+
+        document.body.appendChild(ul);  // append the ul to the body
+
+
+    </script>
+</body>
+</html>

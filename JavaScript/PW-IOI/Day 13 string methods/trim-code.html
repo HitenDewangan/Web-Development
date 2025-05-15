@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trim code</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="txtName" placeholder="Enter your name">
+        <button id="add-btn" onclick="addItem()">Add to List</button>
+        <button id="reset-btn" onclick="resetList()">Reset List</button>
+    </div>
+
+    <ul id="listItem"></ul>
+
+
+
+    <script type="text/javascript">
+
+
+        function addItem() {
+            const input = document.getElementById('txtName').value.trim(); // trim the input value
+            const ul = document.getElementById('listItem'); // get the ul element
+
+            if (input) { // check if input is not empty
+                let li = document.createElement('li');
+                li.textContent = input.toUpperCase();
+                li.style.color = 'orange';
+                li.style.fontSize = '20px';
+
+                // want background width of li to adjust to its content
+                li.style.width = 'fit-content';
+                li.style.backgroundColor = 'black';
+                li.style.padding = '10px';
+                // border round the li
+                li.style.borderRadius = '10px';
+
+                ul.appendChild(li);
+                document.getElementById('txtName').value = ''; // clear the input field
+                // have focus on the input field
+                document.getElementById('txtName').focus();
+            }
+        }
+        function resetList() {
+            let ul = document.getElementById('listItem'); // get the ul element
+            ul.innerHTML = ''; // clear the ul element
+            document.getElementById('txtName').value = ''; // clear the input field
+            document.getElementById('txtName').focus(); // have focus on the input field
+        }
+
+        document.body.appendChild(ul);  // append the ul to the body
+
+        
+
+    </script>
+</body>
+</html>
