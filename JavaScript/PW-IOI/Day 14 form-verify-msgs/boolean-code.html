@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boolean Code</title>
+</head>
+<body>
+    <input type="checkbox" name="" id="checkbox" onchange="toggleCheckbox()"> Don't allow to edit
+
+    <dl>
+        <dt>Username</dt>
+        <dd>
+            <input type="textUsername" name="" id="txtUsername" placeholder="Enter your username"">
+        </dd>
+    </dl>
+
+    <p><span id="usernameMsg"></span></p>
+
+
+    <script type="text/javascript">
+        function toggleCheckbox() {
+            const checkbox = document.getElementById('checkbox');
+            const inputField = document.getElementById('txtUsername');
+            const msgField = document.getElementById('usernameMsg');
+
+            if (checkbox.checked) {
+                if(inputField.value !== '') {
+                    inputField.disabled = true; // Disable the input field
+                    msgField.innerHTML = `Entered username: ${inputField.value}`;
+                } else {
+                    msgField.innerHTML = 'Please enter a username'; // Show message if input is empty
+                }
+            } else {
+                inputField.disabled = false; // Enable the input field
+                msgField.innerHTML = ''; // Clear the message
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength</title>
+</head>
+<body>
+    <h1>Password Strength Checker</h1>
+    <dl>
+        <dt>Enter Password</dt>
+        <dd><input type="password" id="txtPassword" onkeyup="verifyPassword()"></dd>
+        <dd id="error-field"></dd>
+    </dl>
+
+
+    <script type="text/javascript">
+        const pwd = document.getElementById('txtPassword');
+        const msg = document.getElementById('error-field');
+
+        function verifyPassword() {
+
+            if (pwd.value.length < 4) {
+                msg.innerHTML = 'weak password';
+                msg.style.color = 'red';
+            } else {
+                let regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{4,16}$/;
+                if(pwd.value.match(regEx)) {
+                    msg.innerHTML = 'strong password';
+                    msg.style.color = 'green';
+                } else {
+                    msg.innerHTML = 'medium password';
+                    msg.style.color = 'goldenrod';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
