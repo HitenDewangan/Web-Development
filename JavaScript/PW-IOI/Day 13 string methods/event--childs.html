@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="listName">
+        <li>California</li>
+        <li>Texas</li>
+        <li>Florida</li>
+        <li>New York</li>
+        <li>Illinois</li>
+        <li>Ohio</li>
+        <li>Arizona</li>
+        <li>Georgia</li>
+    </ul>
+
+
+    <script type="text/javascript">
+        const ul = document.getElementById("listName");
+
+        // Log HTMLCollection of child elements
+        console.log(ul.children);
+
+        // Log NodeList of all child nodes (elements, text nodes, comments, etc.)
+        console.log(ul.childNodes);
+
+        // Log the count of child elements
+        console.log(ul.childElementCount);
+
+        // Log the number of child elements using the length of the HTMLCollection
+        console.log(ul.children.length);
+
+        // Log the first child node (could be a text node if there's whitespace before the first li)
+        console.log(ul.firstChild);
+
+        // Log the last child node (could be a text node if there's whitespace after the last li)
+        console.log(ul.lastChild);
+
+        // Log the first child element (skips text nodes, etc.)
+        console.log(ul.firstElementChild);
+
+        // Log the last child element (skips text nodes, etc.)
+        console.log(ul.lastElementChild);
+
+        // Remove the last child element from the ul
+        console.log(ul.removeChild(ul.lastElementChild));
+        // Note: removeChild returns the removed node
+
+        // Log the count of child elements again after removal
+        console.log(ul.childElementCount);
+
+    </script>
+</body>
+</html>
