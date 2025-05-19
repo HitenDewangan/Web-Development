@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    
+    <title>If Else Code</title>
+</head>
+<body>
+    <div class="m-3 border border-2 rounded p-3">
+        <button class="bi bi-sort-alpha-down" id="sortBtn" onclick="toggleButton()"></button>
+
+        <div style="margin-top: 15px;">
+            <input type="checkbox" id="stockCheckBox" onchange="changeStatus()">
+            <span id="msgField">Out of stock</span>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        function toggleButton() {
+            const button = document.getElementById('sortBtn');
+
+            button.className = button.className === 'bi bi-sort-alpha-down' ? 'bi bi-sort-alpha-up' : 'bi bi-sort-alpha-down';
+        }
+
+        function changeStatus() {
+            const checkBox = document.getElementById('stockCheckBox');
+            const msgField = document.getElementById('msgField');
+            let status = checkBox.checked ? 'In stock' : 'Out of stock';
+            msgField.innerHTML = status;
+            msgField.style.color = checkBox.checked ? 'green' : 'red';
+        }
+
+    </script>
+</body>
+</html>
