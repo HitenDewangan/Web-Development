@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Password & Confirm</title>
+</head>
+<body>
+    <dl>
+        <dt>Password</dt>
+        <dd>
+            <input type="password" id="pwd" onkeyup="verifyPassword()">
+        </dd>
+        <dt>Confirm Password</dt>
+        <dd>
+            <input type="password" id="cnfPwd" onkeyup="verifyPassword()">
+        </dd>
+        <dd id="msg"></dd>
+    </dl>
+
+
+    <script type="text/javascript">
+        function verifyPassword() {
+            const pwd = document.getElementById('pwd');
+            const cnfPwd = document.getElementById('cnfPwd');
+            const msg = document.getElementById('msg');
+
+            if(pwd.value === cnfPwd.value) {
+                msg.innerHTML = 'Password Matched';
+                msg.style.color = 'green';
+            } else {
+                msg.innerHTML = 'Password Not Matched';
+                msg.style.color = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
