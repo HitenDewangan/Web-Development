@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Gender</title>
+</head>
+<body class="container-fluid">
+    <div class="m-3">
+        <input type="radio" name="gender" id="male" value="male" onchange="enableBtn()"><label>Male</label>
+        <input type="radio" name="gender" id="female" value="female" onchange="enableBtn()"><label>Female</label>
+    </div>
+    <button type="button" id="btn" disabled onclick="findGender()">Submit</button>
+
+
+    <!-- ================================ JS ================================== -->
+
+    <script type="text/javascript">
+        function findGender() {
+            const male = document.getElementById("male");
+            const female = document.getElementById("female");
+            const btn = document.getElementById("btn");
+            if (male.checked) {
+                console.log("Male");
+            } else if (female.checked) {
+                console.log("Female");
+            }
+            // else{
+            //     console.log("No gender selected");
+            // }
+        }
+
+        function enableBtn() {
+            const btn = document.getElementById("btn");
+            btn.disabled = false;
+        }
+    </script>
+</body>
+</html>
