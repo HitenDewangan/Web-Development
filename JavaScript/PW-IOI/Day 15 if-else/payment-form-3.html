@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Payment Form</title>
+
+    <!-- Bootstrap & Icons -->
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css" />
+
+    <style>
+        body {
+        background: linear-gradient(to right, #87d2e6, #1b7ef8);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-container {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 30px;
+        margin: 50px auto;
+        max-width: 700px;
+        width: 100%;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        position: relative;
+        }
+
+        fieldset {
+        border: 2px solid #000001;
+        padding: 20px;
+        padding-top: 2em;
+        position: relative;
+        border-radius: 10px;
+        }
+
+        legend {
+        width: auto;
+        padding: 0 10px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        background-color: white;
+        position: absolute;
+        top: -1em;
+        left: 1em;
+        color: #2196f3;
+        }
+
+        input:focus, select:focus {
+        box-shadow: 0 0 5px rgba(33, 150, 243, 0.8);
+        border-color: #2196f3;
+        outline: none;
+        }
+
+        dt {
+        margin-top: 10px;
+        }
+
+        .hidden {
+        display: none;
+        }
+
+        .bi {
+        margin-left: 5px;
+        color: green;
+        }
+
+        .input-group-icon {
+        display: flex;
+        align-items: center;
+        }
+
+        .input-group-icon input,
+        .input-group-icon select {
+        flex: 1;
+        }
+        #msg {
+                font-weight: bold;
+                margin-top: 5px;
+            }
+    </style>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center min-vh-100 ">
+        <div class="form-container p-5 w-50 w-md-50">
+        <fieldset>
+            <legend class="h2">💳 Payment Details</legend>
+            <dl>
+            <dt>Card Number</dt>
+            <dd>
+                <div class="input-group-icon p-2">
+                <input type="text" id="card" onblur="validateCard()" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" />
+                <i id="cardIcon" class="bi bi-check-circle-fill d-none"></i>
+                </div>
+            </dd>
+
+            <div class="">
+                <label for="name" class="form-label fw-bold">Your Gmail</label>
+                <div class="input-group p-2">
+                    <input type="email" name="name" id="txtEmail" class="form-control" placeholder="abc@gmail.com"
+                        required onblur="validateEmail()" />
+                    <span class="input-group-text"><i class="bi bi-envelope-at text-dark"></i></span>
+                </div>
+                <div id="msg" class="mt-2"></div>
+            </div>
+
+            <div id="cvvContainer" class="hidden">
+                <dt>CVV</dt>
+                <dd>
+                <div class="input-group-icon p-2">
+                    <input type="text" id="cvv" onblur="validateCvv()" class="form-control" placeholder="Enter CVV" />
+                    <i id="cvvIcon" class="bi bi-check-circle-fill d-none"></i>
+                </div>
+                </dd>
+            </div>
+
+
+            <div id="expiryContainer" class="hidden">
+                <dt>Expiry</dt>
+                <dd>
+                <div class="input-group-icon p-2">
+                    <select id="expiry" onchange="validateExpiry()" class="form-select">
+                    <option value="Choose Expiry" disabled selected>Choose Expiry</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    </select>
+                    <i id="expiryIcon" class="bi bi-check-circle-fill d-none"></i>
+                </div>
+                </dd>
+            </div>
+            </dl>
+
+            <div id="btnContainer" class="hidden text-center mt-3 p-2">
+            <button id="btnPay" class="btn btn-primary w-100">
+                <i class="bi bi-credit-card-fill text-light"></i> Pay Now
+            </button>
+            </div>
+        </fieldset>
+        </div>
+    </div>
+
+    <script>
+        function validateCard() {
+        const card = document.getElementById('card');
+        const cvvContainer = document.getElementById('cvvContainer');
+        const cardIcon = document.getElementById('cardIcon');
+
+        if (card.value.trim() === '123456789012') {
+            cvvContainer.classList.remove('hidden');
+            cardIcon.classList.remove('d-none');
+        }
+        }
+
+        function validateCvv() {
+        const cvv = document.getElementById('cvv');
+        const expiryContainer = document.getElementById('expiryContainer');
+        const cvvIcon = document.getElementById('cvvIcon');
+
+        if (cvv.value.trim() === '333') {
+            expiryContainer.classList.remove('hidden');
+            cvvIcon.classList.remove('d-none');
+        }
+        }
+
+        function validateExpiry() {
+        const expiry = document.getElementById('expiry');
+        const btnContainer = document.getElementById('btnContainer');
+        const expiryIcon = document.getElementById('expiryIcon');
+
+        if (expiry.value !== 'Choose Expiry') {
+            btnContainer.classList.remove('hidden');
+            expiryIcon.classList.remove('d-none');
+        }
+        }
+
+        function validateEmail() {
+                const email = document.getElementById("txtEmail");
+                const msg = document.getElementById("msg");
+
+                let flag = email.value.endsWith("@gmail.com");
+
+                if (flag) {
+                    msg.innerHTML = `<span class="text-success">✅ Valid Gmail address</span>`;
+                } else {
+                    msg.innerHTML = `<span class="text-danger">❌ Invalid Email, only Gmail is allowed</span>`;
+                }
+            }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="../../../node_modules/jquery/dist/jquery.js"></script>
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
