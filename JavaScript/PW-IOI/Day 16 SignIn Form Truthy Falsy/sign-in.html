@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <title>Sign In Page</title>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center mt-5 w-75 h-100">
+    <form action="" class="w-50 border border-3 rounded p-3 m-3">
+        <h3>Sign In</h3>
+        <label for="email" id="userLabel" class="fw-bold">Enter email or mobile number</label>
+        <input type="text" name="email" id="userData" class="form-control">
+        <p id="error-msg"></p>
+
+        <div>
+            <button type="button" id="verifyBtn" class="btn btn-warning w-100" onclick="verifyData()">Continue</button>
+            <button type="button" id="loginBtn" class="btn btn-warning w-100 d-none" onclick="verifyLogin()">Login</button>
+        </div>
+    </form>
+
+    <div id="success-message" class="alert alert-success d-none mt-3" role="alert">
+        Hello soldier, Welcome to the HIDED Army.
+    </div>
+
+
+    <script type="text/javascript">
+        // A variable to keep track of what type of input is expected in the second step
+        let expectedLoginType = ''; // Can be 'otp' or 'password'
+
+        function verifyData() {
+            const userData = document.getElementById("userData");
+            const userLabel = document.getElementById("userLabel");
+            const error = document.getElementById("error-msg");
+            const continueBtn = document.getElementById("verifyBtn");
+            const loginBtn = document.getElementById("loginBtn");
+            const successMessageDiv = document.getElementById("success-message"); // Get success message div
+
+            // if user clicks without any data
+            if (userData.value === "") { // Use strict equality (===)
+                error.textContent = "Please enter the email or mobile number";
+                error.style.color = "red";
+                return;
+            }
+
+            // Check separately whether it is phone number or email
+            let phone = /^[0-9]{10}$/;
+            let email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+            // Mock data for this demo (NEVER do this in a real application)
+            const mockPhoneNumber = "1234567890";
+            const mockEmail = "hided@gmail.com";
+
+            if (userData.value.match(phone) && userData.value === mockPhoneNumber) {
+                // Phone number , then go for otp, by stating enter otp 
+                userLabel.innerHTML = "Enter OTP";
+                userLabel.setAttribute("for", "otp");
+                userData.setAttribute("type", "text"); // Changed to text for OTP
+                userData.value = ""; // Clear input field
+                
+                continueBtn.classList.add('d-none'); // Use Bootstrap class for hiding
+                loginBtn.classList.remove('d-none'); // Use Bootstrap class for showing
+                expectedLoginType = 'otp'; // Set expected type for verifyLogin
+                
+            } else if (userData.value.match(email) && userData.value === mockEmail) {
+                // Email then go for password
+                userLabel.innerHTML = "Enter Password";
+                userLabel.setAttribute("for", "password");
+                userData.setAttribute("type", "password"); // Set type to password
+                userData.value = ""; // Clear input field
+
+                continueBtn.classList.add('d-none'); // Use Bootstrap class for hiding
+                loginBtn.classList.remove('d-none'); // Use Bootstrap class for showing
+                expectedLoginType = 'password'; // Set expected type for verifyLogin
+            } else {
+                // Specific error message for phone and email, separate
+                // Correctly check if the input 'looks like' a number (phone)
+                // We're checking if the first character is a digit and it's 10 digits long
+                if (userData.value.match(/^[0-9]{10}$/)) { 
+                    error.textContent = "This phone number is not registered.";
+                    error.style.color = "red";
+                } else if (userData.value.match(email)) {
+                    error.textContent = "This email is not registered.";
+                    error.style.color = "red";
+                }
+                else {
+                    error.textContent = "Invalid input.";
+                    error.style.color = "red";
+                }
+            }
+        }
+
+        function verifyLogin() {
+            const userData = document.getElementById("userData"); // Still userData, as ID didn't change
+            const userLabel = document.getElementById("userLabel");
+            const error = document.getElementById("error-msg");
+            const successMessageDiv = document.getElementById("success-message"); // Get success message div
+
+            // Clear any previous messages
+            error.textContent = "";
+            error.style.color = ""; // Reset color
+            successMessageDiv.classList.add('d-none'); // Hide success message
+
+            // Mock passwords/OTPs for this demo (NEVER do this in a real application)
+            const mockOtp = "k391";
+            const mockPassword = "9999";
+
+            if (userData.value === "") {
+                 if (expectedLoginType === 'password') {
+                    error.textContent = "Please enter the password.";
+                } else if (expectedLoginType === 'otp') {
+                    error.textContent = "Please enter the OTP.";
+                }
+                error.style.color = "red";
+                return;
+            }
+
+            // Check the type of info (pwd, or OTP) user is entering based on the `expectedLoginType`
+            if (expectedLoginType === "password") {
+                if (userData.value === mockPassword) {
+                    // Success! Overwrite the entire document with the welcome message
+                    document.body.innerHTML = "<p style='color: green; font-size: 25px; text-align: center; margin-top: 50vh; transform: translateY(-50%);'>Hello soldier, Welcome to the HIDED Army :)</p>";
+                } else {
+                    error.textContent = "Please enter the correct password";
+                    error.style.color = "red";
+                }
+            } else if (expectedLoginType === "otp") {
+                if (userData.value === mockOtp) {
+                    // Success! Overwrite the entire document with the welcome message
+                    document.body.innerHTML = "<p style='color: green; font-size: 25px; text-align: center; margin-top: 50vh; transform: translateY(-50%);'>Hello soldier, Welcome to the HIDED Army :)</p>";
+                } else {
+                    error.textContent = "Please enter the correct OTP";
+                    error.style.color = "red";
+                }
+            }
+        }
+    </script>
+</body>
+</html>

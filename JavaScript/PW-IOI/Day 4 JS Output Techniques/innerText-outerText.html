@@ -9,7 +9,7 @@
         function deleteRecord() {
             flag = confirm("Are you sure u want to delete the Record??");
             if (flag) {
-                document.querySelector("h2").textContent = '<h3 style="color:green;">Record deleted successfully </h3>';
+                document.querySelector("h2").outerText = '<h3 style="color:green;">Record deleted successfully </h3>';
             } else {
                 document.querySelector("p").innerText = '<h2 style="color:red;"> You have pressed Cancel button </h2>';
             }
@@ -22,3 +22,4 @@
     <p>welcome user</p>
 </body>
 </html>
+
