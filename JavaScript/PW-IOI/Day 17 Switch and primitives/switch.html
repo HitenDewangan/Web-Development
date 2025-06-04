@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script type="text/javascript">
+
+        //  ======== example 1 ========
+        // let input = prompt("Enter a number between 1 and 5:");
+        // switch(input) {
+        //     case '2':
+        //         alert("You entered two.");
+        //         break;
+        //     case '3':
+        //         alert("You entered three.");
+        //         break;
+        //     case '4':
+        //         alert("You entered four.");
+        //         break;
+        //     case '5':
+        //         alert("You entered five.");
+        //         break;
+        //     case '1':
+        //         alert("You entered one.");
+        //         break;
+        //     default:
+        //         alert("Invalid input. Please enter a number between 1 and 5.");
+        // }
+
+        //  ======== example 2 ========
+        let a = "1";
+        switch(a) {
+            case '1':
+                console.log("You entered one as a string.");
+                break;
+            case 1:
+                console.log("You entered one as a number.");
+                break;
+            case 1: // This case will never be reached because the previous case matches first
+                console.log("This will not be printed.");
+                break;
+            default:
+                console.log("Invalid inpu");
+        }
+
+        //  ======== example 3 ========
+        let input = NaN;
+        switch(input) {
+            case NaN: console.log("NaN");
+                break;
+            case null: console.log("null");
+                break;
+            case undefined: console.log("undefined");
+                break;
+            default: console.log("default");
+        }
+
+        let check = true;
+        let x = 5;
+        switch(check) {
+            case(x >=0 && x <= 10): console.log("true");
+                break;              break;
+            case false : console.log("false");
+                break;
+            default: console.log("default");
+                break;
+        }
+
+
+
+        // ======= notes ========
+        // if-else : code-driven
+        // switch : data-driven
+    </script>
+</body>
+</html>
+
