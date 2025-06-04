@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Mobile Number</title>
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+<body class="container-fluid">
+
+    <div class="w-25 mt-3 border border-2 border-black rounded-2 p-4">
+
+        <h2>Verify Mobile</h2>
+        <dl>
+            <dt>
+                Select Your Country
+            </dt>
+            <dd>
+                <img src="" width="50" height="50" id="imgFlag" alt="Country Flag">
+            </dd>
+            <dd>
+                <select name="country" id="lstCountries" class="form-select"
+                        onchange="changeCountry()">
+                    <option value="">Select Country</option>
+                    <option value="IND">INDIA</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="USA">United States of America</option>
+                </select>
+            </dd>
+
+            <dt>
+                Your Mobile
+            </dt>
+            <dd>
+                <input type="text" name="mobile" id="txtMobile" class="form-control">
+            </dd>
+            <button class="btn btn-primary w-100" onclick="verifyMobileNumber()">Verify</button>
+        </dl>
+    </div>
+    <p class="text-center text-danger h2" id="error"></p>
+
+
+
+    <!-- =============== JavaScript ================= -->
+
+    <script type="text/javascript">
+        let regEx = null; // Initialize to null or empty regex
+        let data = ''; // Stores the placeholder text for error messages
+
+        function changeCountry() {
+            console.log("control in function changeCountry()"); 
+
+            // Get the country details chosen by the user
+            const countryName = document.getElementById("lstCountries").value;
+            const poster = document.getElementById("imgFlag");
+            const mobiles = document.getElementById("txtMobile");
+            console.log(mobiles);
+
+            /*
+                Based on the country perform operation
+                    a. Choose the image and bind to UI
+                    b. In mobile field keep the format of mobile number
+            */
+            switch (countryName) {
+                case 'IND':
+                    poster.src = 'https://shorturl.at/J710M';
+                    mobiles.placeholder = '+91 and 10 digits';
+                    data = mobiles.placeholder; // Store this for the error message
+                    regEx = /^\+91\d{10}$/; // Regex for Indian numbers
+                    break;
+                case 'UK': // Added UK case
+                    poster.src = 'https://shorturl.at/33cVK'; // Assuming you have a UK flag image
+                    mobiles.placeholder = '+44 and 10-11 digits'; // Example for UK
+                    data = mobiles.placeholder;
+                    regEx = /^\+44\d{10,11}$/; // Example regex for UK numbers
+                    break;
+                case 'USA': // Added USA case
+                    poster.src = 'https://shorturl.at/UOAma'; // Assuming you have a USA flag image
+                    mobiles.placeholder = '+1 and 10 digits'; // Example for USA
+                    data = mobiles.placeholder;
+                    regEx = /^\+1\d{10}$/; // Example regex for USA numbers
+                    break;
+                case '': // This case handles "Select Country" option's empty value
+                    poster.src = '';
+                    poster.alt = 'No flag selected'; // Add alt text
+                    mobiles.placeholder = '';
+                    data = '';
+                    regEx = null; // Reset regex
+                    break;
+                default: // Catch-all for any other unhandled country values
+                    poster.src = '';
+                    poster.alt = 'N/A'; // Corrected N|A to N/A
+                    mobiles.placeholder = 'N/A';
+                    data = 'N/A'; // Set data for default
+                    regEx = null; // Reset regex
+                    break;
+            }
+        }
+
+        function verifyMobileNumber() {
+            // Read the value from the mobile text input
+            const mobile = document.getElementById("txtMobile").value;
+            const msg = document.getElementById("error");
+
+            // Use the pattern and match based on condition print the result
+            if (regEx && mobile.match(regEx)) { // Check if regEx is not null before matching
+                msg.textContent = 'Mobile Number Verified successfully'; // Typo corrected: succesfully -> successfully
+                msg.className = 'text-success h2 text-center';
+            } else {
+                // Provide more specific feedback if no country is selected or regex is null
+                if (!regEx) {
+                    msg.textContent = 'Please select a country first.';
+                } else {
+                    msg.textContent = `Invalid Mobile Number. Expected format: ${data}`;
+                }
+                msg.className = 'text-danger h2 text-center'; // Ensure error class is always applied on failure
+            }
+        }
+    </script>
+</body>
+</html>
