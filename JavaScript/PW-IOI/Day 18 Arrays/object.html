@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let user = {
+            name : "Alan Turing",
+            age : 21,
+            gender : "male",
+            email : "alan@gmail.com"
+        }
+        console.log(user);
+        console.log(user.name); // "Alan Turing"
+        console.log(user['age']); // 21
+        console.log(user['email']); // "alan@gmail.com"
+        console.log(user.gender); // "male"
+
+        let myName, myAge, myGender, myEmail = ""; // Initialize variables
+        myName = user.name; // "Alan Turing"
+        myAge = user.age; // 21
+        myGender = user.gender; // "male"
+        myEmail = user.email; // "alan@gmail.com"
+        console.log(`Name: ${myName}, Age: ${myAge}, Gender: ${myGender}, Email: ${myEmail}`);
+
+
+        console.log("Using object destructuring:");
+        const{name, email, aaaage, gender} = user; // Destructuring
+        console.log(`gender : ${gender}, age : ${aaaage}`);
+
+        console.log("Object destructuring using our own keys :")
+        const{name: someName, age: someAge} = user; // Destructuring with custom keys
+        console.log(someName, someAge); 
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

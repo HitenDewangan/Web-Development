@@ -12,8 +12,15 @@
         let arr = [10, 'alan', 53.4, true, ['hi', 'bye'], function() { console.log('hi'); return "Hello"; }];
 
         console.log(arr);
+        console.log(arr[5]); // function
+        console.log(arr[5]()); // hi, Hello
+        arr[5](); // IIFE : Immediately Invoked Function Expression
+
+        console.log("======= new array =========");
+
 
         let arr1 = [10, 'alan', 53.4, true];
+        console.log(arr1);
         // console.log(arr1[0]); // 10
         // console.log(arr1[5]); // undefined 
         // console.log(arr1[4]); // undefined 
@@ -42,6 +49,16 @@
         // arr1[5](); // typeError: arr1[5] is not a function, because arr1[5] is undefined
         console.log(arr1[5]); 
         console.log(arr1[4]); // undefined
+
+        // === ======= = new array ==================
+        console.log("========= new array ========");
+        let arr2 = ['alan', 'sam', 'john', 'doe', 'jane'];
+        console.log(arr2);
+        // using for.. of loop
+        console.log("Using for..of loop:");
+        for(let i of arr2){
+            console.log(i);
+        }
     </script>
 </body>
 </html>

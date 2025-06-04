@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        function add(...x) {
+            console.log(typeof x); // "object"
+            console.log('x:', x); // x is an array-like object
+            const sum = x.reduce((acc, curr) => acc + curr, 0);
+            console.log(`Sum of ${x.length} numbers is: ${sum}`);
+        }
+        // tricky
+        add();
+        add(1, "alan"); // Sum of 2 numbers is: 1alan
+        add(1, "alan", 5.1); // Sum of 3 numbers is: 1alan5.1
+        add(1, "alan", true); // Sum of 3 numbers is: 1alantrue
+        add(1, "alan", true, 5.1); // Sum of 4 numbers is: 1alantrue5.1
+        add(1, 5.1, true); // Sum of 3 numbers is: 7.1
+        add(1, 5.1, true, "alan"); // Sum of 4 numbers is: 7.1alan
+        // add(1, 2)
+        // add(1, 2, 3); // Sum of 3 numbers is: 6
+        // add(10, 20, 30, 40, 50); // Sum of 5 numbers is: 150
+
+
+        function just(...x) {
+            const[a, b, c, ...others] = x;
+            console.log(`a: ${a}, b: ${b}, c: ${c}`);
+            console.log('type of others:', typeof others);
+            console.log('others:', others);
+        }
+
+        function printDetails(person){
+            const {name, age, ...rest} = person;
+            console.log(`Name: ${name}, Age: ${age}`);
+            console.log('Rest:', rest);
+        }
+
+        const person = {
+            name: 'John',
+            age: 30,
+            address: '123 Main St',
+            phone: '555-555-5555'
+        };
+
+        printDetails(person);
+    </script>
+</body>
+</html>
