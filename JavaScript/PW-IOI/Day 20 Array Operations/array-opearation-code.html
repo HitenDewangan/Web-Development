@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Manipulation UI</title>
+
+    <link rel="stylesheet" href="./../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="./../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+</head>
+<body class="container-fluid" onload="loadCities()">
+    <h3 class="mt-3">Array Manipulation</h3>
+
+    <div class="w-25 m-3">
+        <div>
+            <label for="txtCity" class="form-label">Add City</label>
+            <div class="input-group">
+                <input type="text" id="txtCity" class="form-control">
+                <button class="btn btn-primary" onclick='addCity()'>ADD</button>
+            </div>
+        </div>
+
+        <div class="mt-3">
+            <label for="lstCities" class="form-label">Select city</label>
+
+            <div class="mt-2 mb-3">
+                <button class="bi bi-sort-alpha-up btn btn-success" onclick="sortAscending()"></button>
+                <button class="bi bi-sort-alpha-down btn btn-info" onclick="sortDescending()"></button>
+            </div>
+
+            <div>
+                <select name="cities" size="3" id="lstCities" class="form-select">
+                    </select>
+
+                <label for="lblCount" class="form-label fw-bold mt-3" id="lblCount">
+                    </label>
+            </div>
+
+            <div>
+                <button class="btn btn-danger bi bi-trash-fill" onclick="removeSelectedCity()"> Remove city</button>
+                <button class="btn btn-danger bi bi-trash-fill" onclick="clearAllCities()"> Clear All</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =================  JAvascript ==================== -->
+    <script type="text/javascript">
+        let cities = ['Bengaluru', 'Hyderabad'];
+
+        // Function to load and display cities in the dropdown
+        function loadCities() {
+            const cityNameSelect = document.getElementById("lstCities");
+            const cityCountLabel = document.getElementById("lblCount");
+
+            // Clear existing options to prevent duplication on re-load
+            cityNameSelect.innerHTML = '';
+
+            cities.forEach(function(city) {
+                let option = document.createElement("option");
+                option.value = city;
+                option.textContent = city;
+                cityNameSelect.appendChild(option);
+            });
+
+            cityCountLabel.textContent = `Total Number of cities is : ${cities.length}`;
+        }
+
+        // Function to add a new city
+        function addCity() {
+            const cityInput = document.getElementById("txtCity");
+            let cityName = cityInput.value.trim(); // Trim whitespace
+
+            if (cityName === "") {
+                alert("Please enter a city name!");
+                return;
+            }
+
+            // Check if city already exists to avoid duplicates
+            if (cities.indexOf(cityName) === -1) {
+                cities.push(cityName);
+                loadCities(); // Reload the dropdown to show the new city
+                alert(`${cityName} added to list!`);
+            } else {
+                alert(`${cityName} is already in the list.`);
+            }
+            cityInput.value = ''; // Clear the input field
+        }
+
+        // Functions for sorting (to be implemented and linked to buttons)
+        function sortAscending() {
+            cities.sort((a, b) => a.localeCompare(b)); // Alphabetical sort
+            loadCities();
+        }
+
+        function sortDescending() {
+            cities.sort((a, b) => b.localeCompare(a)); // Reverse alphabetical sort
+            loadCities();
+        }
+
+        // Functions for deletion (to be implemented and linked to buttons)
+        function removeSelectedCity() {
+            const cityNameSelect = document.getElementById("lstCities");
+            const selectedCity = cityNameSelect.value;
+            if (selectedCity) {
+                const index = cities.indexOf(selectedCity);
+                if (index > -1) {
+                    cities.splice(index, 1); // Remove 1 element at the found index
+                    alert(`${selectedCity} removed.`);
+                    loadCities(); // Reload dropdown
+                }
+            } else {
+                alert("Please select a city to remove.");
+            }
+        }
+
+        function clearAllCities() {
+            if (confirm("Are you sure you want to clear all cities?")) {
+                cities = []; // Empty the array
+                loadCities(); // Reload dropdown
+                alert("All cities cleared.");
+            }
+        }
+
+    </script>
+</body>
+</html>
