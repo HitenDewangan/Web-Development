@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        console.log("Order taken from customer...");
+
+        let action  = new Promise(function(resolve, reject) {
+            let isCookAvailable = false;
+            setTimeout(() => {
+                if(isCookAvailable) {
+                    resolve("🧑‍🍳🍽️Food is ready to be served");
+                } else {
+                    reject("👨‍🍳Cook is not available");
+                }
+            }, 3000); // Simulating a delay of 2 seconds for food preparation
+        });
+
+        action.then(function(msg) {
+            console.log("Status is : " + msg);
+        }).catch(function(error) {
+            console.error("Error: " + error);   
+        });
+    </script>
+</body>
+</html>
