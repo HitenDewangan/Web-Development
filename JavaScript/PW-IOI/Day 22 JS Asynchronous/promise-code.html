@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PRomise to customer</title>
 </head>
 <body>
     
@@ -12,7 +12,7 @@
         console.log("Order taken from customer...");
 
         let action  = new Promise(function(resolve, reject) {
-            let isCookAvailable = false;
+            let isCookAvailable = true;
             setTimeout(() => {
                 if(isCookAvailable) {
                     resolve("🧑‍🍳🍽️Food is ready to be served");
@@ -27,6 +27,8 @@
         }).catch(function(error) {
             console.error("Error: " + error);   
         });
+
+        console.log("Customer is waiting for food to be served...");
     </script>
 </body>
 </html>

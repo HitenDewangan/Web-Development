@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map for UI Generation</title>
+</head>
+<body>
+    <h3>Category List:</h3>
+    <ol id="info"></ol>
+
+    <h3>Select Category:</h3>
+    <select id="categorySelect"></select>
+
+    <h3>Filter by:</h3>
+    <div id="checkboxes"></div>
+
+    <h3>Navigation Links:</h3>
+    <ol id="link"></ol>
+
+    <script type="text/javascript">
+        let items = ["All", "Electronics", "Mobiles", "KidsFashion", ""];
+
+        // Populate an ordered list (ol) with items
+        items.map(function(item) {
+            let li = document.createElement("li");
+            li.textContent = item;
+            document.querySelector("#info").appendChild(li);
+        });
+
+        // Populate a select dropdown with options
+        items.map(function(item) {
+            let option = document.createElement("option");
+            option.value = item.toUpperCase(); // Value in uppercase
+            option.textContent = item;
+            document.querySelector("#categorySelect").appendChild(option);
+        });
+
+        // Generate checkboxes dynamically
+        items.map(function(item) {
+            let userInput = `<input type='checkbox' value='${item}' > <label> ${item.toUpperCase()} </label> <br>`;
+            document.querySelector("#checkboxes").innerHTML += userInput;
+        });
+        document.querySelector("#checkboxes").style.marginTop = '25px';
+
+        // Generate navigation links
+        document.querySelector("#link").style.listStyle = 'none'; // Remove default list styling
+        items.map(function(item) {
+            let li = document.createElement("li");
+            let a = document.createElement("a");
+            a.href = item + ".html"; // Dynamic link
+            a.textContent = item;
+            li.appendChild(a);
+            document.querySelector("#link").appendChild(li);
+        });
+    </script>
+</body>
+</html>
