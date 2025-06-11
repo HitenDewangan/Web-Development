@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array Deletion Methods</title>
+</head>
+<body>
+    <script>
+        console.log("***************************************");
+        let teamNames = ['DC', 'RCB', 'Punjab', 'MI', 'CSK', 'GT', 'LSG', 'RR'];
+        console.log("Original teamNames:", teamNames); // Output: ['DC', 'RCB', 'Punjab', 'MI', 'CSK', 'GT', 'LSG', 'RR']
+
+        teamNames.pop(); // Remove 'RR' from the end
+        console.log("After pop():", teamNames); // Output: ['DC', 'RCB', 'Punjab', 'MI', 'CSK', 'GT', 'LSG']
+
+        teamNames.shift(); // Remove 'DC' from the beginning
+        console.log("After shift():", teamNames); // Output: ['RCB', 'Punjab', 'MI', 'CSK', 'GT', 'LSG']
+
+        teamNames.splice(3, 1); // At index 3 ('CSK'), delete 1 element
+        console.log("After splice(3,1):", teamNames); // Output: ['RCB', 'Punjab', 'MI', 'GT', 'LSG']
+    </script>
+</body>
+</html>
