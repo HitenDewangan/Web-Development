@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>table-render</title>
+</head>
+<body class="container-fluid mt-3" onload="loadData() ">
+
+    <table border="1">
+        <thead>
+            <th>Title</th>
+            <th>Preview</th>
+            <th>Price</th>
+        </thead>
+        <tbody id="data" cellspacing="3" cellpadding="3">
+
+        </tbody>
+    </table>
+    
+
+    <script type="text/javascript">
+        async function loadData(){
+
+            try{
+                const URL = './../data/products.json'
+                console.log('Loading data through :', URL);
+    
+                let response = await fetch(URL);
+                let products = await response.json();
+
+                console.log(products);
+
+                const data = document.getElementById('data');
+
+
+                products.forEach((product) => {
+                    let tr = document.createElement('tr');
+
+                    let title = document.createElement('td');
+                    let img = document.createElement('td');
+                    let price = document.createElement('td');
+
+                    title.textContent = product.Title;
+                    img.innerHTML = `<img height="100" src="${product.Photo}">`;
+                    price.textContent = product.Price;
+
+                    tr.appendChild(title);
+                    tr.appendChild(img);
+                    tr.appendChild(price);
+
+                    data.appendChild(tr);
+                    
+                })
+
+            } catch(err){
+                console.log("Error : ", err);
+            }
+        
+        }
+    </script>
+</body>
+</html>

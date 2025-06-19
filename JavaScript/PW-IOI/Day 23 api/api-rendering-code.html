@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api-rendering</title>
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body onload="loadData()" class="container-fluid">
+    
+    
+    
+    <script type="text/javascript">
+        function loadData(){
+            const URL = './../data/products.json'
+            console.log('Loading data through :', URL);
+            fetch(URL)
+            .then(response => response.json())
+            .then(product => {
+                let div = document.createElement('div');
+                div.innerHTML = `
+                    <dl class="row mt-5">
+                        <dt class="col-3">
+                            <img height="400" src="${product[0].Photo}">
+                        </dt>
+                        <dt class="col-6">
+                            <h3>${product[0].Title}</h3>
+                            <p class="text-white p-2">
+                                <span class="bg-success">${product[0].Ratings.Rate}"</span>
+                                <span class="bi bi-star-fill bg-success"></span>
+                                <span class="text-secondary">${product[0].Ratings.Count} ${product[0].Ratings.Review}</span>
+                            </p>
+                            <ul class="fw-light">
+                                <li>${product[0].Features[0]}</li>
+                                <li>${product[0].Features[1]}</li>
+                                <li>${product[0].Features[2]}</li>
+                                <li>${product[0].Features[3]}</li>
+                                <li>${product[0].Features[4]}</li>
+                                <li>${product[0].Features[5]}</li>
+                            </ul>
+                        </dt>
+                        <dt class="col-3">
+                            <p class="fw-bold">
+                                <span class="bi bi-currency-rupee"></span> ${product.Price}></span>
+                            </p>
+                        </dt>
+                    </dl>
+                `
+
+                document.body.appendChild(div);
+                
+            })
+            .catch(error => console.log(error));
+
+        }
+    </script>
+</body>
+</html>

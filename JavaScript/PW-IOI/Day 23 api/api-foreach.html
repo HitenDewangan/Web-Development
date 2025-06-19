@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api-aysnc-await</title>
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+</head>
+<body onload="loadData()" class="container-fluid">
+    
+    <div id="poster">
+
+    </div>
+    
+    
+    <script type="text/javascript">
+        async function loadData(){
+
+            try{
+                const URL = './../data/products.json'
+                console.log('Loading data through :', URL);
+    
+                let response = await fetch(URL);
+                let products = await response.json();
+
+                console.log(products);
+
+                products.forEach((product) => {
+                    let img = document.createElement('img');
+                    img.style.cssText = 'width: 200px; height: 200px; border: 1px solid black; margin: 10px; padding: 10px;';
+                    img.src = product.Photo;
+                    img.title = product.Title;
+                    img.alt = 'cannot display';
+                    document.getElementById("poster").appendChild(img);
+                })
+
+
+            } catch(err){
+                console.log("Error : ", err);
+            }
+        
+        }
+    </script>
+</body>
+</html>
