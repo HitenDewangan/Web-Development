@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        async function loadData() {
+            //shoot a request to the URL
+            try {
+                const URL = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?sol=1000&api_key=DEMO_KEY";
+
+                let response = await fetch(URL);
+                let data = await response.json();
+                console.log(data);
+
+                data.photos.forEach((details) => {
+
+                    let tr = document.createElement("tr");
+
+                    let tdId = document.createElement("td");
+                    let tdPreview = document.createElement("td");
+                    let tdCameraName = document.createElement("td");
+                    let tdRoverName = document.createElement("td");
+
+                    tdId.textContent = details.id;
+                    tdPreview.innerHTML = `<img src='${details.img_src}' width='100' height='50'>`
+                    tdCameraName.textContent = details.camera.name;
+                    tdRoverName.textContent = details.rover.name;
+
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdPreview);
+                    tr.appendChild(tdCameraName);
+                    tr.appendChild(tdRoverName);
+
+                    document.querySelector("tbody").appendChild(tr);
+
+
+                })
+
+
+            } catch (error) {
+                console.log("API ERROR : ", error);
+            }
+        } 
+    </script>
+</head>
+
+<body onload="loadData()">
+    <table border="1" width="100%" cellspacing="5" cellpading="5">
+        <thead>
+            <th>
+                PhotoID
+            </th>
+            <th>
+                Preview
+            </th>
+            <th>
+                CameraName
+            </th>
+            <th>
+                RoverName
+            </th>
+        </thead>
+        <tbody align="center">
+
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body onload="loadData()">
+    <table border="1" width="100%" cellspacing="5" cellpading="5">
+        <thead>
+            <th>
+                ID
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Image
+            </th>
+            <th>
+                Ratings
+            </th>
+        </thead>
+        <tbody align="center">
+
+        </tbody>
+    </table>
+    <script type="text/javascript">
+
+        async function loadData() {
+
+            try {
+                const URL = "https://fakestoreapi.com/products/"
+                let response = await fetch(URL);
+                let products = await response.json();
+
+                console.log(products);
+
+                products.forEach(product => {
+                    let tr = document.createElement("tr");
+
+                    let tdId = document.createElement("td");
+                    let tdPrice = document.createElement("td");
+                    let tdImg = document.createElement("td");
+                    let tdRatings = document.createElement("td");
+
+
+                    tdId.textContent = product.id;
+                    tdImg.innerHTML = `<img src='${product.image}' width='50' height='50'>`
+                    tdPrice.textContent = product.price
+                    tdRatings.textContent = product.rating.rate;
+
+                    tr.appendChild(tdId);
+                    tr.appendChild(tdPrice);
+                    tr.appendChild(tdImg);
+                    tr.appendChild(tdRatings);
+
+                    document.querySelector("tbody").appendChild(tr);
+                })
+
+            } catch (error) {
+                console.log("API ERROR : ", error);
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
+
+
