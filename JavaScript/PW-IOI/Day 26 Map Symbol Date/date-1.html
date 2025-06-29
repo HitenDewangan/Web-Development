@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+
+    <script type="text/javascript">
+        function loadPage() {
+            let now = new Date();
+            const month = [
+                "JAN", "FEB", "MAR", "APR", "MAY", "JUN",
+                "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"
+            ]
+            const weeks = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"]
+
+            const weekIndex = now.getDay();
+            const monthIndex = now.getMonth()
+
+            const result = `${now.getDate()}, ${weeks[weekIndex]}, ${month[monthIndex]}, ${now.getFullYear()}`
+            document.getElementById("cal").innerHTML = "&nbsp;&nbsp;" + result;
+            document.getElementById("clock").innerHTML = "&nbsp;&nbsp;" + now.toLocaleTimeString() + "";
+
+            let hours = now.getHours();
+            console.log(hours);
+            let msg;
+            document.querySelector("#msgBox").style.display = 'block';
+            if (hours < 12) {
+                msg = 'Good Morning'
+                document.querySelector("img").src = 'https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+                document.querySelector("#msg").textContent = msg;
+            } else if (hours >= 12 && hours <= 16) {
+                msg = 'Good Afternoon'
+                document.querySelector("img").src = 'https://images.unsplash.com/photo-1535477904881-7dfea0fb80c9?q=80&w=987&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+                document.querySelector("#msg").textContent = msg;
+
+            } else {
+                msg = 'Good Evening'
+                document.querySelector("img").src = 'https://images.unsplash.com/photo-1507400492013-162706c8c05e?q=80&w=659&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+                document.querySelector("#msg").textContent = msg;
+            }
+
+        }
+    </script>
+
+</head>
+
+<body class="container-fluid" onload="loadPage()">
+    <header class="bg-dark text-white d-flex justify-content-between p-1 mt-3">
+        <div>
+            <span class="fw-bold">Shopper.</span>
+        </div>
+        <nav>
+            <span class="ms-3">Home</span>
+            <span class="ms-3">About</span>
+            <span class="ms-3">Contact</span>
+        </nav>
+        <div>
+            <span class="bi bi-calendar me-3" id="cal">
+            </span>
+            <span class="bi bi-clock me-3" id="clock">
+            </span>
+        </div>
+    </header>
+
+    <section class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div style="display: none;" id="msgBox">
+            <p id="msg" class="fs-3 text-primary fw-bold"></p>
+            <img width="400" height="300" border="1">
+        </div>
+    </section>
+</body>
+
+</html>

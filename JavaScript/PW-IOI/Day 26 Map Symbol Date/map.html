@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript" >
+        // map is a collection of key-value pairs
+        const map = new Map();
+        // set() method is used to add key-value pairs to the map
+        map.set("name", "John");
+        map.set("age", 30);
+        map.set("city", "New York");
+        
+        console.log(map); // Map { 'name' => 'John', 'age' => 30, 'city' => 'New York' }
+        console.log(map.keys()); // MapIterator { 'name', 'age', 'city' }
+        console.log(map.values()); // MapIterator { 'John', 30, 'New York ' }
+        console.log(map.entries()); // MapIterator { [ 'name', 'John' ], [ 'age', 30 ], [ 'city', 'New York' ] }
+
+
+        // get() method is used to retrieve the value associated with a key
+        console.log(map.get("name")); // John
+        console.log(map.get("age")); // 30
+        console.log(map.get("city")); // New York
+        // has() method is used to check if a key exists in the map
+
+        // delete() method is used to remove a key-value pair from the map
+        console.log(map.has("name")); // true
+        console.log(map.has("country")); // false
+        map.delete("age");
+        console.log(map.has("age")); // false
+        map.delete("age"); // does nothing, as "age" is already deleted
+        // size property returns the number of key-value pairs in the map
+        console.log(map.size); // 2
+        // clear() method is used to remove all key-value pairs from the map
+        map.clear();
+        console.log(map.size); // 0
+        // Iterating over a map
+        const myMap = new Map([
+            ["name", "Alice"],
+            ["age", 25],
+            ["city", "Wonderland"]
+        ]);
+        for (const [key, value] of myMap) {
+            console.log(`${key}: ${value}`);
+        }
+        // Output:
+        // name: Alice
+        // age: 25
+        // city: Wonderland
+        // Converting a map to an array
+        const mapArray = Array.from(myMap);
+        console.log(mapArray);
+        // Output: [ [ 'name', 'Alice' ], [ 'age', 25 ], [ 'city', 'Wonderland' ] ]
+        // Converting an array to a map
+        const array = [["name", "Bob"], ["age", 30], ["city", "Builderland"]];
+        const newMap = new Map(array);
+        console.log(newMap);
+        // Output: Map { 'name' => 'Bob', 'age' => 30, 'city' => 'Builderland' }
+    </script>
+</body>
+</html>
