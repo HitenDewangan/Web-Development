@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script type="text/javascript">
+
+        const promiseApi = new Promise(function (resolve, reject) {
+            const url = prompt("Enter the URL");
+            if (url === 'https://fakestoreapi.com/products') {
+                resolve(url);
+            } else {
+                reject("Cant be called");
+            }
+        })
+
+        console.log("Script not wating for the promise");
+
+        promiseApi.then(function (url) {
+            //sucessfull
+            let apiResult = fetch(url);
+            console.log(apiResult);
+
+            apiResult.then(function (response) {
+                return response.json();
+            }).then(function (data) {
+                console.log(data);
+            })
+        }).catch(function (error) {
+            //failure
+        }).finally(function () {
+            console.log("Executed succesfully");
+        })
+
+        console.log("Script is doing some other job");
+    </script>
+
+</body>
+
+</html>
