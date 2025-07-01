@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax error</title>
+</head>
+<body>
+    <script>
+        console.log("program started the execution");
+        try {
+            let json = '{name: "Sachin", "age":51}'; // Invalid JSON (name is not quoted)
+            let user = JSON.parse(json);
+            console.log(user.name);
+        } catch (err) {
+            console.log("Parsing error:", err.name);
+        } finally {
+            console.log("Execution completed"); // This will always run
+        }
+        console.log("Graceful termination");
+    </script>
+</body>
+</html>

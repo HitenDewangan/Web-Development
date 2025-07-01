@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest operator</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function printData( id, ...otherData ) {
+      console.log(id);
+      const [ name, gender, ismarried, salary = 'Not Dissalayed' ] = otherData;
+      console.log(otherData);
+      console.log(salary);
+    }
+
+    let userData = {
+      id: 101,
+      name: 'John',
+      gender: 'male',
+      ismarried: true,
+    };
+
+    printData( {...userData} ); // 101, "John", "male", true, 50000
+
+    let updatedData = {
+      ...userData,
+      name: 'Chris', // same key, updating salary
+      nickname: 'Johnny' // new key, adding nickname
+    }
+
+    printData( updatedData ); // 101, "John", "male", true, 60000
+  </script>
+</body>
+</html>

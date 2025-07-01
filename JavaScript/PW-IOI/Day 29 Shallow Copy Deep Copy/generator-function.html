@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function* generateValues() {
+      yield 'sachin';
+      yield 'saurav';
+      yield 'rahul';
+      yield 'kohli';
+    }
+
+    let gen = generateValues();
+    console.log(gen);
+
+    let result = gen.next();
+    console.log(result); // { value: 'sachin', done: false }
+
+    while (!result.done) {
+      console.log(result.value);
+      result = gen.next();
+    }
+    console.log(result); // { value: undefined, done: true }
+  </script>
+</body>
+</html>

@@ -15,7 +15,6 @@
 
 // console.log(str[0]); // H
 
-
 // immutable : in memory, the string is not changed, but a new string is created
 // mutable : in memory, the string is changed, but a new string is not created
 

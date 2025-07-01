@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Error</title>
+</head>
+<body>
+    <script>
+        class CustomError extends Error {
+            constructor(message) {
+                super(message);
+                this.name = "CustomError";
+            }
+        }
+
+        function divide(a, b) {
+            if(b > a){
+                throw new CustomError("Denominator cannot be greater than numerator");
+            }
+            console.log("Division successful");
+            return a / b;
+        }
+
+        try {
+            console.log("Result is : ", divide(10, 2)); // This will throw a CustomError();
+        } catch (error) {
+            if (error instanceof CustomError) {
+                console.error("Caught a custom error:", error.name, "-", error.message);
+            } else {
+                console.error("Caught an unexpected error:", error);
+            }
+        } finally {
+            console.log("Execution completed");
+        }
+    </script>
+</body>
+</html>

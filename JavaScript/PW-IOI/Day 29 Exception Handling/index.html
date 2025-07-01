@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exceptions</title>
+</head>
+<body>
+    <script>
+        try {
+            let a = 10;
+            let b = a + undeclaredVariable; // This will throw a ReferenceError
+            console.log(b);
+        } catch (error) {
+            console.log("Error name is : ", error.name);
+            console.log("Error message is : ", error.message);
+            console.log("Stack trace:", error.stack);
+            console.error("An error occurred:", error.message);
+        }
+    </script>
+</body>
+</html>
