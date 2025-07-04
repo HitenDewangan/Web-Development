@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body onload="loadData()">
+    <ol>
+        <!-- <li>
+            ELETRONCS
+        </li>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul> -->
+    </ol>
+
+
+    <script>
+        async function loadProducts() {
+            const URL = "../data/day33-products.json";
+
+            let response = await fetch(URL);
+            let catalog = await response.json();
+
+            console.log(catalog);
+
+            for(let i = 0; i < catalog.length; i++) {
+                let product = catalog[i];
+                let olLi = document.createElement("li");
+                olLi.textContent = product.category;
+                document.querySelector("ol").appendChild(olLi);
+
+                let ul = document.createElement("ul");
+
+                for(let j = 0; j < product.items.length; j++) {
+                    let subProduct = product.items[j];
+                    let ulLi = document.createElement("li");
+                    ulLi.textContent = subProduct;
+                    ul.appendChild(ulLi);
+                }
+
+                olLi.appendChild(ul);
+
+            }
+        }
+
+        function loadData() {
+            
+            loadProducts()
+                .then(() => {
+                    console.log("Products loaded successfully");
+                })
+                .catch((error) => {
+                    console.error("Error loading products:", error);
+                });
+        }
+    </script>
+</body>
+</html>

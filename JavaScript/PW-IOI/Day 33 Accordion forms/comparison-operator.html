@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>validate user</title>
+</head>
+<body>
+    <h3>User Login</h3>
+    <dl>
+        <dt>Enter Username</dt>
+        <dd><input type="text" id="txtUsername"></dd>
+        <dd id="usernameMsg"></dd>
+        <dt>Enter Password</dt>
+        <dd><input type="password" id="txtPassword"></dd>
+        <dd id="passwordMsg"></dd>
+
+        <br>
+        <button onclick="validateUSer()">Login</button>
+
+        <p id="loginMsg"></p>
+    </dl>
+
+    <script>
+        async function retrieveData(username, password) {
+
+            let URL = "../data/day33-credentials.json";
+
+            let response = await fetch(URL);
+            let users = await response.json();
+
+            let isAvailable = false;
+            // for (let user of users) {
+            //     if (user.username === username && user.password === password) {
+            //         isAvailable = true;
+            //         break;
+            //     }
+            // }
+
+
+            // if found : {K:V, K:V, ...} otehrwise undefined
+            isAvailable = users.find(user => user.username === username && user.password === password);
+            console.log(isAvailable);
+            if (!isAvailable) {
+                document.getElementById("loginMsg").innerHTML = `<h1 style='color:red'>Invalid Credentials</h1>`;
+            } else {
+                document.getElementById("loginMsg").innerHTML = `<h1 style='color:green'>Login successful</h1>`;
+            }
+
+
+        }
+
+        function validateUSer() {
+            let username = document.getElementById('txtUsername').value;
+            let password = document.getElementById('txtPassword').value;
+            let usernameMsg = document.getElementById('usernameMsg');
+
+            retrieveData(username, password);
+        }
+
+    </script>
+</body>
+</html>
