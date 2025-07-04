@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Hotel Registration Form</title>
+    <style>
+        
+    </style>
+</head>
+<body class="container-fluid">
+    <div class="border border-1 border-dark rounded p-3 mb-3 form-container">
+        <h3 class="text-center">Hotel Registration Form</h3>
+    </div>
+
+    <div class="accordion form-container" id="registrationAccordion">
+        <div class="accordion-item mb-3">
+            <h2 class="accordion-header" id="headingCustomerInfo">
+                <button class="accordion-button bg-black text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCustomerInfo" aria-expanded="true" aria-controls="collapseCustomerInfo">
+                    Customer Info
+                </button>
+            </h2>
+            <div id="collapseCustomerInfo" class="accordion-collapse collapse show" aria-labelledby="headingCustomerInfo" data-bs-parent="#registrationAccordion">
+                <div class="accordion-body">
+                    <p>Please enter your personal details.</p>
+                    <form>
+                        <div class="mb-3">
+                            <label for="fullName" class="form-label">Customer Name</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="John Doe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="checkInDate" class="form-label">Check-in Date</label>
+                            <input type="date" class="form-control" id="checkInDate">
+                        </div>
+                        <div class="mb-3">
+                            <label for="totalDays" class="form-label">Total No. of Days</label>
+                            <input type="number" class="form-control" id="totalDays" placeholder="1">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+                        </div>
+                        <div class="mb-3">
+                            <label for="phoneNumber" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phoneNumber" placeholder="+1234567890">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item mb-3">
+            <h2 class="accordion-header" id="headingSelectRoomType">
+                <button class="accordion-button bg-black text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSelectRoomType" aria-expanded="false" aria-controls="collapseSelectRoomType">
+                    Select Room Type
+                </button>
+            </h2>
+            <div id="collapseSelectRoomType" class="accordion-collapse collapse" aria-labelledby="headingSelectRoomType" data-bs-parent="#registrationAccordion">
+                <p class="m-3">Choose your preferred room type.</p>
+                <div class="accordion-body">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/captainmarvel.jpg" class="card-img-top mx-auto mt-3" alt="Single Room" style="width: 100px; height: 100px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Single Room</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="radio" name="roomType" id="singleRoom" value="single">
+                                        <label class="form-check-label" for="singleRoom">
+                                            Select
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/captainmarvel.jpg" class="card-img-top mx-auto mt-3" alt="Double Room" style="width: 100px; height: 100px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Double Room</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="radio" name="roomType" id="doubleRoom" value="double">
+                                        <label class="form-check-label" for="doubleRoom">
+                                            Select
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-4 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/captainmarvel.jpg" class="card-img-top mx-auto mt-3" alt="Suite" style="width: 100px; height: 100px; object-fit: cover;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Suite</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="radio" name="roomType" id="suite" value="suite">
+                                        <label class="form-check-label" for="suite">
+                                            Select
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item mb-3">
+            <h2 class="accordion-header" id="headingSelectAmenities">
+                <button class="accordion-button bg-black text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSelectAmenities" aria-expanded="false" aria-controls="collapseSelectAmenities">
+                    Select Amenities
+                </button>
+            </h2>
+            <div id="collapseSelectAmenities" class="accordion-collapse collapse" aria-labelledby="headingSelectAmenities" data-bs-parent="#registrationAccordion">
+                <div class="accordion-body">
+                    <p class="m-3">Select any additional amenities you'd like.</p>
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/leopard.jpg" class="card-img-top mx-auto mt-3" alt="Wi-Fi" style="width: 100px; height: 100px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Wi-Fi</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="checkbox" value="wifi" id="wifi">
+                                        <label class="form-check-label" for="wifi">
+                                            Add
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/elephant.jpg" class="card-img-top mx-auto mt-3" alt="Breakfast" style="width: 100px; height: 100px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Breakfast</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="checkbox" value="breakfast" id="breakfast">
+                                        <label class="form-check-label" for="breakfast">
+                                            Add
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/reacher.jpg" class="card-img-top mx-auto mt-3" alt="Parking" style="width: 100px; height: 100px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Parking</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="checkbox" value="parking" id="parking">
+                                        <label class="form-check-label" for="parking">
+                                            Add
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-3 mb-3">
+                            <div class="card text-center h-100">
+                                <img src="../../images/reindeer.jpg" class="card-img-top mx-auto mt-3" alt="Pool Access" style="width: 100px; height: 100px; object-fit: contain;">
+                                <div class="card-body">
+                                    <h5 class="card-title">Pool Access</h5>
+                                    <div class="form-check d-flex justify-content-center align-items-center mt-3">
+                                        <input class="form-check-input me-2" type="checkbox" value="poolAccess" id="poolAccess">
+                                        <label class="form-check-label" for="poolAccess">
+                                            Add
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="accordion-item mb-3">
+            <h2 class="accordion-header" id="headingAdvancePayment"> <button class="accordion-button collapsed bg-black text-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAdvancePayment" aria-expanded="false" aria-controls="collapseAdvancePayment"> Advance Payment
+                </button>
+            </h2>
+            <div id="collapseAdvancePayment" class="accordion-collapse collapse" aria-labelledby="headingAdvancePayment" data-bs-parent="#registrationAccordion"> <div class="accordion-body">
+                    <div class="d-flex justify-content-center align-items-center mt-3">
+                        <label for="advancePayment" class="me-2">Advance Payment: ₹</label>
+                        <input type="number" class="form-control w-auto" id="advancePayment" placeholder="0"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4 mb-5"> 
+        <button type="button" class="btn btn-dark btn-lg" id="registerButton"> <!-- We've removed data-bs-toggle="modal" and data-bs-target="#billSummaryModal".-->
+            Register
+        </button>
+    </div>
+
+    <div class="modal fade" id="billSummaryModal" tabindex="-1" aria-labelledby="billSummaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="billSummaryModalLabel">Bill Summary</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Customer Name:</strong> <span id="modalCustomerName"></span></p>
+                    <p><strong>Check-in Date:</strong> <span id="modalCheckInDate"></span></p>
+                    <p><strong>Total Days:</strong> <span id="modalTotalDays"></span></p>
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="modalPhoneNumber"></span></p>
+                    <hr>
+                    <p><strong>Room Type:</strong> <span id="modalRoomType"></span> <span id="modalRoomTypeCost" class="fw-bold"></span></p>
+                    <p><strong>Selected Amenities:</strong> <span id="modalAmenities"></span></p>
+                    <hr>
+                    <p><strong>Advance Payment:</strong> ₹ <span id="modalAdvancePayment"></span></p>
+                    <hr>
+                    <h4>Total Payable: ₹ <span id="modalTotalPayable"></span></h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="billSummaryModal" tabindex="-1" aria-labelledby="billSummaryModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="billSummaryModalLabel">Bill Summary</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p><strong>Customer Name:</strong> <span id="modalCustomerName"></span></p>
+                    <p><strong>Check-in Date:</strong> <span id="modalCheckInDate"></span></p>
+                    <p><strong>Total Days:</strong> <span id="modalTotalDays"></span></p>
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                    <p><strong>Phone:</strong> <span id="modalPhoneNumber"></span></p>
+                    <hr>
+                    <p><strong>Room Type:</strong> <span id="modalRoomType"></span> <span id="modalRoomTypeCost" class="fw-bold"></span></p>
+                    <p><strong>Selected Amenities:</strong> <span id="modalAmenities"></span></p>
+                    <hr>
+                    <p><strong>Advance Payment:</strong> ₹ <span id="modalAdvancePayment"></span></p>
+                    <hr>
+                    <h4>Total Payable: ₹ <span id="modalTotalPayable"></span></h4>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the modal and the new register button by its ID
+            const billSummaryModalElement = document.getElementById('billSummaryModal');
+            const registerButton = document.getElementById('registerButton'); // Selected by its new ID
+
+            // Create a Bootstrap Modal instance
+            const billSummaryModal = new bootstrap.Modal(billSummaryModalElement);
+
+
+            // Define your pricing here (you can fetch this from a backend in a real app)
+            const roomPricesPerNight = {
+                'singleRoom': 1500,
+                'doubleRoom': 2500,
+                'suite': 4000
+            };
+            const amenityPrices = {
+                'wifi': 100,
+                'breakfast': 200,
+                'parking': 300,
+                'poolAccess': 500
+            };
+
+            // Add an event listener to the Register button
+            registerButton.addEventListener('click', function(event) {
+                // Get the advance payment value
+                const advancePaymentInput = document.getElementById('advancePayment');
+                const advancePayment = parseFloat(advancePaymentInput.value);
+
+                // Perform validation
+                if (isNaN(advancePayment) || advancePayment <= 0) {
+                    // Prevent default form submission (though not strictly necessary as it's a button)
+                    event.preventDefault();
+                    alert('Advance Payment is compulsory. Please enter an amount greater than zero.');
+                    advancePaymentInput.focus();
+                    // Important: Do NOT call billSummaryModal.show() if validation fails
+                } else {
+                    // If validation passes, manually show the modal
+                    billSummaryModal.show();
+                }
+            });
+
+
+            // Listener for when the modal is about to be shown (populate its content here)
+            billSummaryModalElement.addEventListener('show.bs.modal', function () {
+                // Customer Info
+                const customerName = document.getElementById('fullName').value;
+                const checkInDate = document.getElementById('checkInDate').value;
+                const totalDays = parseInt(document.getElementById('totalDays').value) || 1;
+                const email = document.getElementById('email').value;
+                const phoneNumber = document.getElementById('phoneNumber').value;
+                const advancePayment = parseFloat(document.getElementById('advancePayment').value) || 0;
+
+                // Room Type
+                const selectedRoomTypeInput = document.querySelector('input[name="roomType"]:checked');
+                let roomTypeName = 'Not selected';
+                let roomTypeCost = 0;
+
+                if (selectedRoomTypeInput) {
+                    roomTypeName = selectedRoomTypeInput.id.replace('Room', ' Room');
+                    const baseRoomPrice = roomPricesPerNight[selectedRoomTypeInput.id] || 0;
+                    roomTypeCost = baseRoomPrice * totalDays;
+                }
+
+                // Amenities
+                const selectedAmenities = [];
+                let amenitiesTotalCost = 0;
+                document.querySelectorAll('input[type="checkbox"]:checked').forEach(checkbox => {
+                    const amenityId = checkbox.id;
+                    const amenityName = amenityId.charAt(0).toUpperCase() + amenityId.slice(1);
+                    const cost = amenityPrices[amenityId] || 0;
+                    selectedAmenities.push(`${amenityName} (₹${cost.toFixed(2)})`);
+                    amenitiesTotalCost += cost;
+                });
+                const amenitiesText = selectedAmenities.length > 0 ? selectedAmenities.join(', ') : 'None';
+
+
+                // --- Update Modal Content ---
+                document.getElementById('modalCustomerName').textContent = customerName || 'N/A';
+                document.getElementById('modalCheckInDate').textContent = checkInDate || 'N/A';
+                document.getElementById('modalTotalDays').textContent = totalDays;
+                document.getElementById('modalEmail').textContent = email || 'N/A';
+                document.getElementById('modalPhoneNumber').textContent = phoneNumber || 'N/A';
+
+                // Room Type & Cost
+                document.getElementById('modalRoomType').textContent = roomTypeName;
+                document.getElementById('modalRoomTypeCost').textContent = `(₹${roomTypeCost.toFixed(2)})`;
+
+                // Amenities & Costs
+                document.getElementById('modalAmenities').textContent = amenitiesText;
+
+                // Advance Payment
+                document.getElementById('modalAdvancePayment').textContent = advancePayment.toFixed(2);
+
+                // Calculate Total Payable
+                let totalBill = roomTypeCost + amenitiesTotalCost;
+                let finalPayable = totalBill - advancePayment;
+
+                document.getElementById('modalTotalPayable').textContent = finalPayable.toFixed(2);
+            });
+        });
+    </script>
+</body>
+</html>
