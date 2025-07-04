@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>KFC Order App</title>
+    <style type="text/css">
+        /* Styles for the banner image */
+        #imgKFC {
+            width: 100%; /* Image takes full width of its parent */
+            height: 200px; /* Fixed height for the banner effect (adjust as needed) */
+            object-fit: cover; /* Ensures image covers the area, cropping if necessary */
+            display: block; /* Important for width/height to work consistently */
+            border-radius: 0.375rem; /* Apply Bootstrap's rounded-3 border-radius from CSS */
+            margin-bottom: 1.5rem; /* Add some space below the banner for buttons */
+        }
+    </style>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
+
+    <div class="col-12 col-md-8 col-lg-6 p-3 bg-danger rounded shadow-sm">
+        <div>
+            <img src="../../images/leopard.jpg" alt="KFC Banner" id="imgKFC">
+        </div>
+
+        <div class="d-grid gap-3">
+            <button class="btn btn-danger border-white" id="btnCustomerDetails" data-bs-toggle="modal" data-bs-target="#kfcCustomerModal">Customer Details</button>
+            <button class="btn btn-danger border-white" id="btnSelectMeal" >Select your meal</button>
+            <button class="btn btn-danger border-white" id="btnSelectAddons" >Select Add on's</button>
+            <button class="btn btn-success " id="btnPlaceOrder" disabled>Place order</button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kfcCustomerModal" tabindex="-1" aria-labelledby="kfcCustomerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kfcCustomerModalLabel">Enter Customer Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="customerForm">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="customerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerAddress" class="form-label">Address</label>
+                            <textarea class="form-control" id="customerAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="customerPhone" pattern="[0-9]{10}" placeholder="e.g., 9876543210" required>
+                            <small class="form-text text-muted">Please enter a 10-digit phone number.</small>
+                        </div>
+                        <div class="d-grid gap-2">
+                             <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kfcMealModal" tabindex="-1" aria-labelledby="kfcMealModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kfcMealModalLabel">Select Your Meal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="mealForm">
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="meal" id="mealZinger" value="Zinger Burger Combo" data-price="299" required>
+                                <label class="form-check-label" for="mealZinger">
+                                    Zinger Burger Combo (₹299)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="meal" id="mealBucket" value="Chicken Bucket (6 pc)" data-price="499">
+                                <label class="form-check-label" for="mealBucket">
+                                    Chicken Bucket (6 pc) (₹499)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="meal" id="mealRiceBowlz" value="Rice Bowlz" data-price="199">
+                                <label class="form-check-label" for="mealRiceBowlz">
+                                    Rice Bowlz (₹199)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kfcAddonsModal" tabindex="-1" aria-labelledby="kfcAddonsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kfcAddonsModalLabel">Select Add-ons</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addonsForm">
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="addon" id="addonFries" value="Fries (Large)" data-price="99">
+                                <label class="form-check-label" for="addonFries">
+                                    Fries (Large) (₹99)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="addon" id="addonPepsi" value="Pepsi (Reg)" data-price="60">
+                                <label class="form-check-label" for="addonPepsi">
+                                    Pepsi (Reg) (₹60)
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="addon" id="addonChocoCake" value="Choco Lava Cake" data-price="120">
+                                <label class="form-check-label" for="addonChocoCake">
+                                    Choco Lava Cake (₹120)
+                                </label>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                             <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kfcOrderModal" tabindex="-1" aria-labelledby="kfcOrderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="kfcOrderModalLabel">Your Order Summary</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="orderSummaryContent">
+                    Loading summary...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="editOrderBtn">Edit Order</button>
+                    <button type="button" class="btn btn-success" id="confirmOrderBtn">Confirm Order & Pay</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="kfcConfirmationModal" tabindex="-1" aria-labelledby="kfcConfirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="kfcConfirmationModalLabel">Order Confirmed!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="confirmationModalContent">
+                    <p>Your order has been placed successfully. Thank you for choosing KFC!</p>
+                    <div id="confirmationOrderDetails" class="mt-3"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script type="text/javascript">
+        // Global object to store order data
+        let orderData = {
+            customer: {},
+            meal: { name: '', price: 0 },
+            addons: [],
+            total: 0
+        };
+
+        // Get references to main page buttons
+        const btnCustomerDetails = document.getElementById('btnCustomerDetails');
+        const btnSelectMeal = document.getElementById('btnSelectMeal');
+        const btnSelectAddons = document.getElementById('btnSelectAddons');
+        const btnPlaceOrder = document.getElementById('btnPlaceOrder');
+
+        // Get references to modal instances
+        const customerModal = new bootstrap.Modal(document.getElementById('kfcCustomerModal'));
+        const mealModal = new bootstrap.Modal(document.getElementById('kfcMealModal'));
+        const addonsModal = new bootstrap.Modal(document.getElementById('kfcAddonsModal'));
+        const orderSummaryModal = new bootstrap.Modal(document.getElementById('kfcOrderModal'));
+        // New: Confirmation Modal instance
+        const confirmationModal = new bootstrap.Modal(document.getElementById('kfcConfirmationModal'));
+
+
+        // Get references to forms and summary content div
+        const customerForm = document.getElementById('customerForm');
+        const mealForm = document.getElementById('mealForm');
+        const addonsForm = document.getElementById('addonsForm');
+        const orderSummaryContent = document.getElementById('orderSummaryContent');
+        const editOrderBtn = document.getElementById('editOrderBtn');
+        const confirmOrderBtn = document.getElementById('confirmOrderBtn');
+        // New: Confirmation Modal content div
+        const confirmationOrderDetails = document.getElementById('confirmationOrderDetails');
+
+
+        // --- Event Listeners for Forms ---
+
+        customerForm.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            orderData.customer = {
+                name: document.getElementById('customerName').value,
+                address: document.getElementById('customerAddress').value,
+                phone: document.getElementById('customerPhone').value
+            };
+
+            customerModal.hide(); // Hide current modal
+            mealModal.show();     // Show next modal
+            btnSelectMeal.disabled = false; // Enable next button on main page for visual feedback
+        });
+
+        mealForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const selectedMealRadio = document.querySelector('input[name="meal"]:checked');
+            if (selectedMealRadio) {
+                orderData.meal = {
+                    name: selectedMealRadio.value,
+                    price: parseFloat(selectedMealRadio.dataset.price) // Get price from data-price attribute
+                };
+            } else {
+                alert('Please select a meal!'); // Still using alert for direct user input error
+                return; // Stop function if no meal selected
+            }
+
+            mealModal.hide();
+            addonsModal.show(); // Show next modal
+            btnSelectAddons.disabled = false; // Enable next button on main page for visual feedback
+        });
+
+        addonsForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            orderData.addons = []; // Reset addons array
+            const selectedAddons = document.querySelectorAll('input[name="addon"]:checked');
+            selectedAddons.forEach(addon => {
+                orderData.addons.push({
+                    name: addon.value,
+                    price: parseFloat(addon.dataset.price) // Get price from data-price attribute
+                });
+            });
+
+            // Calculate total price
+            orderData.total = orderData.meal.price;
+            orderData.addons.forEach(addon => {
+                orderData.total += addon.price;
+            });
+
+            addonsModal.hide();
+            populateSummaryModal(); // Populate summary before showing
+            orderSummaryModal.show(); // Show final summary modal
+            btnPlaceOrder.disabled = false; // Enable place order button on main page for visual feedback
+        });
+
+        // --- Event Listeners for Summary Modal Buttons ---
+
+        editOrderBtn.addEventListener('click', function() {
+            orderSummaryModal.hide();
+            // Go back to the first step (customer details) for full edit flow
+            // This also re-prefills the forms if values exist in orderData
+            customerModal.show();
+        });
+
+        confirmOrderBtn.addEventListener('click', function() {
+            // Build the detailed text for the confirmation modal
+            let confirmationText = `
+                <p class="mb-1"><strong>Name:</strong> ${orderData.customer.name}</p>
+                <p class="mb-1"><strong>Address:</strong> ${orderData.customer.address}</p>
+                <p class="mb-1"><strong>Phone:</strong> ${orderData.customer.phone}</p>
+                <hr>
+                <p class="mb-1"><strong>Meal:</strong> ${orderData.meal.name} (₹${orderData.meal.price.toFixed(2)})</p>
+            `;
+
+            if (orderData.addons.length > 0) {
+                confirmationText += `<p class="mb-1"><strong>Add-ons:</strong> ${orderData.addons.map(a => a.name + ' (₹' + a.price.toFixed(2) + ')').join(', ')}</p>`;
+            } else {
+                confirmationText += `<p class="mb-1"><strong>Add-ons:</strong> None</p>`;
+            }
+
+            confirmationText += `<h5 class="mt-3"><strong>Total:</strong> ₹${orderData.total.toFixed(2)}</h5>`;
+
+            // Set the content of the new confirmation modal
+            confirmationOrderDetails.innerHTML = confirmationText;
+
+            console.log('Final Order Data:', orderData);
+
+            orderSummaryModal.hide(); // Hide the summary modal
+            confirmationModal.show(); // Show the new confirmation modal
+            resetOrderForm(); // Call a function to reset the forms for a new order
+        });
+
+        // --- Helper Functions ---
+
+        function populateSummaryModal() {
+            let summaryHtml = `
+                <h6>Customer Details:</h6>
+                <p><strong>Name:</strong> ${orderData.customer.name}</p>
+                <p><strong>Address:</strong> ${orderData.customer.address}</p>
+                <p><strong>Phone:</strong> ${orderData.customer.phone}</p>
+
+                <h6 class="mt-4">Your Meal:</h6>
+                <p><strong>Meal:</strong> ${orderData.meal.name} (₹${orderData.meal.price.toFixed(2)})</p>
+            `;
+
+            if (orderData.addons.length > 0) {
+                summaryHtml += `<h6 class="mt-4">Add-ons:</h6><ul>`;
+                orderData.addons.forEach(addon => {
+                    summaryHtml += `<li>${addon.name} (₹${addon.price.toFixed(2)})</li>`;
+                });
+                summaryHtml += `</ul>`;
+            } else {
+                summaryHtml += `<p class="mt-4">No Add-ons selected.</p>`;
+            }
+
+            summaryHtml += `
+                <h5 class="mt-4">Total Price: ₹${orderData.total.toFixed(2)}</h5>
+                <hr>
+                <p class="text-success">Review your order and confirm!</p>
+            `;
+            orderSummaryContent.innerHTML = summaryHtml;
+        }
+
+        // Function to reset all forms and order data for a new order
+        function resetOrderForm() {
+            orderData = {
+                customer: {},
+                meal: { name: '', price: 0 },
+                addons: [],
+                total: 0
+            };
+
+            // Reset forms
+            customerForm.reset();
+            mealForm.reset();
+            addonsForm.reset();
+
+            // Disable main page buttons again, except the first one
+            btnSelectMeal.disabled = true;
+            btnSelectAddons.disabled = true;
+            btnPlaceOrder.disabled = true;
+        }
+
+        // --- Pre-fill forms when modals are shown for editing ---
+        // This makes the "Edit Order" functionality work by showing previous selections
+
+        document.getElementById('kfcCustomerModal').addEventListener('show.bs.modal', function () {
+            if (orderData.customer.name) { // Only pre-fill if data exists
+                document.getElementById('customerName').value = orderData.customer.name;
+                document.getElementById('customerAddress').value = orderData.customer.address;
+                document.getElementById('customerPhone').value = orderData.customer.phone;
+            } else { // Clear if no data, for a fresh start
+                customerForm.reset();
+            }
+        });
+
+        document.getElementById('kfcMealModal').addEventListener('show.bs.modal', function () {
+            // Clear all radio buttons first
+            document.querySelectorAll('input[name="meal"]').forEach(radio => radio.checked = false);
+            // Then check the one that matches current orderData.meal.name
+            if (orderData.meal.name) {
+                const mealRadio = document.querySelector(`input[name="meal"][value="${orderData.meal.name}"]`);
+                if (mealRadio) mealRadio.checked = true;
+            }
+        });
+
+        document.getElementById('kfcAddonsModal').addEventListener('show.bs.modal', function () {
+            // Clear all previous addon selections first
+            document.querySelectorAll('input[name="addon"]').forEach(checkbox => checkbox.checked = false);
+            // Then check only the ones in orderData
+            orderData.addons.forEach(addon => {
+                const addonCheckbox = document.querySelector(`input[name="addon"][value="${addon.name}"]`);
+                if (addonCheckbox) addonCheckbox.checked = true;
+            });
+        });
+
+    </script>
+</body>
+</html>

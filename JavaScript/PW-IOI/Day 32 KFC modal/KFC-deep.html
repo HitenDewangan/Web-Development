@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>KFC modal</title>
+    <style type="text/css">
+        #imgKFC {
+            width: 100%;
+            height: 50vh;
+            object-fit: cover;
+            object-position: center;
+        }
+        
+        .btn-full-width {
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 12px 0;
+        }
+        
+        .centered-container {
+            margin-bottom: 20px;
+        }
+        
+        .modal-content {
+            padding: 20px;
+        }
+    </style>
+</head>
+<body class="container-fluid d-flex justify-content-center align-items-center vh-100">
+    <div class="container w-100">
+        <div class="centered-container">
+            <img src="../../images/leopard.jpg" alt="KFC Banner" class="img-fluid rounded-3" id="imgKFC">
+        </div>
+        
+        <div class="text-center mt-3">
+            <button class="btn btn-danger btn-full-width" data-bs-toggle="modal" data-bs-target="#customerModal">Customer Details</button>
+        </div>
+        
+        <div class="text-center mt-3">
+            <button class="btn btn-warning btn-full-width" data-bs-toggle="modal" data-bs-target="#mealModal">Select your meal</button>
+        </div>
+        
+        <div class="text-center mt-3">
+            <button class="btn btn-info btn-full-width" data-bs-toggle="modal" data-bs-target="#addonsModal">Select Add on's</button>
+        </div>
+        
+        <div class="text-center mt-3">
+            <button class="btn btn-success btn-full-width" data-bs-toggle="modal" data-bs-target="#orderModal">Place order</button>
+        </div>
+    </div>
+
+    <!-- Customer Details Modal -->
+    <div class="modal fade" id="customerModal" tabindex="-1" aria-labelledby="customerModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="customerModalLabel">Customer Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="customerName" placeholder="Enter your name">
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerAddress" class="form-label">Address</label>
+                            <textarea class="form-control" id="customerAddress" rows="3" placeholder="Enter your address"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Phone</label>
+                            <input type="tel" class="form-control" id="customerPhone" placeholder="Enter your phone number">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Meal Selection Modal -->
+    <div class="modal fade" id="mealModal" tabindex="-1" aria-labelledby="mealModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="mealModalLabel">Select Your Meal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img src="https://via.placeholder.com/300x200?text=Zinger+Burger" class="card-img-top" alt="Zinger Burger">
+                                <div class="card-body">
+                                    <h5 class="card-title">Zinger Burger Combo</h5>
+                                    <p class="card-text">$15.99</p>
+                                    <button class="btn btn-outline-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img src="https://via.placeholder.com/300x200?text=Bucket+Meal" class="card-img-top" alt="Bucket Meal">
+                                <div class="card-body">
+                                    <h5 class="card-title">Bucket Meal</h5>
+                                    <p class="card-text">$24.99</p>
+                                    <button class="btn btn-outline-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img src="https://via.placeholder.com/300x200?text=Twister+Wrap" class="card-img-top" alt="Twister Wrap">
+                                <div class="card-body">
+                                    <h5 class="card-title">Twister Wrap Combo</h5>
+                                    <p class="card-text">$12.99</p>
+                                    <button class="btn btn-outline-primary">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add-ons Modal -->
+    <div class="modal fade" id="addonsModal" tabindex="-1" aria-labelledby="addonsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addonsModalLabel">Select Add-ons</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="list-group">
+                        <label class="list-group-item d-flex justify-content-between align-items-center">
+                            Extra Fries
+                            <input type="checkbox" class="form-check-input">
+                            <span class="badge bg-primary rounded-pill">+$2.99</span>
+                        </label>
+                        <label class="list-group-item d-flex justify-content-between align-items-center">
+                            Soft Drink
+                            <input type="checkbox" class="form-check-input">
+                            <span class="badge bg-primary rounded-pill">+$1.99</span>
+                        </label>
+                        <label class="list-group-item d-flex justify-content-between align-items-center">
+                            Chicken Wings
+                            <input type="checkbox" class="form-check-input">
+                            <span class="badge bg-primary rounded-pill">+$4.99</span>
+                        </label>
+                        <label class="list-group-item d-flex justify-content-between align-items-center">
+                            Dessert
+                            <input type="checkbox" class="form-check-input">
+                            <span class="badge bg-primary rounded-pill">+$3.99</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save Selection</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Place Order Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Order Summary</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Customer Details</h5>
+                            <p>Name: John Doe</p>
+                            <p>Address: 123 KFC Street, Chicken Town</p>
+                            <p>Phone: 123-456-7890</p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Order Summary</h5>
+                            <p>Meal: Zinger Burger Combo</p>
+                            <p>Add-ons: Fries, Soft Drink</p>
+                            <p>Total Price: $15.99</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-success">Confirm Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- =========================== Functionality ================================= -->
+    <script type="text/javascript">
+        // You can add JavaScript functionality here if needed
+    </script>
+</body>
+</html>
