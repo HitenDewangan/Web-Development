@@ -14,170 +14,170 @@
             object-fit: cover; /* Ensures image covers the area, cropping if necessary */
             display: block; /* Important for width/height to work consistently */
             border-radius: 0.375rem; /* Apply Bootstrap's rounded-3 border-radius from CSS */
-            margin-bottom: 1.5rem; /* Add some space below the banner for buttons */
+            margin-bottom: 1.5rem; /* Add some space below the banner for spacing */
+        }
+        /* Style for required labels */
+        .form-label.required::after {
+            content: " *";
+            color: red;
+        }
+        /* Style for the order summary section */
+        #orderSummarySection {
+            display: none; /* Hidden by default */
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 0.375rem;
+            box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,.075);
         }
     </style>
 </head>
 <body class="container-fluid d-flex justify-content-center align-items-center vh-100 bg-light">
 
-    <div class="col-12 col-md-8 col-lg-6 p-3 bg-danger rounded shadow-sm">
+    <div class="col-12 col-md-8 col-lg-6 p-3 bg-black rounded shadow-sm">
         <div>
             <img src="../../images/leopard.jpg" alt="KFC Banner" id="imgKFC">
         </div>
 
-        <div class="d-grid gap-3">
-            <button class="btn btn-danger border-white" id="btnCustomerDetails" data-bs-toggle="modal" data-bs-target="#kfcCustomerModal">Customer Details</button>
-            <button class="btn btn-danger border-white" id="btnSelectMeal" >Select your meal</button>
-            <button class="btn btn-danger border-white" id="btnSelectAddons" >Select Add on's</button>
-            <button class="btn btn-success " id="btnPlaceOrder" disabled>Place order</button>
-        </div>
-    </div>
-
-    <div class="modal fade" id="kfcCustomerModal" tabindex="-1" aria-labelledby="kfcCustomerModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="kfcCustomerModalLabel">Enter Customer Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="accordion" id="kfcOrderAccordion">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingCustomer">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseCustomer" aria-expanded="true" aria-controls="collapseCustomer">
+                        1. Enter Customer Details
+                    </button>
+                </h2>
+                <div id="collapseCustomer" class="accordion-collapse collapse show" aria-labelledby="headingCustomer" data-bs-parent="#kfcOrderAccordion">
+                    <div class="accordion-body">
+                        <form id="customerForm">
+                            <div class="mb-3">
+                                <label for="customerName" class="form-label required">Name</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="customerAddress" class="form-label required">Address</label>
+                                <textarea class="form-control" id="customerAddress" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="customerPhone" class="form-label required">Phone</label>
+                                <input type="tel" class="form-control" id="customerPhone" pattern="[0-9]{10}" placeholder="e.g., 9876543210" required>
+                                <small class="form-text text-muted">Please enter a 10-digit phone number.</small>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <form id="customerForm">
-                        <div class="mb-3">
-                            <label for="customerName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="customerName" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="customerAddress" class="form-label">Address</label>
-                            <textarea class="form-control" id="customerAddress" rows="3" required></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="customerPhone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="customerPhone" pattern="[0-9]{10}" placeholder="e.g., 9876543210" required>
-                            <small class="form-text text-muted">Please enter a 10-digit phone number.</small>
-                        </div>
-                        <div class="d-grid gap-2">
-                             <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
-                        </div>
-                    </form>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingMeal">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseMeal" aria-expanded="false" aria-controls="collapseMeal" disabled id="btnMealAccordion">
+                        2. Select Your Meal
+                    </button>
+                </h2>
+                <div id="collapseMeal" class="accordion-collapse collapse" aria-labelledby="headingMeal" data-bs-parent="#kfcOrderAccordion">
+                    <div class="accordion-body">
+                        <form id="mealForm">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="meal" id="mealZinger" value="Zinger Burger Combo" data-price="299" required>
+                                    <label class="form-check-label" for="mealZinger">
+                                        Zinger Burger Combo (₹299)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="meal" id="mealBucket" value="Chicken Bucket (6 pc)" data-price="499">
+                                    <label class="form-check-label" for="mealBucket">
+                                        Chicken Bucket (6 pc) (₹499)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="meal" id="mealRiceBowlz" value="Rice Bowlz" data-price="199">
+                                    <label class="form-check-label" for="mealRiceBowlz">
+                                        Rice Bowlz (₹199)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingAddons">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAddons" aria-expanded="false" aria-controls="collapseAddons" disabled id="btnAddonsAccordion">
+                        3. Select Add-ons
+                    </button>
+                </h2>
+                <div id="collapseAddons" class="accordion-collapse collapse" aria-labelledby="headingAddons" data-bs-parent="#kfcOrderAccordion">
+                    <div class="accordion-body">
+                        <form id="addonsForm">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="addon" id="addonFries" value="Fries (Large)" data-price="99">
+                                    <label class="form-check-label" for="addonFries">
+                                        Fries (Large) (₹99)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="addon" id="addonPepsi" value="Pepsi (Reg)" data-price="60">
+                                    <label class="form-check-label" for="addonPepsi">
+                                        Pepsi (Reg) (₹60)
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="addon" id="addonChocoCake" value="Choco Lava Cake" data-price="120">
+                                    <label class="form-check-label" for="addonChocoCake">
+                                        Choco Lava Cake (₹120)
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-primary mt-3">Review Order</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="kfcMealModal" tabindex="-1" aria-labelledby="kfcMealModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="kfcMealModalLabel">Select Your Meal</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div id="orderSummarySection">
+            <h4 class="text-center mb-4">Your Order Summary</h4>
+            <div id="summaryContent">
                 </div>
-                <div class="modal-body">
-                    <form id="mealForm">
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="meal" id="mealZinger" value="Zinger Burger Combo" data-price="299" required>
-                                <label class="form-check-label" for="mealZinger">
-                                    Zinger Burger Combo (₹299)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="meal" id="mealBucket" value="Chicken Bucket (6 pc)" data-price="499">
-                                <label class="form-check-label" for="mealBucket">
-                                    Chicken Bucket (6 pc) (₹499)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="meal" id="mealRiceBowlz" value="Rice Bowlz" data-price="199">
-                                <label class="form-check-label" for="mealRiceBowlz">
-                                    Rice Bowlz (₹199)
-                                </label>
-                            </div>
-                        </div>
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
-                        </div>
-                    </form>
+            <hr>
+            <div class="d-flex justify-content-between align-items-center mt-3">
+                <h5 class="mb-0">Total Payable: <span id="finalTotalDisplay">₹0.00</span></h5>
+                <button type="button" class="btn btn-success" id="confirmOrderBtn">Confirm Order & Pay</button>
+            </div>
+            <p class="text-muted text-center mt-2">A representative will contact you for advance payment.</p>
+        </div>
+
+        <div class="modal fade" id="kfcConfirmationModal" tabindex="-1" aria-labelledby="kfcConfirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-success text-white">
+                        <h5 class="modal-title" id="kfcConfirmationModalLabel">Order Confirmed!</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="confirmationModalContent">
+                        <p>Your order has been placed successfully. Thank you for choosing KFC!</p>
+                        <div id="confirmationOrderDetails" class="mt-3"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="modal fade" id="kfcAddonsModal" tabindex="-1" aria-labelledby="kfcAddonsModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="kfcAddonsModalLabel">Select Add-ons</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="addonsForm">
-                        <div class="mb-3">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="addon" id="addonFries" value="Fries (Large)" data-price="99">
-                                <label class="form-check-label" for="addonFries">
-                                    Fries (Large) (₹99)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="addon" id="addonPepsi" value="Pepsi (Reg)" data-price="60">
-                                <label class="form-check-label" for="addonPepsi">
-                                    Pepsi (Reg) (₹60)
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="addon" id="addonChocoCake" value="Choco Lava Cake" data-price="120">
-                                <label class="form-check-label" for="addonChocoCake">
-                                    Choco Lava Cake (₹120)
-                                </label>
-                            </div>
-                        </div>
-                        <div class="d-grid gap-2">
-                             <button type="submit" class="btn btn-primary mt-3">Save & Next</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="kfcOrderModal" tabindex="-1" aria-labelledby="kfcOrderModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="kfcOrderModalLabel">Your Order Summary</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="orderSummaryContent">
-                    Loading summary...
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="editOrderBtn">Edit Order</button>
-                    <button type="button" class="btn btn-success" id="confirmOrderBtn">Confirm Order & Pay</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="kfcConfirmationModal" tabindex="-1" aria-labelledby="kfcConfirmationModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="kfcConfirmationModalLabel">Order Confirmed!</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" id="confirmationModalContent">
-                    <p>Your order has been placed successfully. Thank you for choosing KFC!</p>
-                    <div id="confirmationOrderDetails" class="mt-3"></div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">OK</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
     <script type="text/javascript">
         // Global object to store order data
         let orderData = {
@@ -187,36 +187,42 @@
             total: 0
         };
 
-        // Get references to main page buttons
-        const btnCustomerDetails = document.getElementById('btnCustomerDetails');
-        const btnSelectMeal = document.getElementById('btnSelectMeal');
-        const btnSelectAddons = document.getElementById('btnSelectAddons');
-        const btnPlaceOrder = document.getElementById('btnPlaceOrder');
+        // Get references to accordion buttons
+        const btnMealAccordion = document.getElementById('btnMealAccordion');
+        const btnAddonsAccordion = document.getElementById('btnAddonsAccordion');
 
-        // Get references to modal instances
-        const customerModal = new bootstrap.Modal(document.getElementById('kfcCustomerModal'));
-        const mealModal = new bootstrap.Modal(document.getElementById('kfcMealModal'));
-        const addonsModal = new bootstrap.Modal(document.getElementById('kfcAddonsModal'));
-        const orderSummaryModal = new bootstrap.Modal(document.getElementById('kfcOrderModal'));
-        // New: Confirmation Modal instance
-        const confirmationModal = new bootstrap.Modal(document.getElementById('kfcConfirmationModal'));
-
-
-        // Get references to forms and summary content div
+        // Get references to forms
         const customerForm = document.getElementById('customerForm');
         const mealForm = document.getElementById('mealForm');
         const addonsForm = document.getElementById('addonsForm');
-        const orderSummaryContent = document.getElementById('orderSummaryContent');
-        const editOrderBtn = document.getElementById('editOrderBtn');
+
+        // Get references to order summary elements
+        const orderSummarySection = document.getElementById('orderSummarySection');
+        const summaryContent = document.getElementById('summaryContent');
+        const finalTotalDisplay = document.getElementById('finalTotalDisplay');
         const confirmOrderBtn = document.getElementById('confirmOrderBtn');
-        // New: Confirmation Modal content div
+
+        // Get reference to the confirmation modal instance
+        const confirmationModal = new bootstrap.Modal(document.getElementById('kfcConfirmationModal'));
         const confirmationOrderDetails = document.getElementById('confirmationOrderDetails');
 
+        // Get accordion collapse instances
+        const collapseCustomer = new bootstrap.Collapse(document.getElementById('collapseCustomer'), { toggle: false });
+        const collapseMeal = new bootstrap.Collapse(document.getElementById('collapseMeal'), { toggle: false });
+        const collapseAddons = new bootstrap.Collapse(document.getElementById('collapseAddons'), { toggle: false });
 
-        // --- Event Listeners for Forms ---
+        // --- Event Listeners for Forms (Accordion Steps) ---
 
         customerForm.addEventListener('submit', function(event) {
             event.preventDefault(); // Prevent default form submission
+
+            // Simple validation for required fields
+            if (!customerForm.checkValidity()) {
+                event.stopPropagation();
+                customerForm.classList.add('was-validated'); // Show Bootstrap validation feedback
+                return;
+            }
+            customerForm.classList.remove('was-validated');
 
             orderData.customer = {
                 name: document.getElementById('customerName').value,
@@ -224,28 +230,30 @@
                 phone: document.getElementById('customerPhone').value
             };
 
-            customerModal.hide(); // Hide current modal
-            mealModal.show();     // Show next modal
-            btnSelectMeal.disabled = false; // Enable next button on main page for visual feedback
+            // Move to the next accordion item
+            collapseCustomer.hide();
+            btnMealAccordion.disabled = false; // Enable next accordion header
+            collapseMeal.show();
         });
 
         mealForm.addEventListener('submit', function(event) {
             event.preventDefault();
 
             const selectedMealRadio = document.querySelector('input[name="meal"]:checked');
-            if (selectedMealRadio) {
-                orderData.meal = {
-                    name: selectedMealRadio.value,
-                    price: parseFloat(selectedMealRadio.dataset.price) // Get price from data-price attribute
-                };
-            } else {
-                alert('Please select a meal!'); // Still using alert for direct user input error
-                return; // Stop function if no meal selected
+            if (!selectedMealRadio) {
+                alert('Please select a meal!'); // Use alert for simplicity, could be more refined validation
+                return;
             }
 
-            mealModal.hide();
-            addonsModal.show(); // Show next modal
-            btnSelectAddons.disabled = false; // Enable next button on main page for visual feedback
+            orderData.meal = {
+                name: selectedMealRadio.value,
+                price: parseFloat(selectedMealRadio.dataset.price)
+            };
+
+            // Move to the next accordion item
+            collapseMeal.hide();
+            btnAddonsAccordion.disabled = false; // Enable next accordion header
+            collapseAddons.show();
         });
 
         addonsForm.addEventListener('submit', function(event) {
@@ -256,7 +264,7 @@
             selectedAddons.forEach(addon => {
                 orderData.addons.push({
                     name: addon.value,
-                    price: parseFloat(addon.dataset.price) // Get price from data-price attribute
+                    price: parseFloat(addon.dataset.price)
                 });
             });
 
@@ -266,20 +274,14 @@
                 orderData.total += addon.price;
             });
 
-            addonsModal.hide();
-            populateSummaryModal(); // Populate summary before showing
-            orderSummaryModal.show(); // Show final summary modal
-            btnPlaceOrder.disabled = false; // Enable place order button on main page for visual feedback
+            // Close the addons accordion and show the summary section
+            collapseAddons.hide();
+            populateSummarySection(); // Populate the summary content
+            orderSummarySection.style.display = 'block'; // Show the summary section
+            orderSummarySection.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Scroll to summary
         });
 
-        // --- Event Listeners for Summary Modal Buttons ---
-
-        editOrderBtn.addEventListener('click', function() {
-            orderSummaryModal.hide();
-            // Go back to the first step (customer details) for full edit flow
-            // This also re-prefills the forms if values exist in orderData
-            customerModal.show();
-        });
+        // --- Event Listener for Confirm Order Button (on summary section) ---
 
         confirmOrderBtn.addEventListener('click', function() {
             // Build the detailed text for the confirmation modal
@@ -299,45 +301,40 @@
 
             confirmationText += `<h5 class="mt-3"><strong>Total:</strong> ₹${orderData.total.toFixed(2)}</h5>`;
 
-            // Set the content of the new confirmation modal
+            // Set the content of the confirmation modal
             confirmationOrderDetails.innerHTML = confirmationText;
 
             console.log('Final Order Data:', orderData);
 
-            orderSummaryModal.hide(); // Hide the summary modal
-            confirmationModal.show(); // Show the new confirmation modal
-            resetOrderForm(); // Call a function to reset the forms for a new order
+            orderSummarySection.style.display = 'none'; // Hide the summary section
+            confirmationModal.show(); // Show the confirmation modal
+            resetOrderForm(); // Reset forms for a new order
         });
+
 
         // --- Helper Functions ---
 
-        function populateSummaryModal() {
+        function populateSummarySection() {
             let summaryHtml = `
-                <h6>Customer Details:</h6>
-                <p><strong>Name:</strong> ${orderData.customer.name}</p>
+                <p><strong>Customer:</strong> ${orderData.customer.name}</p>
                 <p><strong>Address:</strong> ${orderData.customer.address}</p>
                 <p><strong>Phone:</strong> ${orderData.customer.phone}</p>
-
-                <h6 class="mt-4">Your Meal:</h6>
+                <hr>
                 <p><strong>Meal:</strong> ${orderData.meal.name} (₹${orderData.meal.price.toFixed(2)})</p>
             `;
 
             if (orderData.addons.length > 0) {
-                summaryHtml += `<h6 class="mt-4">Add-ons:</h6><ul>`;
+                summaryHtml += `<p class="mb-0"><strong>Add-ons:</strong></p><ul>`;
                 orderData.addons.forEach(addon => {
                     summaryHtml += `<li>${addon.name} (₹${addon.price.toFixed(2)})</li>`;
                 });
                 summaryHtml += `</ul>`;
             } else {
-                summaryHtml += `<p class="mt-4">No Add-ons selected.</p>`;
+                summaryHtml += `<p><strong>Add-ons:</strong> None</p>`;
             }
 
-            summaryHtml += `
-                <h5 class="mt-4">Total Price: ₹${orderData.total.toFixed(2)}</h5>
-                <hr>
-                <p class="text-success">Review your order and confirm!</p>
-            `;
-            orderSummaryContent.innerHTML = summaryHtml;
+            summaryContent.innerHTML = summaryHtml;
+            finalTotalDisplay.textContent = `₹${orderData.total.toFixed(2)}`;
         }
 
         // Function to reset all forms and order data for a new order
@@ -354,39 +351,40 @@
             mealForm.reset();
             addonsForm.reset();
 
-            // Disable main page buttons again, except the first one
-            btnSelectMeal.disabled = true;
-            btnSelectAddons.disabled = true;
-            btnPlaceOrder.disabled = true;
+            // Disable accordion headers and collapse all
+            btnMealAccordion.disabled = true;
+            btnAddonsAccordion.disabled = true;
+            collapseCustomer.show(); // Open the first section for a new order
+            collapseMeal.hide();
+            collapseAddons.hide();
+
+            // Hide summary section
+            orderSummarySection.style.display = 'none';
         }
 
-        // --- Pre-fill forms when modals are shown for editing ---
-        // This makes the "Edit Order" functionality work by showing previous selections
+        // --- Pre-fill forms when accordion items are shown for editing ---
 
-        document.getElementById('kfcCustomerModal').addEventListener('show.bs.modal', function () {
-            if (orderData.customer.name) { // Only pre-fill if data exists
+        document.getElementById('collapseCustomer').addEventListener('show.bs.collapse', function () {
+            if (orderData.customer.name) {
                 document.getElementById('customerName').value = orderData.customer.name;
                 document.getElementById('customerAddress').value = orderData.customer.address;
                 document.getElementById('customerPhone').value = orderData.customer.phone;
-            } else { // Clear if no data, for a fresh start
-                customerForm.reset();
+            } else {
+                customerForm.reset(); // Clear form if no data
             }
+            customerForm.classList.remove('was-validated'); // Clear validation feedback on re-opening
         });
 
-        document.getElementById('kfcMealModal').addEventListener('show.bs.modal', function () {
-            // Clear all radio buttons first
+        document.getElementById('collapseMeal').addEventListener('show.bs.collapse', function () {
             document.querySelectorAll('input[name="meal"]').forEach(radio => radio.checked = false);
-            // Then check the one that matches current orderData.meal.name
             if (orderData.meal.name) {
                 const mealRadio = document.querySelector(`input[name="meal"][value="${orderData.meal.name}"]`);
                 if (mealRadio) mealRadio.checked = true;
             }
         });
 
-        document.getElementById('kfcAddonsModal').addEventListener('show.bs.modal', function () {
-            // Clear all previous addon selections first
+        document.getElementById('collapseAddons').addEventListener('show.bs.collapse', function () {
             document.querySelectorAll('input[name="addon"]').forEach(checkbox => checkbox.checked = false);
-            // Then check only the ones in orderData
             orderData.addons.forEach(addon => {
                 const addonCheckbox = document.querySelector(`input[name="addon"][value="${addon.name}"]`);
                 if (addonCheckbox) addonCheckbox.checked = true;
