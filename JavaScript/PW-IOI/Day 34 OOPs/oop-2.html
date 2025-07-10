@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS in JS</title>
+</head>
+<body>
+    <script>
+        class Student{
+            // even if properties not defined in the class, 
+            // they can be added dynamically through the constructor
+            name;
+            // age;
+            // email;
+            #password; // private property
+            _address; // protected property | partial private property
+
+            constructor(name, age, email) {
+                this.name = name;
+                this.age = age;
+                this.email = email;
+            }
+
+            printData(){
+                console.log(`Name: ${this.name}, Age: ${this.age}, Email: ${this.email}`);
+            }
+        }
+
+        let std = new Student("John", 20, "John@gmail.com");
+        console.log(std);
+        std.printData();
+    </script>
+</body>
+</html>

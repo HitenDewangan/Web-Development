@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OOPS in JS</title>
+</head>
+<body>
+    <script>
+        let name = prompt("Enter your name");
+        let role = prompt("Enter your role");
+        let productName = prompt("Enter the new product name");
+
+        class Student{
+            _productName; // partial private property || protected property
+
+            set productName(newName){
+                if(role === 'admin'){
+                    this._productName = newName;
+                }else{
+                    console.log("You are not authorized to change the product name");
+                }
+            }
+
+            get productName(){
+                return this._productName;
+            }
+        }
+
+        let std = new Student();
+        std.productName = productName;
+        console.log(std.productName);
+    </script>
+</body>
+</html>
