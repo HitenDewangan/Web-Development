@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI PAge</title>
+</head>
+<body>
+    <h1 id="title" style="text-align: center;">UI Page</h1>
+    <p id="subtitle">This is a subtitle</p>
+    <div id="container">
+        <dt>Mobile</dt>
+        <dd id="mobile">OnePlus 12</dd>
+        <dt>Price</dt>
+        <dd id="price">45000</dd>
+        <dt>Quantity</dt>
+        <dd id="quantity">2</dd>
+        <dt>Total</dt>
+        <dd id="total"></dd>
+    </div>
+
+    <script type="module">
+        import printTitle from './UI-Page.js';
+        import printSubtitle from './UI-Page.js';
+        import calculateTotal from './calculateapp.js';
+
+
+        // dynamic inputs
+        let mobile = document.getElementById('mobile');
+        let price = document.getElementById('price');
+        let quantity = document.getElementById('quantity');
+
+        mobile.textContent = prompt('Enter Mobile Name :');
+        price.textContent = prompt('Enter Price :');
+        quantity.textContent = prompt('Enter Quantity :');
+        
+
+        // targeting elements by id
+        // and setting their text content
+        document.getElementById('title').textContent = printTitle();
+        document.getElementById('subtitle').innerHTML = printSubtitle();
+
+        document.getElementById('total').textContent = calculateTotal(price.textContent, quantity.textContent);
+    
+    </script>
+</body>
+</html>

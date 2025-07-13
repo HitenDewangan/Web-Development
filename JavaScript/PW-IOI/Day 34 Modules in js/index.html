@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modules in JS</title>
+</head>
+<body>
+    <script type="module">
+        import { add } from "./App.js";
+        import  PI  from "./App.js";  // eager loading because it is default export
+        import { mul } from "./index.js";  // eager loading because it is default export
+        console.log("Sum: " + add(10, 20));
+        console.log("PI: " + PI);
+
+        // import PI, { add } from "./App.js";
+        // import PI, { add as sum } from "./App.js";  // renaming import
+    </script>
+</body>
+</html>
