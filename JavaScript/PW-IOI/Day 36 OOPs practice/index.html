@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database UI with Bootstrap</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body class="container-fluid m-5">
+
+    <fieldset class="border border-4 p-4">
+        <legend>Connect with database</legend>
+        <div class="mb-3">
+            <label for="databaseSelect" class="form-label">Select database</label>
+            <select class="form-select" id="databaseSelect">
+                <option value="">Select Database</option>
+                <option value="MySQL">MySQL</option>
+                <option value="PostgreSQL">PostgreSQL</option>
+                <option value="SQL Server">SQL Server</option>
+                <option value="Oracle">Oracle</option>
+            </select>
+        </div>
+
+        <div class="action-buttons" id="action">
+            <label class="form-label d-block mt-3">Select Action</label>
+            <button type="button" class="btn btn-outline-primary" id="InsertBtn" onclick="dbOperation(this)">Insert</button>
+            <button type="button" class="btn btn-outline-warning" id="UpdateBtn" onclick="dbOperation(this)">Update</button>
+            <button type="button" class="btn btn-outline-danger" id="DeleteBtn" onclick="dbOperation(this)">Delete</button>
+        </div>
+    </fieldset>
+    <p id="result" class="mt-3" style="text-align: center;"></p> <script type="text/javascript">
+        class Database {
+            _databaseName = ""; // Private-like convention
+
+            // Setter for databaseName
+            set databaseName(name) {
+                this._databaseName = name;
+            }
+            // Getter for databaseName
+            get databaseName() {
+                return this._databaseName;
+            }
+
+            // Methods to perform database actions
+            insert() {
+                // Check if a database is selected before proceeding
+                if (this._databaseName === "") { // Use _databaseName for internal check
+                    return { message: "Please select a database first!", type: "error" };
+                }
+                return { message: `Connected to ${this.databaseName}: Record inserted successfully.`, type: "success" };
+            }
+            update() {
+                if (this._databaseName === "") {
+                    return { message: "Please select a database first!", type: "error" };
+                }
+                return { message: `Connected to ${this.databaseName}: Record updated successfully.`, type: "success" };
+            }
+            delete() {
+                if (this._databaseName === "") {
+                    return { message: "Please select a database first!", type: "error" };
+                }
+                return { message: `Connected to ${this.databaseName}: Record deleted successfully.`, type: "success" };
+            }
+        }
+
+        // Create a SINGLE instance of the Database class
+        const dbInstance = new Database();
+
+        // Get references to HTML elements
+        const databaseSelect = document.getElementById("databaseSelect");
+        const resultParagraph = document.getElementById("result");
+
+        // Event listener for the select dropdown
+        databaseSelect.addEventListener("change", function() {
+            // Update the databaseName on our single dbInstance
+            dbInstance.databaseName = this.value;
+            // Clear any previous messages when the selection changes
+            resultParagraph.textContent = "";
+            resultParagraph.style.color = "red"; // Reset to default error color for unselected state
+        });
+
+        // The main function called by button clicks
+        function dbOperation(clickedButton) {
+            let msgObj; // Will store the message and its type (error/success)
+
+            // First, update the databaseName in case the user clicked a button without changing selection
+            // This line is technically redundant if the 'change' listener on the select works perfectly,
+            // but it acts as a safeguard.
+            // However, for clean logic, it's better to rely on the 'change' event to update dbInstance.databaseName.
+            // Let's remove this line from here to ensure the state is managed by the select.
+            // dbInstance.databaseName = databaseSelect.value; // Removed, rely on change event
+
+            // Determine which button was clicked and call the appropriate method
+            const buttonId = clickedButton.id; // Get the ID of the clicked button
+
+            switch (buttonId) {
+                case "InsertBtn":
+                    msgObj = dbInstance.insert();
+                    break;
+                case "UpdateBtn":
+                    msgObj = dbInstance.update();
+                    break;
+                case "DeleteBtn":
+                    msgObj = dbInstance.delete();
+                    break;
+                default:
+                    msgObj = { message: "Unknown action!", type: "error" };
+            }
+
+            // Display the message and set color based on type
+            resultParagraph.textContent = msgObj.message;
+            if (msgObj.type === "success") {
+                resultParagraph.style.color = "green";
+            } else {
+                resultParagraph.style.color = "red";
+            }
+        }
+    </script>
+
+</body>
+</html>
