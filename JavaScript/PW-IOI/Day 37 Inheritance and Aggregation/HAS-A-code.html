@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAs A</title>
+</head>
+<body>
+    <fieldset style="width: 250px;">
+        <legend>Install Dell App</legend>
+        <div>
+            <select name="" id="lstVersions">
+                <option value="-1">Select Version</option>
+                <option value="Version-1">Version-1-2024</option>
+                <option value="Version-2">Version-2-2025[Loans]</option>
+                <option value="Version-3">Version-3-2026[Net Banking]</option>
+            </select>
+            <button id="btnInstall">Install</button>
+        </div>
+
+        <script>
+            class DellVersion1 {
+                personal = "Personal Banking <br>";
+                card = "Credit Card Payment <br>";
+                print() {
+                    document.write(`${this.personal} ${this.card}`);
+                    console.log("Personal Banking and Credit Card Payment features are available.");
+                }
+
+            }
+            class DellVersion2 {
+                loan = "'House Loan, Education Loan, Car Loan, Gold Loan' <br>";
+                print() {
+                    let obj = new DellVersion1(); // Has-A [Aggregation]
+                    obj.print();
+                    document.write(`Dell Version 2: ${this.loan}`);
+                }
+
+            }
+            class DellVersion3 {
+                nriService = "Non Resident Indian Service <br>";
+                print() {
+                    let obj = new DellVersion2(); // Has-A [Aggregation]
+                    obj.print();
+                    document.write(`${this.nriService} ${this.netBanking}`);
+                }
+            }
+
+            document.getElementById("btnInstall").addEventListener("click", function() {
+                const selectedVersion = document.getElementById("lstVersions").value;
+                let dellApp;
+
+                switch (selectedVersion) {
+                    case "Version-1":
+                        dellApp = new DellVersion1();
+                        document.write("<h2>DELL Version-1 Installed</h2>")
+                        dellApp.print();
+                        break;
+                    case "Version-2":
+                        dellApp = new DellVersion2();
+                        document.write("<h2>DELL Version-2 Installed</h2>")
+                        dellApp.print();
+                        break;
+                    case "Version-3":
+                        dellApp = new DellVersion3();
+                        document.write("<h2>DELL Version-3 Installed</h2>")
+                        dellApp.print();
+                        break;
+                    default:
+                        console.log("Please select a valid version.");
+                        document.write("<h2>Please select a valid version.</h2>");
+                        return;
+                }
+
+                // alert(`Dell App ${selectedVersion} installed successfully!`);
+            });
+        </script>
+    </fieldset>
+</body>
+</html>
