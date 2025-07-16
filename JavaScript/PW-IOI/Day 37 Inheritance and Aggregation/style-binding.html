@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box" class="red">
+        Hello World
+    </div>
+
+    <script>
+        console.log(document.getElementById("box").classList);
+        const box = document.getElementById("box");
+        box.classList.add("blue");
+        box.classList.remove("red");
+        // box.classList.remove("red");
+
+        if(box.classList.contains("red")) {
+            box.classList.remove("red");
+        } else {
+            box.classList.add("red");
+        }
+
+        box.classList.toggle("yello");
+        
+
+    </script>
+</body>
+</html>

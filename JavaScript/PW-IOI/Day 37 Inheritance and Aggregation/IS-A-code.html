@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HAs A</title>
+    <title>IS-A</title>
 </head>
 <body>
     <fieldset style="width: 250px;">
@@ -24,25 +24,22 @@
                 card = "Credit Card Payment <br>";
                 print() {
                     document.write(`${this.personal} ${this.card}`);
-                    console.log("Personal Banking and Credit Card Payment features are available.");
                 }
 
             }
-            class DellVersion2 {
+            class DellVersion2 extends DellVersion1 {
                 loan = "'House Loan, Education Loan, Car Loan, Gold Loan' <br>";
                 print() {
-                    let obj = new DellVersion1(); // Has-A [Aggregation]
-                    obj.print();
-                    document.write(`Dell Version 2: ${this.loan}`);
+                    super.print(); // Call the print method of the previous version
+                    document.write(`${this.loan}`);
                 }
 
             }
-            class DellVersion3 {
-                nriService = "Non Resident Indian Service <br>";
+            class DellVersion3 extends DellVersion2 {
+                nriService = "Non Resident Indian Service";
                 print() {
-                    let obj = new DellVersion2(); // Has-A [Aggregation]
-                    obj.print();
-                    document.write(`${this.nriService} ${this.netBanking}`);
+                    super.print(); // Call the print method of the previous version
+                    document.write(`${this.nriService} is offered`);
                 }
             }
 

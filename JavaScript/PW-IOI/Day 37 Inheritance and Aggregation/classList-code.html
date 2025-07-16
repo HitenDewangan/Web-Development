@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            font-size: 20px;
+        }
+        .live {
+            background-color: lightgreen;
+        }
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <button id="toggleBtn">Toggle</button>
+    <div id="box" class="box live" style="margin-top: 25px;">Box</div>
+
+    <script>
+        document.getElementById("toggleBtn").addEventListener("click", function() {
+            const box = document.getElementById("box");
+            if (box.classList.contains("live")) {
+                box.classList.replace("live", "highlight");
+            } else {
+                box.classList.replace("highlight", "live");
+            }
+        });
+    </script>
+</body>
+</html>

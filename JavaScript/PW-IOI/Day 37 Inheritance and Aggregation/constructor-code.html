@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor</title>
+</head>
+<body>
+    
+
+    <script>
+        class Parent {
+            constructor(name, age, address) {
+                // Initialize properties
+                this.name = name;
+                this.age = age;
+                this.address = address;
+                console.log(`Parent constructor called`);
+            }
+        }
+        class Child extends Parent {
+            constructor(name, age, address, school) {
+                super(name, age); // Call the parent constructor
+                this.school = school;
+                console.log(`Child constructor called`);
+            }
+
+            display() {
+                console.log(`Name: ${this.name}, Age: ${this.age}, Address: ${this.address}, School: ${this.school}`);
+            }
+        }
+
+        let child = new Child("John Doe", 10, "123 Main St", "ABC Elementary");
+        child.display();
+    </script>
+</body>
+</html>
