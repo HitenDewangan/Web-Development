@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Coordinate Message</title>
+
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #myImage {
+            border: 2px solid #333;
+            display: block;
+            margin-bottom: 10px;
+        }
+        #message {
+            font-size: 1.2em;
+            color: rgb(199, 154, 9);
+        }
+    </style>
+</head>
+<body>
+    <!-- Replace 'my-local-image.jpg' with your actual image filename -->
+    <img id="myImage" src="../../../FASHIONSTORE/public/images/women-card.jpg" alt="Local" width="400">
+    <h3 id="message"></h3>
+
+    <script>
+        const img = document.getElementById('myImage');
+        const msg = document.getElementById('message');
+
+        img.addEventListener('click', function(e) {
+            const rect = img.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            console.log(`Clicked coordinates: x=${x}, y=${y}`);
+
+            // Example: Show message if pointer is within x:100-150 and y:50-100
+            if (x >= 44 && x <= 127 && y >= 315 && y <= 376) {
+                msg.innerHTML = "You found the secret spot! It will take <span class='bi bi-currency-rupee'></span>71000 to buy this product.";
+            } else {
+                msg.textContent = "";
+            }
+        });
+
+        img.addEventListener('mouseleave', function() {
+            msg.textContent = "";
+        });
+    </script>
+</body>
+</html>
