@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Follower Image</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for the body to ensure it takes full viewport height */
+        body {
+            min-height: 100vh;
+            cursor: ; /* Hide the default mouse cursor */
+            font-family: "Inter", sans-serif; /* Apply Inter font */
+            background-color: #f0f4f8; /* Light background */
+            overflow: hidden; /* Prevent scrollbars if image goes off screen */
+        }
+
+        /* Styles for the small image that follows the cursor */
+        #follower-image {
+            position: absolute; /* Absolutely positioned relative to the body */
+            width: 80px; /* Small size for the image */
+            height: 80px;
+            object-fit: cover; /* Ensure image covers the area, cropping if necessary */
+            border-radius: 50%; /* Make it round */
+            border: 3px solid #98d606; /* Blue border */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Soft shadow */
+            transition: transform 5s ease; /* Smooth transition for following */
+            /* Using translate to center the image on the cursor */
+            transform: translate(-50%, -50%);
+            z-index: 9999; /* Ensure it's on top of other content */
+            pointer-events: none; /* Crucial: allows clicks to pass through to elements beneath */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flex flex-col items-center justify-center h-screen p-4">
+        <h1 class="text-4xl font-bold text-gray-800 mb-4 text-center">
+            Move Your Mouse!
+        </h1>
+        <p class="text-lg text-gray-600 text-center max-w-xl">
+            Watch the little image follow your cursor. Click anywhere to see it snap to that spot!
+        </p>
+    </div>
+
+    <!-- The image that will follow the mouse -->
+    <img id="follower-image" src="https://placehold.co/80x80/3b82f6/ffffff?text=🐾" alt="Mouse Follower">
+
+    <script>
+        // Get a reference to the image element
+        const followerImage = document.getElementById('follower-image');
+
+        // Function to update the image's position
+        function updateImagePosition(x, y) {
+            followerImage.style.left = `${x}px`;
+            followerImage.style.top = `${y}px`;
+        }
+
+        // Event listener for mouse movement
+        document.addEventListener('mousemove', (e) => {
+            // Update the image position to the current mouse coordinates
+            updateImagePosition(e.clientX, e.clientY);
+        });
+
+        // Event listener for mouse clicks
+        document.addEventListener('click', (e) => {
+            // When clicked, immediately snap the image to the click coordinates
+            // The mousemove listener will then take over from this new position
+            updateImagePosition(e.clientX, e.clientY);
+        });
+
+        // Optional: Make the image visible after the page loads to avoid initial flicker
+        window.onload = () => {
+            followerImage.style.visibility = 'visible';
+        };
+    </script>
+</body>
+</html>
