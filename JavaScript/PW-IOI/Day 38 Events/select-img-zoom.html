@@ -4,8 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Select image zoom</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .thumbs img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: border 0.2s;
+            margin-bottom: 12px;
+        }
+        .thumbs img.selected, .thumbs img:hover {
+            border: 2px solid #007185;
+        }
+        .main-img-container {
+            position: relative;
+            width: 90%;
+            height: 90%;
+            border: 1px solid #eee;
+            overflow: hidden;
+            background: #fafafa;
+            border-radius: 8px;
+        }
+        .main-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.2s;
+        }
+        .main-img.zoomed {
+            transform: scale(2);
+            cursor: zoom-in;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="container mt-5">
+      <div class="row justify-content-center align-items-start">
+        <div class="col-auto">
+          <div class="thumbs d-flex flex-column align-items-center">
+            <img src="../../images/elephant.jpg" alt="Phone angle 1" class="selected" data-img="../../images/elephant.jpg">
+            <img src="../../images/reindeer-2.jpg" alt="Phone angle 2" data-img="../../images/reindeer-2.jpg">
+            <img src="../../images/leopard.jpg" alt="Phone angle 3" data-img="../../images/leopard.jpg">
+            <img src="../../images/reindeer.jpg" alt="Phone angle 4" data-img="../../images/reindeer.jpg">
+          </div>
+        </div>
+        <div class="col-auto">
+          <div class="main-img-container">
+            <img src="../../images/elephant.jpg" alt="Main phone" class="main-img" id="mainImg">
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+        // Bootstrap-based gallery logic
+        const thumbs = document.querySelectorAll('.thumbs img');
+        const mainImg = document.getElementById('mainImg');
+
+        thumbs.forEach(thumb => {
+            thumb.addEventListener('mouseenter', function() {
+                thumbs.forEach(t => t.classList.remove('selected'));
+                this.classList.add('selected');
+                mainImg.src = this.dataset.img;
+            });
+        });
+
+        mainImg.addEventListener('mousemove', function(e) {
+            this.classList.add('zoomed');
+            const rect = this.getBoundingClientRect();
+            const x = ((e.clientX - rect.left) / rect.width) * 100;
+            const y = ((e.clientY - rect.top) / rect.height) * 100;
+            this.style.transformOrigin = `${x}% ${y}%`;
+        });
+        mainImg.addEventListener('mouseleave', function() {
+            this.classList.remove('zoomed');
+            this.style.transformOrigin = 'center center';
+        });
+    </script>
 </body>
 </html>
