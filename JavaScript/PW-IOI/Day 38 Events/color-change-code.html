@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>color change code</title>
+</head>
+<body>
+    <button onclick="changeColor(this.name)" name="red">Red</button>
+    <button onclick="changeColor(this.name)" name="green">Green</button>
+    <button onclick="changeColor(this.name)" name="yellow">Yellow</button>
+    
+    <h1>Welcome to the HIDED World</h1>
+
+    <script type="text/javascript">
+        function changeColor(color) {
+            // Change the background color of the body based on the button clicked
+            document.body.style.backgroundColor = color;
+            console.log(`Background color changed to: ${color}`);
+
+        }
+    </script>
+</body>
+</html>
