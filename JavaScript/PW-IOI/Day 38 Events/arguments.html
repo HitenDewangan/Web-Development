@@ -6,7 +6,7 @@
     <title>Custom - Default- Arguments</title>
 </head>
 <body>
-    <button onclick="displayInfo(this, {name: 'iPhone', location : ['BGLR', 'HYD'], price: 55000, ratings: 4.5})" class="myButton">Display info</button>
+    <button onclick="displayInfo(this, {name: 'iPhone', location : ['BGLR', 'HYD'], price: 55000, ratings: 4.5})" class="Fuck u !">Display info</button>
 
     <script type="text/javascript">
         function displayInfo(obj, info) {
@@ -18,6 +18,10 @@
             console.log("Button-classList:", obj.classList.value); // outputs as a string
 
             // Create and append elements to display the product information
+            let h1 = document.createElement('h1');
+            h1.textContent = "iphone Product Information";
+            document.body.appendChild(h1);
+
             let ul = document.createElement('ul');
 
             let liName = document.createElement("li");
