@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom - Default- Arguments</title>
+</head>
+<body>
+    <button onclick="displayInfo(this, {name: 'iPhone', location : ['BGLR', 'HYD'], price: 55000, ratings: 4.5})" class="myButton">Display info</button>
+
+    <script type="text/javascript">
+        function displayInfo(obj, info) {
+            // obj will refer to the button element (<button id="myButton" ...>)
+            console.log("Product Name:", info.name);
+            console.log("Product Location:", info.location);
+            console.log("Product Price:", info.price);
+            console.log("Product Ratings:", info.ratings);
+            console.log("Button-classList:", obj.classList.value); // outputs as a string
+
+            // Create and append elements to display the product information
+            let ul = document.createElement('ul');
+
+            let liName = document.createElement("li");
+            liName.textContent = `Product Name: ${info.name}`;
+
+            let liCities = document.createElement("li");
+            liCities.textContent = `Locations: ${info.location.join(', ')}`;
+
+            let liPrice = document.createElement("li");
+            liPrice.textContent = `Price: ${info.price}`;
+
+            let liRatings = document.createElement("li");
+            liRatings.textContent = `Ratings: ${info.ratings}`;
+
+            let liClass = document.createElement("li");
+            liClass.textContent = `Button Classes: ${obj.classList.value}`;
+
+            ul.append(liName, liCities, liPrice, liRatings, liClass);
+            document.body.appendChild(ul);
+
+
+        }
+    </script>
+</body>
+</html>
