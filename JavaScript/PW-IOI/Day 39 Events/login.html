@@ -318,47 +318,38 @@
         const floatingShapes = document.querySelectorAll('.floating-shape');
 
         // Function to validate username
-        async function validateUser() {
-            let response = await fetch("../data/users.json");
-            let data = await response.json();
+        function validateUsername() {
+            const username = usernameInput.value;
+            
+            // Rule: lowercase letters, underscores, and periods only
+            const regex = /^[a-z_.]+$/;
 
-            // validate both now from the username and password input by matching with the data
-            const username = usernameInput.value.toLowerCase();
-            const password = passwordInput.value;
-
-            for (let user of data) {
-                if (user.username === username && user.password === password) {
-                    return true;
-                }
+            if (username === '') {
+                usernameMessage.textContent = ''; // Clear message if input is empty
+                usernameInput.style.borderColor = ''; // Reset border
+            } else if (!regex.test(username)) {
+                usernameMessage.textContent = 'Username must be lowercase and contain only letters, underscores, or periods.';
+                usernameInput.style.border = '2px solid #ff6b6b'; /* Red border for error */
+            } else if (username !== username.toLowerCase()) {
+                usernameMessage.textContent = 'Username must be entirely lowercase.';
+                usernameInput.style.border = '2px solid #ff6b6b'; /* Red border for error */
+            } else {
+                usernameMessage.textContent = 'Username looks good!';
+                usernameMessage.style.color = '#a8ff78'; /* Green for success */
+                usernameInput.style.border = '2px solid #a8ff78'; /* Green border for success */
             }
-
-            return false;
-            // const username = usernameInput.value;
-            // // Rule: lowercase letters, underscores, and periods only
-            // const regex = /^[a-z_.]+$/;
-
-            // if (username === '') {
-            //     usernameMessage.textContent = ''; // Clear message if input is empty
-            //     usernameInput.style.borderColor = ''; // Reset border
-            // } else if (!regex.test(username)) {
-            //     usernameMessage.textContent = 'Username must be lowercase and contain only letters, underscores, or periods.';
-            //     usernameInput.style.border = '2px solid #ff6b6b'; /* Red border for error */
-            // } else if (username !== username.toLowerCase()) {
-            //     usernameMessage.textContent = 'Username must be entirely lowercase.';
-            //     usernameInput.style.border = '2px solid #ff6b6b'; /* Red border for error */
-            // } else {
-            //     usernameMessage.textContent = 'Username looks good!';
-            //     usernameMessage.style.color = '#a8ff78'; /* Green for success */
-            //     usernameInput.style.border = '2px solid #a8ff78'; /* Green border for success */
-            // }
         }
 
         // Event listener for username input on keyup
-        usernameInput.addEventListener('keyup', validateUser);
+        usernameInput.addEventListener('keyup', validateUsername);
 
         // Event listener for login button (for demonstration)
-        loginButton.addEventListener('click', async () => {
-            if (await validateUser()) {
+        loginButton.addEventListener('click', () => {
+            // Re-validate on click to catch any final errors
+            validateUsername();
+
+            if (usernameMessage.textContent === 'Username looks good!' && usernameInput.value !== '' && passwordInput.value !== '') {
+                // Using a custom modal-like message instead of alert()
                 const messageBox = document.createElement('div');
                 messageBox.style.cssText = `
                     position: fixed;
@@ -375,8 +366,9 @@
                     font-size: 1.1em;
                 `;
                 messageBox.innerHTML = `
-                    <p>Welcome Back:</p>
+                    <p>Login attempt with:</p>
                     <p><strong>Username:</strong> ${usernameInput.value}</p>
+                    <p><strong>Password:</strong> ${document.getElementById('password').value}</p>
                     <button style="margin-top: 15px; padding: 8px 15px; border: none; border-radius: 5px; background: #0072ff; color: white; cursor: pointer;">OK</button>
                 `;
                 document.body.appendChild(messageBox);
@@ -384,6 +376,8 @@
                 messageBox.querySelector('button').addEventListener('click', () => {
                     document.body.removeChild(messageBox);
                 });
+
+                // In a real application, you would send this data to a server
             } else {
                 const messageBox = document.createElement('div');
                 messageBox.style.cssText = `
@@ -467,8 +461,6 @@
             });
         });
 
-        // Initial validation check on page load if there's pre-filled data (unlikely for login)
-        // You could call validateUsername() here if needed.
     </script>
 </body>
 </html>

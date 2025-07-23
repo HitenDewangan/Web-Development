@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doubke click</title>
+</head>
+<body>
+    <div>
+        <img src="../../images/elephant.jpg" width="500px" height="300px">
+        <p>Double click to maximize the image</p>
+        <p>Selection disabled on the page</p>
+    </div>
+
+    <script type="text/javascript">
+        document.querySelector("img").addEventListener("dblclick", function () {
+            window.open("../../images/elephant.jpg", "_blank", "height=500,width=600");
+        });
+
+        document.oncontextmenu = function () {
+            return false;
+        };
+
+        document.onselectstart = function () {
+            return false;
+        };
+    </script>
+</body>
+</html>
