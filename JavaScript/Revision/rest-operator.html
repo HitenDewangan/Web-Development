@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rest operator with Object Destructuring</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // Modify the function signature to use object destructuring
+    // { id, ...otherData } directly destructures the object passed as the first argument.
+    function printData( { id, ...otherData } ) {
+      console.log("ID:", id); // 'id' will now directly contain the id value
+      console.log("Other Data (object):", otherData); // 'otherData' will be an object containing all other properties
+
+      // You can then destructure 'otherData' further if needed, as you tried before
+      // const { name, gender, ismarried, salary = 'Not Displayed' } = otherData;
+      // console.log("Name:", name);
+      // console.log("Gender:", gender);
+      // console.log("Is Married:", ismarried);
+      // console.log("Salary:", salary); // This will only work if salary is passed in 'otherData'
+    }
+
+    let userData = {
+      id: 101,
+      name: 'John',
+      gender: 'male',
+      ismarried: true,
+    };
+
+    // Call printData with the object directly
+    printData(userData);
+
+    let updatedData = {
+      ...userData,
+      name: 'Chris', // same key, updating name
+      nickname: 'Johnny', // new key, adding nickname
+      salary: 50000 // Adding a salary property
+    }
+
+    printData(updatedData);
+  </script>
+</body>
+</html>

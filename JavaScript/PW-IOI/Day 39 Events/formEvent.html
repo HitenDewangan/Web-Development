@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beautiful Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS CDN (keeping it as it was in the original structure) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Basic Reset & Font */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #fff;
+            overflow: hidden; /* Hide overflow from floating shapes and animated background */
+            position: relative; /* Needed for absolute positioning of background */
+            /* The background will be handled by .animated-background */
+        }
+
+        /* Styles for the animated background */
+        .animated-background {
+            position: fixed; /* Fixed to viewport */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; /* Ensure it stays behind everything, even floating shapes */
+            background: linear-gradient(135deg, #a7f3d0, #67e8f9, #a78bfa, #fbcfe8);
+            background-size: 400% 400%; /* Larger than viewport to allow movement */
+            animation: gradientAnimation 15s ease infinite; /* Smooth, looping animation */
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Container for floating shapes */
+        .floating-shapes-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* Allow clicks to pass through */
+            z-index: -1; /* Behind the form, but above the animated background */
+        }
+
+        /* Keyframes for floating animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 0.8;
+            }
+        }
+
+        @keyframes fadeAndMove {
+            0% {
+                transform: translate(0, 0) scale(0.8);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translate(calc(var(--x) * 1px), calc(var(--y) * 1px)) scale(var(--s));
+                opacity: 0;
+            }
+        }
+
+        /* Floating shapes */
+        .floating-shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%; /* Default to circle */
+            animation: float 8s ease-in-out infinite alternate, fadeAndMove 15s linear infinite;
+            filter: blur(1px);
+            opacity: 0;
+            transition: transform 0.1s ease-out; /* Smooth transition for mouse interaction */
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 80px; height: 80px;
+            top: 10%; left: 15%;
+            animation-delay: 0s, 1s;
+            --x: 100; --y: 150; --s: 1.2;
+            background: rgba(255, 255, 255, 0.25);
+        }
+        .floating-shape:nth-child(2) {
+            width: 120px; height: 120px;
+            top: 80%; left: 70%;
+            animation-delay: 2s, 3s;
+            background: rgba(255, 255, 255, 0.2);
+            --x: -200; --y: -100; --s: 0.9;
+        }
+        .floating-shape:nth-child(3) {
+            width: 60px; height: 60px;
+            top: 30%; left: 85%;
+            animation-delay: 4s, 5s;
+            background: rgba(255, 255, 255, 0.3);
+            --x: -50; --y: 200; --s: 1.1;
+        }
+        .floating-shape:nth-child(4) {
+            width: 100px; height: 100px;
+            top: 50%; left: 5%;
+            animation-delay: 6s, 7s;
+            background: rgba(255, 255, 255, 0.22);
+            --x: 150; --y: -50; --s: 1.0;
+        }
+        .floating-shape:nth-child(5) {
+            width: 70px; height: 70px;
+            top: 20%; left: 40%;
+            animation-delay: 8s, 9s;
+            background: rgba(255, 255, 255, 0.28);
+            --x: -100; --y: 100; --s: 0.8;
+        }
+        .floating-shape:nth-child(6) {
+            width: 90px; height: 90px;
+            top: 60%; left: 25%;
+            animation-delay: 10s, 11s;
+            background: rgba(255, 255, 255, 0.18);
+            --x: 200; --y: -200; --s: 1.3;
+        }
+        .floating-shape:nth-child(7) {
+            width: 50px; height: 50px;
+            top: 5%; left: 60%;
+            animation-delay: 12s, 13s;
+            background: rgba(255, 255, 255, 0.25);
+            --x: -150; --y: 50; --s: 0.7;
+        }
+        .floating-shape:nth-child(8) {
+            width: 110px; height: 110px;
+            top: 70%; left: 10%;
+            animation-delay: 14s, 15s;
+            background: rgba(255, 255, 255, 0.16);
+            --x: 50; --y: 180; --s: 1.4;
+        }
+
+        /* Make some shapes squares or triangles */
+        .floating-shape:nth-child(even) {
+            border-radius: 10px; /* Square-ish */
+            transform: rotate(45deg); /* Rotate squares */
+        }
+        .floating-shape:nth-child(3n) {
+            border-radius: 0; /* Triangle-ish */
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+        }
+
+
+        /* Login Form Styling */
+        .login-container {
+            background: rgba(255, 255, 255, 0.15); /* Semi-transparent white */
+            backdrop-filter: blur(10px); /* Frosted glass effect */
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            position: relative; /* For z-index */
+            z-index: 1; /* Above floating shapes */
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .login-container h2 {
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        fieldset {
+            border: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            font-size: 1.1em;
+            outline: none;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .input-group input:focus {
+            background: rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+        }
+
+        #username-message {
+            color: #ffdddd; /* Lighter red for error */
+            font-size: 0.9em;
+            margin-top: 5px;
+            min-height: 20px; /* Reserve space to prevent layout shift */
+            text-align: left;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            background: linear-gradient(90deg, #00c6ff 0%, #0072ff 100%); /* Blue gradient */
+            color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .login-button:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+            z-index: -1;
+        }
+
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 114, 255, 0.6);
+        }
+
+        .login-button:hover:before {
+            width: 200%;
+            height: 200%;
+        }
+
+        .login-button:active {
+            transform: translateY(0);
+            box-shadow: 0 3px 10px rgba(0, 114, 255, 0.3);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 500px) {
+            .login-container {
+                padding: 30px 20px;
+                margin: 20px;
+            }
+            .login-container h2 {
+                font-size: 1.8em;
+            }
+            .input-group input, .login-button {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background Element -->
+    <div class="animated-background"></div>
+
+    <div class="floating-shapes-container">
+        <!-- Floating shapes for background animation -->
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+    </div>
+
+    <div class="login-container">
+        <h2>Welcome Back!</h2>
+        <fieldset>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username">
+                <div id="username-message"></div>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password">
+            </div>
+
+            <button type="submit" class="login-button">Login</button>
+        </fieldset>
+    </div>
+
+    <script>
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const usernameMessage = document.getElementById('username-message');
+        const loginButton = document.querySelector('.login-button');
+        const floatingShapes = document.querySelectorAll('.floating-shape');
+
+        // User data (replace with actual fetch from users.json in a real scenario)
+        // For demonstration, we'll simulate fetching this data.
+        let usersData = [];
+
+        // Simulate fetching users.json
+        async function fetchUsersData() {
+            // In a real application, you would fetch from a file like:
+            const response = await fetch('users.json');
+            usersData = await response.json();
+        }
+
+        // Function to validate username format
+        function validateUsernameFormat() {
+            const username = usernameInput.value;
+            // Rule: lowercase letters, underscores, and periods only
+            const regex = /^[a-z_.]+$/;
+
+            if (username === '') {
+                usernameMessage.textContent = ''; // Clear message if input is empty
+                usernameInput.style.border = ''; // Reset border
+                return false;
+            } else if (!regex.test(username)) {
+                usernameMessage.textContent = 'Username must be lowercase and contain only letters, underscores, or periods.';
+                usernameInput.style.border = '2px solid #ff6b6b'; /* Red border for error */
+                return false;
+            } else if (username !== username.toLowerCase()) {
+                usernameMessage.textContent = 'Username must be entirely lowercase.';
+                usernameInput.style.border = '2px solid #ff6b6b'; /* Red border for error */
+                return false;
+            } else {
+                usernameMessage.textContent = 'Username format looks good!';
+                usernameMessage.style.color = '#a8ff78'; /* Green for success */
+                usernameInput.style.border = '2px solid #a8ff78'; /* Green border for success */
+                return true;
+            }
+        }
+
+        // Function to validate username and password against loaded data
+        function validateLoginCredentials(username, password) {
+            return usersData.some(user => user.username === username && user.password === password);
+        }
+
+        // Event listener for username input on keyup
+        usernameInput.addEventListener('keyup', validateUsernameFormat);
+
+        // Event listener for login button
+        loginButton.addEventListener('click', () => {
+            const isUsernameFormatValid = validateUsernameFormat();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            if (isUsernameFormatValid && username !== '' && password !== '') {
+                if (validateLoginCredentials(username, password)) {
+                    showMessageBox('Login Successful!', `Welcome, ${username}!`, '#28a745'); // Green for success
+                } else {
+                    showMessageBox('Login Failed', 'Invalid username or password.', '#dc3545'); // Red for failure
+                }
+            } else {
+                showMessageBox('Input Error', 'Please correct the form errors and fill in both fields.', '#ffc107'); // Yellow for warning
+            }
+        });
+
+        // Custom message box function
+        function showMessageBox(title, message, bgColor) {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: ${bgColor};
+                color: white;
+                padding: 25px;
+                border-radius: 12px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+                z-index: 10000; /* Ensure it's above everything */
+                text-align: center;
+                font-size: 1.2em;
+                max-width: 350px;
+                width: 90%;
+            `;
+            messageBox.innerHTML = `
+                <h3 style="margin-bottom: 15px; font-weight: 700;">${title}</h3>
+                <p>${message}</p>
+                <button style="margin-top: 20px; padding: 10px 20px; border: none; border-radius: 8px; background: rgba(255, 255, 255, 0.2); color: white; cursor: pointer; font-weight: 600; transition: background 0.2s ease;">OK</button>
+            `;
+            document.body.appendChild(messageBox);
+
+            messageBox.querySelector('button').addEventListener('click', () => {
+                document.body.removeChild(messageBox);
+            });
+        }
+
+        // --- Mouse interaction for floating shapes (repel effect) ---
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+
+            floatingShapes.forEach(shape => {
+                const rect = shape.getBoundingClientRect();
+                const shapeCenterX = rect.left + rect.width / 2;
+                const shapeCenterY = rect.top + rect.height / 2;
+
+                const dx = mouseX - shapeCenterX;
+                const dy = mouseY - shapeCenterY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+
+                const maxRepelDistance = 300; // Max distance for effect
+                const maxRepelStrength = 20; // Max pixels to move
+                let repelFactor = 0;
+
+                if (distance < maxRepelDistance) {
+                    repelFactor = 1 - (distance / maxRepelDistance);
+                }
+
+                // Calculate movement away from the mouse
+                const moveX = -(dx / distance) * maxRepelStrength * repelFactor;
+                const moveY = -(dy / distance) * maxRepelStrength * repelFactor;
+
+                // Apply the transformation directly. CSS transition handles smoothness.
+                shape.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+        document.addEventListener('mouseleave', () => {
+            floatingShapes.forEach(shape => {
+                shape.style.transform = ''; // Clear inline style, letting CSS animation take over
+            });
+        });
+
+        // Initialize and start animations on window load
+        window.onload = () => {
+            // Fetch user data
+            fetchUsersData();
+        };
+    </script>
+</body>
+</html>

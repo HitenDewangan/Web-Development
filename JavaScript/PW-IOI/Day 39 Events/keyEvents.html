@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>key events</title>
+</head>
+<body>
+    <input type="text" id="username" placeholder="Enter your username" onkeyup="handleKeyUp(event)" onkeydown="handleKeyDown(event)" 
+        onkeypress="handleCharacter(event)">
+
+
+    
+    <script type="text/javascript">
+        function handleKeyUp(event) {
+            console.log("Key Up Event:", event.key);
+            // You can add more logic here if needed
+        }
+
+        function handleKeyDown(event) {
+            console.log("Key Down Event:", event.key);
+            // You can add more logic here if needed
+        }
+
+        function handleCharacter(event) {
+            console.log("Character Typed:", event.key);
+            // You can add more logic here if needed
+        }
+    </script>
+
+</body>
+</html>
