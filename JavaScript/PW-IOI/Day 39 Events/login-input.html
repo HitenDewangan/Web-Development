@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Beautiful Login</title>
+    <title>Beautiful Login Input</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Basic Reset & Font */
@@ -317,6 +317,17 @@
         const loginButton = document.querySelector('.login-button');
         const floatingShapes = document.querySelectorAll('.floating-shape');
 
+        // User data (replace with actual fetch from users.json in a real scenario)
+        // For demonstration, we'll simulate fetching this data.
+        let usersData = [];
+
+        // Simulate fetching users.json
+        async function fetchUsersData() {
+            // In a real application, you would fetch from a file like:
+            const response = await fetch('../data/users.json');
+            usersData = await response.json();
+        }
+
         // Function to validate username
         function validateUsername() {
             const username = usernameInput.value;
@@ -342,6 +353,23 @@
 
         // Event listener for username input on keyup
         usernameInput.addEventListener('keyup', validateUsername);
+
+        // Event listener for login button
+        loginButton.addEventListener('click', () => {
+            const isUsernameFormatValid = validateUsernameFormat();
+            const username = usernameInput.value;
+            const password = passwordInput.value;
+
+            if (isUsernameFormatValid && username !== '' && password !== '') {
+                if (validateLoginCredentials(username, password)) {
+                    showMessageBox('Login Successful!', `Welcome, ${username}!`, '#28a745'); // Green for success
+                } else {
+                    showMessageBox('Login Failed', 'Invalid username or password.', '#dc3545'); // Red for failure
+                }
+            } else {
+                showMessageBox('Input Error', 'Please correct the form errors and fill in both fields.', '#ffc107'); // Yellow for warning
+            }
+        });
 
         // Event listener for login button (for demonstration)
         loginButton.addEventListener('click', () => {
