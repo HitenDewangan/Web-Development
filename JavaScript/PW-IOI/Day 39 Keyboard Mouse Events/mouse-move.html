@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mouse Move Event</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style>
+        #star {
+            color: green;
+            font-size: 40px;
+            /* Initially position the star */
+            position: absolute;
+        }
+        @keyframes blink {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body onmousemove="changePosition(event)">
+    <div style="height: 1000px;">
+        <p>Move Mouse Pointer to test the code</p>
+    </div>
+    <div class="bi bi-star-fill" id="star"></div>
+    
+    
+    <script type="text/javascript">
+        function changePosition(e) {
+            const star = document.getElementById("star");
+            star.style.top = e.clientY + "px";
+            star.style.left = e.clientX + "px";
+            star.style.animation = "blink 700ms infinite alternate"; /* Shorthand for animation */
+        }
+    </script>
+</body>
+</html>
