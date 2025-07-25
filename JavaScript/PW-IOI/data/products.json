@@ -1,0 +1,56 @@
+[
+    {
+        "Title" : "Apple iPhone 11 (Red, 64 GB)",
+        "Price" : 46999,
+        "Features" : [
+            "64 GB ROM",
+            "15.49 cm (6.1 inch) Liquid Retina HD Display",
+            "Dual 12MP Camera System: Ultra Wide and Wide cameras",
+            "A13 Bionic chip with 3rd generation Neural Engine",
+            "IP68 water and dust resistant (up to 2 meters for 30 minutes)",
+            "Wireless charging capable (Qi chargers)"
+        ],
+        "Ratings" : {
+            "Rate" : 4.6,
+            "Count" : "8,500 Rating",
+            "Review" : "1,100 Reviews"
+        },
+        "Photo" : "../../images/iphone-11.webp"
+    },
+    {
+        "Title" : "Apple iPhone 11 (Purple, 128 GB)",
+        "Price" : 49999,
+        "Features" : [
+            "128 GB ROM",
+            "6.1-inch Liquid Retina HD display with True Tone",
+            "Advanced dual-camera system with Night mode and Deep Fusion",
+            "Face ID for secure authentication and Apple Pay",
+            "Up to 17 hours video playback, 10 hours streamed video playback",
+            "Fast-charge capable (up to 50% charge in 30 minutes with 20W adapter or higher, sold separately)"
+        ],
+        "Ratings" : {
+            "Rate" : 4.7,
+            "Count" : "11,500 Rating",
+            "Review" : "1,550 Reviews"
+        },
+        "Photo" : "../../images/captainmarvel.jpg"
+    },
+    {
+        "Title" : "Apple iPhone 11 (White, 64 GB)",
+        "Price" : 46999,
+        "Features" : [
+            "64 GB ROM",
+            "Vibrant 6.1\" Liquid Retina HD display",
+            "Capture stunning photos and 4K videos with the dual-camera system",
+            "Powered by the super-fast A13 Bionic chip",
+            "Supports spatial audio playback and Dolby Atmos",
+            "Comes with iOS 13 (upgradable to latest iOS versions)"
+        ],
+        "Ratings" : {
+            "Rate" : 4.6,
+            "Count" : "9,800 Rating",
+            "Review" : "1,250 Reviews"
+        },
+        "Photo" : "../../images/leopard.jpg"
+    }
+]

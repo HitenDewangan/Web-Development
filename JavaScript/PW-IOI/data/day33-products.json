@@ -1,0 +1,22 @@
+[
+    {
+        "category" : "Electronics",
+        "items" : [ "torch", "headlamp", "lantern" ]
+    },
+    {
+        "category" : "Clothing",
+        "items" : [ "shirt", "pants", "jacket" ]
+    },
+    {
+        "category" : "Footwear",
+        "items" : [ "sneakers", "boots", "sandals" ]
+    },
+    {
+        "category" : "Accessories",
+        "items" : [ "watch", "belt", "hat" ]
+    },
+    {
+        "category" : "Sports",
+        "items" : [ "football", "basketball", "tennis racket" ]
+    }
+]
