@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../../../node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <title>Document</title>
+</head>
+<body class="container-fluid m-3">
+    <div class="mt-5">
+        <h1 class="mb-3">📝TODO List with Category</h1>
+        <div>
+            <form id="todoForm" class="mb-3 d-flex flex-row gap-3">
+                <div>
+                    <input type="text" id="todoInput" class="form-control" placeholder="Enter your TODO here">
+                </div>
+                <div>
+                    <select name="category" id="categorySelect" class="form-select">
+                        <option value="">--Select Category--</option>
+                        <option value="work">Work</option>
+                        <option value="Home">Home</option>
+                        <option value="Hobby">Hobby</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-secondary">Add TODO</button>
+            </form>
+        </div>
+
+        <div class="mb-3 d-flex flex-row gap-3">
+            <label for="categoryFilter">Filter by Category:</label>
+            <select name="category" id="categoryFilter" class="form-select w-25" onchange="filterCategory()">
+                <option value="">All</option>
+                <option value="work">Work</option>
+                <option value="Home">Home</option>
+                <option value="Hobby">Hobby</option>
+            </select>
+        </div>
+
+        <ul id="todoList" class="list-group"></ul>
+    </div>
+
+    <script type="text/javascript">
+        // Get DOM elements once
+        const todoForm = document.getElementById('todoForm');
+        const todoInput = document.getElementById('todoInput');
+        const categorySelect = document.getElementById('categorySelect');
+        const todoList = document.getElementById('todoList');
+        const categoryFilter = document.getElementById('categoryFilter');
+
+        let taskCount = 0;
+        let taskList = [];
+
+        // This function handles all the DOM manipulation for rendering the list
+        function renderList(tasks) {
+            todoList.innerHTML = ''; // Clear the existing list
+
+            if (tasks.length === 0) {
+                const li = document.createElement('li');
+                li.textContent = 'No tasks found.';
+                li.classList.add('list-group-item', 'bg-light');
+                todoList.appendChild(li);
+            } else {
+                tasks.forEach(task => {
+                    const li = document.createElement('li');
+                    li.textContent = `${task.text} [${task.category}]`;
+                    li.classList.add('list-group-item', 'bg-light');
+                    todoList.appendChild(li);
+                });
+            }
+        }
+
+        // Handles adding a new task
+        todoForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const todoText = todoInput.value.trim();
+            const categoryText = categorySelect.value;
+
+            if (todoText === '' || categoryText === '') {
+                alert('Please enter a TODO and select a category.');
+                return;
+            }
+
+            taskList.push({ id: taskCount, text: todoText, category: categoryText });
+            taskCount++;
+
+            // Re-render the list after adding the new task, using the current filter
+            filterCategory();
+
+            // Clear input fields
+            todoInput.value = '';
+            categorySelect.value = '';
+        });
+
+        // Filters tasks based on the selected category and calls renderList()
+        function filterCategory() {
+            const filterValue = categoryFilter.value;
+            let filteredTasks;
+
+            switch (filterValue) {
+                case 'work':
+                case 'Home':
+                case 'Hobby':
+                    filteredTasks = taskList.filter(task => task.category.toLowerCase() === filterValue.toLowerCase());
+                    break;
+                case '': // This is the "All" case
+                default:
+                    filteredTasks = taskList;
+                    break;
+            }
+
+            renderList(filteredTasks);
+        }
+
+        // Initial render on page load
+        filterCategory();
+    </script>
+</body>
+</html>
