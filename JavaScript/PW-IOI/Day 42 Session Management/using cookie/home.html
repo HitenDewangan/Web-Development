@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function processLogic() {
+            console.log(document.cookie);
+              let username = document.cookie.substring(document.cookie.indexOf("=") + 1);
+              if (username === null) {
+                    location.href='index.html';
+              } else {
+                  document.querySelector("p").innerHTML = `Hello! ${username}`;
+              }
+        }
+        function signout(){
+            document.cookie ='username=;max-age=0;';
+            location.href='index.html';
+        }
+    </script>
+</head>
+<body onload="processLogic()">
+        <h3> User Details </h3>
+        <p></p>
+        <button onclick="signout()">signout</button>
+</body>
+</html>
