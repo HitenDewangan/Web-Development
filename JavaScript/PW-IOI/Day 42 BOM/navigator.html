@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigator Object</title>
+</head>
+<body>
+    
+
+    <script>
+        // plugins
+        for (const plugin of navigator.plugins) {
+            document.write("Plugin Name: ", plugin.name + "<br>");
+        }
+        //  mimeTypes
+        for (const mimeType of navigator.mimeTypes) {
+            document.write("Mime Type: ", mimeType.type + "<br>");
+        }
+        // geolocation
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                document.write("Latitude: " + position.coords.latitude + "<br>");
+                document.write("Longitude: " + position.coords.longitude + "<br>");
+            }, (error) => {
+                console.error("Geolocation error: ", error); 
+            });
+        } else {
+            document.write("Geolocation is not supported by this browser.");
+        }
+    </script>
+</body>
+</html>

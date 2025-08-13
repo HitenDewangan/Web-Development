@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details</title>
+    <script>
+        //  exploring all location properties
+        console.log("Location Object: ", location);
+        //  history page
+        console.log("no. of pages in history: ", history.length);
+
+
+        function displayUsername() {
+            let username = localStorage.getItem("username");
+
+            document.getElementById("userDetails").innerText = `Hello ${username}`;
+            // if (username) {
+            //     document.getElementById("userDetails").innerText = `Hello ${username}`;
+            // } else {
+            //     document.getElementById("userDetails").innerText = "No username found!";
+            // }
+        }
+
+        function deleteUsername() {
+            localStorage.removeItem("username");
+            document.getElementById("userDetails").innerText = "Username deleted!";
+        }
+    </script>
+</head>
+<body onload="displayUsername()">
+    <h2>User Details</h2>
+    <p id="userDetails"></p>
+    <button onclick="deleteUsername()">Delete Username</button>
+</body>
+</html>

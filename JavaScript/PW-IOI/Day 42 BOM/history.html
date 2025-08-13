@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>History Object</title>
+</head>
+<body>
+    <script>
+        var now = new Date();
+        document.write(`
+        Current Date and Time:  ${now.toLocaleDateString()} <br>
+        No. of pages in history: ${history.length} <br>
+        Previous page: ${history.back()} <br>
+        Next page: ${history.forward()} <br>
+        `);
+
+    </script>
+</body>
+</html>
